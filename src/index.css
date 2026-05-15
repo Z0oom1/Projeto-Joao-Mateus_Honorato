@@ -236,13 +236,13 @@ p {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 18px 42px; /* Padding consistente */
+  padding: 24px 52px; /* Aumento de padding para efeito "gordinho" */
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 0.95rem; /* Fonte levemente maior */
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  border-radius: 4px; /* Retorno ao estilo clássico refinado */
+  border-radius: 8px; /* Cantos mais suaves */
   transition: all 0.3s var(--ease-out-expo);
   cursor: pointer;
   white-space: nowrap;

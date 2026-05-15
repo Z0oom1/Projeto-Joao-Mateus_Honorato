@@ -19,24 +19,13 @@
 .footer__logo {
   display: flex;
   align-items: center;
-  gap: 6px;
   margin-bottom: 20px;
 }
 
-.footer__logo-text {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: var(--color-matte-black);
-}
-
-.footer__logo-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--color-accent);
-  margin-top: 8px;
+.footer__logo-img {
+  height: clamp(32px, 4vh, 40px);
+  width: auto;
+  object-fit: contain;
 }
 
 .footer__tagline {

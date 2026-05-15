@@ -1,7 +1,13 @@
 import './Footer.css'
 
-export default function Footer() {
+export default function Footer({ theme }) {
   const currentYear = new Date().getFullYear()
+
+  const logoSrc = theme === 'blue' 
+    ? '/logos/logotipo-azul.png' 
+    : theme === 'gold' 
+      ? '/logos/logotipo-dourado.png' 
+      : '/logos/logotipo-beje.png';
 
   return (
     <footer className="footer" id="contato" aria-label="Rodapé e informações de contato">
@@ -11,8 +17,7 @@ export default function Footer() {
           {/* Coluna 1: Marca */}
           <div className="footer__brand reveal">
             <div className="footer__logo">
-              <span className="footer__logo-text">Blanc</span>
-              <span className="footer__logo-dot"></span>
+              <img src={logoSrc} alt="Blanc Odontologia" className="footer__logo-img" />
             </div>
             <p className="footer__tagline">
               Odontologia que cuida com<br />

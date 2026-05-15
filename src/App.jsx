@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import MagneticButton from './components/MagneticButton'
 import ParticlesBackground from './components/ParticlesBackground'
 import { useScrollReveal } from './hooks/useAnimations'
@@ -12,28 +12,34 @@ import Booking from './components/Booking'
 import Footer from './components/Footer'
 
 export default function App() {
+  const [theme, setTheme] = useState('bege') // 'bege', 'blue', 'gold'
   useScrollReveal()
 
-  /* Atalhos de teclado para troca de tema (Alt+1: Bege, Alt+2: Azul) */
+  /* Atalhos de teclado para troca de tema (Alt+1: Bege, Alt+2: Azul, Alt+3: Dourado) */
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.altKey && e.code === 'Digit1') {
         e.preventDefault();
-        document.body.classList.remove('theme-blue', 'theme-gold');
+        setTheme('bege');
       } else if (e.altKey && e.code === 'Digit2') {
         e.preventDefault();
-        document.body.classList.remove('theme-gold');
-        document.body.classList.add('theme-blue');
+        setTheme('blue');
       } else if (e.altKey && e.code === 'Digit3') {
         e.preventDefault();
-        document.body.classList.remove('theme-blue');
-        document.body.classList.add('theme-gold');
+        setTheme('gold');
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  /* Aplica a classe do tema ao body */
+  useEffect(() => {
+    document.body.classList.remove('theme-blue', 'theme-gold');
+    if (theme === 'blue') document.body.classList.add('theme-blue');
+    if (theme === 'gold') document.body.classList.add('theme-gold');
+  }, [theme]);
 
   /* Re-aplica scroll reveal após navegação e mudanças de estado */
   useEffect(() => {
@@ -84,7 +90,7 @@ export default function App() {
       <div className="noise-overlay"></div>
       <div className="dynamic-bg"></div>
       <ParticlesBackground />
-      <Navbar />
+      <Navbar theme={theme} />
       <main>
         <Hero />
         <About />
@@ -93,7 +99,7 @@ export default function App() {
         <Testimonials />
         <Booking />
       </main>
-      <Footer />
+      <Footer theme={theme} />
     </>
   )
 }

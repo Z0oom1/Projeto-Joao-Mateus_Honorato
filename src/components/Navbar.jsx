@@ -2,9 +2,15 @@ import { useState, useEffect } from 'react'
 import MagneticButton from './MagneticButton'
 import './Navbar.css'
 
-export default function Navbar() {
+export default function Navbar({ theme }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const logoSrc = theme === 'blue' 
+    ? '/logos/logotipo-azul.png' 
+    : theme === 'gold' 
+      ? '/logos/logotipo-dourado.png' 
+      : '/logos/logotipo-beje.png';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,8 +43,7 @@ export default function Navbar() {
       <nav className="navbar__inner container" aria-label="Navegação principal">
         {/* Logo */}
         <a href="#" className="navbar__logo" aria-label="Blanc Odontologia - Início">
-          <span className="navbar__logo-text">Blanc</span>
-          <span className="navbar__logo-dot"></span>
+          <img src={logoSrc} alt="Blanc Odontologia" className="navbar__logo-img" />
         </a>
 
         {/* Links Desktop */}

@@ -48,35 +48,40 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Lista de tratamentos */}
-        <div className="services__list">
+        {/* Grid de tratamentos */}
+        <div className="services__grid">
           {services.map((service, i) => (
             <article
               key={service.id}
-              className={`services__item reveal reveal-delay-${Math.min(i + 1, 4)}`}
+              className={`services__card reveal reveal-delay-${Math.min(i + 1, 4)}`}
               id={`service-${service.id}`}
             >
-              <div className="services__item-content">
-                <span className="services__item-number">{service.number}</span>
-                <h3 className="services__item-title">{service.title}</h3>
-                <p className="services__item-desc">{service.description}</p>
-                <a href="#agendar" className="services__item-link">
-                  Saiba mais
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </a>
-              </div>
-              <div className="services__item-image">
+              <div className="services__card-image">
                 <img
                   src={service.image}
                   alt={service.title}
                   loading="lazy"
                 />
+                <div className="services__card-overlay"></div>
+              </div>
+              
+              <div className="services__card-content">
+                <div className="services__card-top">
+                  <span className="services__card-number">{service.number}</span>
+                  <h3 className="services__card-title">{service.title}</h3>
+                </div>
+                <p className="services__card-desc">{service.description}</p>
+                <a href="#agendar" className="services__card-link">
+                  <span>Saiba mais</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
               </div>
             </article>
           ))}
         </div>
+
       </div>
     </section>
   )

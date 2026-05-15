@@ -38,6 +38,18 @@
   --transition-fast: 300ms var(--ease-out-expo);
 }
 
+/* --- Blue Theme Overrides --- */
+body.theme-blue {
+  --color-bone: #F0F4F7;
+  --color-cream: #F7F9FA;
+  --color-warm-white: #FBFDFF;
+  --color-beige: #DDE4E8;
+  --color-beige-dark: #BCC7D0;
+  --color-accent: #5F8EB0;
+  --color-accent-light: #DCE7EE;
+}
+
+
 /* --- Reset & Base --- */
 *,
 *::before,

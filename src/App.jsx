@@ -13,6 +13,20 @@ import Footer from './components/Footer'
 export default function App() {
   useScrollReveal()
 
+  /* Atalhos de teclado para troca de tema (Ctrl+1: Bege, Ctrl+2: Azul) */
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.key === '1') {
+        document.body.classList.remove('theme-blue');
+      } else if (e.ctrlKey && e.key === '2') {
+        document.body.classList.add('theme-blue');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   /* Re-aplica scroll reveal após navegação e mudanças de estado */
   useEffect(() => {
     const observer = new MutationObserver(() => {

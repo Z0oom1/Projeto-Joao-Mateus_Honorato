@@ -73,11 +73,35 @@
 }
 
 .booking__layout--modal .booking__form {
-  padding: 40px;
+  padding: clamp(24px, 5vw, 40px);
   width: 100%;
-  max-width: 550px; /* Largura elegante para o formulário */
+  max-width: 500px;
   margin: 0 auto;
 }
+
+.booking__layout--modal .booking__nav-buttons {
+  flex-direction: column; /* Evita que os botões vazem para fora */
+  gap: 12px;
+}
+
+.booking__layout--modal .btn-primary,
+.booking__layout--modal .btn-outline {
+  padding: 18px 30px; /* Padding reduzido para caber no modal */
+  width: 100%;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .booking-modal__content {
+    padding: 30px 20px;
+    max-height: 95vh;
+  }
+  
+  .booking__layout--modal .booking__title {
+    font-size: 1.6rem;
+  }
+}
+
 
 
 

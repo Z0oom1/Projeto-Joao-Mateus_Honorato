@@ -36,12 +36,13 @@
 }
 
 .navbar__logo-img {
-  height: clamp(140px, 18vh, 260px); 
+  height: clamp(100px, 12vh, 260px); /* Reduzido para mobile */
   width: auto;
   object-fit: contain;
-  margin-top: -25px; /* Reduced crop */
-  margin-bottom: -45px; /* Reduced crop */
+  margin-top: -20px;
+  margin-bottom: -35px;
 }
+
 
 /* Links Desktop */
 .navbar__links {

@@ -102,6 +102,39 @@ body.theme-gold .dynamic-bg {
 
 
 
+/* --- Responsividade Global Extra --- */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 80px 0;
+  }
+
+  .btn-primary, .btn-outline, .navbar__cta {
+    padding: 18px 36px; /* Botões um pouco menores no mobile */
+    font-size: 0.85rem;
+    width: 100%; /* Botões ocupam largura total no mobile se necessário */
+  }
+
+  .section-header__title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header__title {
+    font-size: 1.8rem;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+}
+
 /* --- Reset & Base --- */
 *,
 *::before,

@@ -28,10 +28,11 @@ export default function ParticlesBackground() {
       init() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
-        this.opacity = Math.random() * 0.5 + 0.1;
+        this.size = Math.random() * 40 + 20; /* Partículas gigantes (20px a 60px) */
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = (Math.random() - 0.5) * 0.4;
+        this.opacity = Math.random() * 0.6 + 0.2;
+
       }
 
       update() {
@@ -83,9 +84,10 @@ export default function ParticlesBackground() {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: 5, /* Elevado para aparecer acima dos fundos das seções */
+        zIndex: 0, /* Movido para o fundo absoluto */
         pointerEvents: 'none',
-        opacity: 0.6
+        opacity: 0.5,
+        filter: 'blur(16px)', /* Efeito blur intenso */
       }}
     />
   );

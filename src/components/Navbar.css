@@ -34,7 +34,7 @@
 }
 
 .navbar__logo-img {
-  height: clamp(32px, 4vh, 48px);
+  height: clamp(50px, 7vh, 100px);
   width: auto;
   object-fit: contain;
 }

@@ -23,7 +23,7 @@
 }
 
 .footer__logo-img {
-  height: clamp(32px, 4vh, 40px);
+  height: clamp(40px, 6vh, 70px);
   width: auto;
   object-fit: contain;
 }

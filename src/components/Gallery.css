@@ -3,7 +3,7 @@
    ============================ */
 
 .gallery {
-  background-color: var(--color-warm-white);
+  background-color: transparent;
 }
 
 .gallery__header {

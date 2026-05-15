@@ -3,7 +3,7 @@
    ============================ */
 
 .about {
-  background-color: var(--color-warm-white);
+  background-color: transparent;
 }
 
 .about__header {
@@ -59,13 +59,15 @@
 
 .about__image-accent {
   position: absolute;
-  bottom: -16px;
-  right: -16px;
-  width: 60%;
-  height: 40%;
+  inset: -12px;
   border: 1px solid var(--color-accent-light);
-  border-radius: 8px;
+  border-radius: 12px;
   z-index: -1;
+  transition: transform 0.8s var(--ease-out-expo);
+}
+
+.about__image-block:hover .about__image-accent {
+  transform: scale(1.05);
 }
 
 /* Bloco de texto */

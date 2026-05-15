@@ -21,15 +21,15 @@
   align-items: center;
   margin-bottom: 10px;
   overflow: hidden;
-  max-height: 70px;
+  max-height: 90px;
 }
 
 .footer__logo-img {
   height: clamp(120px, 15vh, 180px);
   width: auto;
   object-fit: contain;
-  margin-top: -35px;
-  margin-bottom: -65px;
+  margin-top: -20px;
+  margin-bottom: -30px;
 }
 
 .footer__tagline {

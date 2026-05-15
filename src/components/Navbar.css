@@ -31,16 +31,16 @@
   display: flex;
   align-items: center;
   z-index: 110;
-  overflow: hidden; /* Clean crop */
-  max-height: 80px; /* Constrain the height of the logo area */
+  overflow: hidden; 
+  max-height: 110px; /* Increased to avoid cutting */
 }
 
 .navbar__logo-img {
   height: clamp(140px, 18vh, 260px); 
   width: auto;
   object-fit: contain;
-  margin-top: -45px; 
-  margin-bottom: -85px; /* Aggressive bottom crop */
+  margin-top: -25px; /* Reduced crop */
+  margin-bottom: -45px; /* Reduced crop */
 }
 
 /* Links Desktop */

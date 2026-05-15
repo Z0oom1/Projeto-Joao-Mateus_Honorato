@@ -268,8 +268,8 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 18px 56px;
+  gap: 16px; /* Aumentado para mais respiro entre texto e seta */
+  padding: 22px 72px; /* Aumentado conforme solicitado */
   font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 500;
@@ -282,7 +282,9 @@ p {
   border: 2px solid transparent;
   position: relative;
   overflow: hidden;
+  line-height: 1; /* Ajuda a centralizar verticalmente o texto e a seta */
 }
+
 
 
 /* Botão Principal: Atendimento ao Padrão do Sistema */

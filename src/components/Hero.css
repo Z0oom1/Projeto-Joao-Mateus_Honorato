@@ -37,9 +37,10 @@
 }
 
 .hero__video {
-  margin-top: -60px; /* "Corta" 60px do topo */
-  height: calc(100% + 60px) !important;
+  margin-top: -85px; /* "Corta" 85px do topo (60px anteriores + 25px novos) */
+  height: calc(100% + 85px) !important;
 }
+
 
 
 

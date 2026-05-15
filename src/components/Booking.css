@@ -3,7 +3,7 @@
    ============================ */
 
 .booking {
-  background-color: transparent;
+  background-color: var(--color-warm-white);
 }
 
 .booking__layout {

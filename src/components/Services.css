@@ -3,7 +3,7 @@
    ============================ */
 
 .services {
-  background-color: transparent;
+  background-color: var(--color-bone);
 }
 
 .services__header {

@@ -3,7 +3,7 @@
    ============================ */
 
 .testimonials {
-  background-color: transparent;
+  background-color: var(--color-bone);
 }
 
 .testimonials__layout {

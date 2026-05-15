@@ -3,7 +3,7 @@
    ============================ */
 
 .about {
-  background-color: transparent;
+  background-color: var(--color-warm-white);
 }
 
 .about__header {

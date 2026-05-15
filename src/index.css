@@ -75,9 +75,10 @@ body.theme-gold {
   background: radial-gradient(
     circle at 50% 50%,
     var(--color-accent-light) 0%,
-    var(--color-bone) 100%
+    transparent 100%
   );
   opacity: 0.1;
+  z-index: 0; /* Move to 0 so it sits above body but below content */
   transition: opacity 0.5s ease, transform 0.5s ease;
   pointer-events: none;
 }
@@ -120,7 +121,7 @@ body {
   font-family: var(--font-sans);
   font-weight: 300;
   color: var(--color-charcoal);
-  background-color: transparent;
+  background-color: var(--color-bone); /* Base background color */
   line-height: 1.7;
   overflow-x: hidden;
 }

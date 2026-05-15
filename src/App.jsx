@@ -121,7 +121,11 @@ export default function App() {
     <>
       <Preloader theme={theme} />
       <div className="noise-overlay"></div>
-      <div className="dynamic-bg"></div>
+      <div className="dynamic-bg">
+        <div className="glow-orb glow-orb-1"></div>
+        <div className="glow-orb glow-orb-2"></div>
+        <div className="glow-orb glow-orb-3"></div>
+      </div>
       <ParticlesBackground />
       <Navbar theme={theme} onOpenBooking={openBookingModal} />
       <main>

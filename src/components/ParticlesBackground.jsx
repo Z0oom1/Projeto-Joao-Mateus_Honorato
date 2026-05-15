@@ -83,9 +83,9 @@ export default function ParticlesBackground() {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: -1,
+        zIndex: 5, /* Elevado para aparecer acima dos fundos das seções */
         pointerEvents: 'none',
-        opacity: 0.4
+        opacity: 0.6
       }}
     />
   );

@@ -182,79 +182,89 @@ body.theme-gold .hero__image-overlay {
 
 
 
-/* Botões Hero Premium */
-.btn-hero-primary,
-.btn-hero-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 22px 72px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  border-radius: 100px;
-  transition: all 0.5s var(--ease-out-expo);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+/* Botões Hero Premium — Robustos & Elegantes */
+.btn-hero-cta,
+.btn-hero-alt {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  padding: 18px 48px !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  border-radius: 100px !important;
+  transition: all 0.5s var(--ease-out-expo) !important;
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  white-space: nowrap !important;
 }
 
 /* Agendar Consulta - Dark Glass */
-.btn-hero-primary {
-  background-color: rgba(26, 26, 26, 0.8);
-  color: var(--color-warm-white);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+.btn-hero-cta {
+  background-color: rgba(26, 26, 26, 0.85) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
 }
 
-.btn-hero-primary:hover {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+.btn-hero-cta:hover {
+  background-color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  transform: translateY(-4px) !important;
 }
 
 /* Nossos Tratamentos - Light Glass */
-.btn-hero-secondary {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--color-matte-black);
-  border: 1.5px solid var(--color-matte-black);
+.btn-hero-alt {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: var(--color-matte-black) !important;
+  border: 2px solid var(--color-matte-black) !important;
 }
 
-.btn-hero-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.9);
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+.btn-hero-alt:hover {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  transform: translateY(-4px) !important;
 }
 
-/* Micro-animação do ícone */
+/* Escalonamento correto do ícone */
 .btn-hero-icon {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.4s var(--ease-out-expo);
+  width: 18px !important;
+  height: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-.btn-hero-primary:hover .btn-hero-icon {
-  transform: translateX(6px);
+.btn-hero-icon svg {
+  width: 100% !important;
+  height: 100% !important;
+  stroke: currentColor !important;
+  transition: transform 0.4s var(--ease-out-expo) !important;
+}
+
+.btn-hero-cta:hover .btn-hero-icon svg {
+  transform: translateX(4px) !important;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .hero__actions {
-    flex-direction: column;
-    width: 100%;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
   }
   
-  .btn-hero-primary,
-  .btn-hero-secondary {
-    width: 100%;
-    padding: 18px 40px;
+  .btn-hero-cta,
+  .btn-hero-alt {
+    width: 100% !important;
+    padding: 16px 32px !important;
   }
 }
+
 
 @media (max-width: 768px) {
   .hero {

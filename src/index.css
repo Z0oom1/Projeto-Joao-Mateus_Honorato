@@ -318,6 +318,24 @@ p {
               transform 900ms var(--ease-out-expo);
 }
 
+.btn-hero-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-hero-icon svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.btn-hero-primary:hover .btn-hero-icon svg {
+  transform: translateX(6px);
+}
+
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
@@ -342,26 +360,27 @@ p {
 }
 
 /* --- Botões de Alta Performance (Premium High-End) --- */
-.btn-primary, .btn-outline, .navbar__cta {
+.btn-primary, .btn-outline, .navbar__cta, .btn-hero-primary, .btn-hero-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 16px; /* Aumentado para mais respiro entre texto e seta */
-  padding: 22px 72px; /* Aumentado conforme solicitado */
+  gap: 16px;
+  padding: 22px 72px;
   font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  border-radius: 100px; /* Pill-shape: ultra luxo */
+  border-radius: 100px;
   transition: all 0.4s var(--ease-out-expo);
   cursor: pointer;
   white-space: nowrap;
   border: 2px solid transparent;
   position: relative;
   overflow: hidden;
-  line-height: 1; /* Ajuda a centralizar verticalmente o texto e a seta */
+  line-height: 1;
 }
+
 
 
 

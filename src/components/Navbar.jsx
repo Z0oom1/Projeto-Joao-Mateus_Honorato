@@ -53,9 +53,12 @@ export default function Navbar() {
         </ul>
 
         {/* CTA Desktop */}
-        <a href="#agendar" className="navbar__cta">
+        <MagneticButton
+          onClick={() => window.location.hash = '#agendar'}
+          className="navbar__cta"
+        >
           Agendar Consulta
-        </a>
+        </MagneticButton>
 
         {/* Menu Hamburger Mobile */}
         <button

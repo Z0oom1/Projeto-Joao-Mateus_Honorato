@@ -23,11 +23,11 @@
 }
 
 .footer__logo-img {
-  height: clamp(60px, 8vh, 100px);
+  height: clamp(100px, 12vh, 160px);
   width: auto;
   object-fit: contain;
-  margin-top: -15px;
-  margin-bottom: -15px;
+  margin-top: -30px;
+  margin-bottom: -30px;
 }
 
 .footer__tagline {

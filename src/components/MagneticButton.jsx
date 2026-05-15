@@ -34,13 +34,17 @@ export default function MagneticButton({ children, className = '', ...props }) {
     >
       <span 
         style={{ 
-          display: 'block',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 'inherit',
           transform: `translate3d(${x * 0.2}px, ${y * 0.2}px, 0)`,
           transition: position.x === 0 ? 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)' : 'none'
         }}
       >
         {children}
       </span>
+
     </button>
   );
 }

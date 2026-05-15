@@ -40,13 +40,15 @@
 
 /* --- Blue Theme Overrides --- */
 body.theme-blue {
-  --color-bone: #F0F4F7;
-  --color-cream: #F7F9FA;
-  --color-warm-white: #FBFDFF;
-  --color-beige: #DDE4E8;
-  --color-beige-dark: #BCC7D0;
-  --color-accent: #5F8EB0;
-  --color-accent-light: #DCE7EE;
+  --color-bone: #EBF1F5;
+  --color-cream: #F4F7F9;
+  --color-warm-white: #F8FAFB;
+  --color-beige: #CFDBE3;
+  --color-beige-dark: #A9BDC9;
+  --color-accent: #4A7C9D;
+  --color-accent-light: #D1DFE8;
+  --color-gray-warm: #6B7B87;
+  --color-gray-light: #9AAAB5;
 }
 
 

@@ -56,6 +56,18 @@ body.theme-blue .hero__image-overlay {
   );
 }
 
+/* Ajuste fino para o tema dourado no gradiente */
+body.theme-gold .hero__image-overlay {
+  background: linear-gradient(
+    to top,
+    var(--color-warm-white) 0%,
+    rgba(249, 247, 242, 0.85) 25%,
+    rgba(249, 247, 242, 0.4) 50%,
+    rgba(249, 247, 242, 0.1) 80%,
+    transparent 100%
+  );
+}
+
 /* Conteúdo */
 .hero__content {
   position: relative;

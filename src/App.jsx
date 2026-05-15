@@ -18,10 +18,15 @@ export default function App() {
     const handleKeyDown = (e) => {
       if (e.altKey && e.key === '1') {
         e.preventDefault();
-        document.body.classList.remove('theme-blue');
+        document.body.classList.remove('theme-blue', 'theme-gold');
       } else if (e.altKey && e.key === '2') {
         e.preventDefault();
+        document.body.classList.remove('theme-gold');
         document.body.classList.add('theme-blue');
+      } else if (e.altKey && e.key === '3') {
+        e.preventDefault();
+        document.body.classList.remove('theme-blue');
+        document.body.classList.add('theme-gold');
       }
     };
 

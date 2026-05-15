@@ -51,6 +51,20 @@ body.theme-blue {
   --color-gray-light: #9AAAB5;
 }
 
+/* --- Gold Theme Overrides --- */
+body.theme-gold {
+  --color-bone: #F9F7F2;
+  --color-cream: #FDFBF7;
+  --color-warm-white: #FFFEFA;
+  --color-beige: #EBE0CD;
+  --color-beige-dark: #D4C3A5;
+  --color-accent: #B8860B; /* Dark Gold */
+  --color-accent-light: #F3EBD8;
+  --color-gray-warm: #736858;
+  --color-gray-light: #B5A992;
+}
+
+
 
 /* --- Reset & Base --- */
 *,

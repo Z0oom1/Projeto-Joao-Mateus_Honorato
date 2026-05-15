@@ -77,8 +77,8 @@ body.theme-gold {
     var(--color-accent-light) 0%,
     var(--color-bone) 100%
   );
-  opacity: 0.05;
-  transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+  opacity: 0.1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
   pointer-events: none;
 }
 
@@ -120,9 +120,13 @@ body {
   font-family: var(--font-sans);
   font-weight: 300;
   color: var(--color-charcoal);
-  background-color: var(--color-warm-white);
+  background-color: transparent;
   line-height: 1.7;
   overflow-x: hidden;
+}
+
+.about {
+  background-color: transparent;
 }
 
 img {
@@ -280,6 +284,16 @@ p {
   margin: 24px 0;
 }
 
+.footer {
+  background-color: transparent;
+  padding: clamp(60px, 10vh, 100px) 0 clamp(30px, 4vh, 50px);
+  border-top: 1px solid var(--color-border);
+}
+
+.testimonials {
+  background-color: transparent;
+}
+
 /* --- Seleção de texto --- */
 ::selection {
   background-color: var(--color-accent-light);
@@ -293,6 +307,10 @@ p {
 
 ::-webkit-scrollbar-track {
   background: var(--color-bone);
+}
+
+.services {
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {

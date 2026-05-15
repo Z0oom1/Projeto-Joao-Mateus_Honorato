@@ -68,9 +68,9 @@ export default function App() {
       
       const bg = document.querySelector('.dynamic-bg');
       if (bg) {
-        // Interpola entre 0.05 e 0.2 de opacidade para um efeito sutil
-        bg.style.opacity = 0.05 + (percentage * 0.15);
-        bg.style.transform = `scale(${1 + percentage * 0.1}) rotate(${percentage * 5}deg)`;
+        // Interpola entre 0.1 e 0.4 de opacidade para ser mais visível
+        bg.style.opacity = 0.1 + (percentage * 0.3);
+        bg.style.transform = `scale(${1 + percentage * 0.15}) rotate(${percentage * 8}deg)`;
       }
     };
 

@@ -10,10 +10,15 @@ import Gallery from './components/Gallery'
 import Testimonials from './components/Testimonials'
 import Booking from './components/Booking'
 import Footer from './components/Footer'
+import BookingModal from './components/BookingModal'
 
 export default function App() {
   const [theme, setTheme] = useState('bege') // 'bege', 'blue', 'gold'
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
   useScrollReveal()
+
+  const openBookingModal = () => setIsBookingModalOpen(true)
+  const closeBookingModal = () => setIsBookingModalOpen(false)
 
   /* Atalhos de teclado para troca de tema (Alt+1: Bege, Alt+2: Azul, Alt+3: Dourado) */
   useEffect(() => {
@@ -90,9 +95,9 @@ export default function App() {
       <div className="noise-overlay"></div>
       <div className="dynamic-bg"></div>
       <ParticlesBackground />
-      <Navbar theme={theme} />
+      <Navbar theme={theme} onOpenBooking={openBookingModal} />
       <main>
-        <Hero />
+        <Hero onOpenBooking={openBookingModal} />
         <About />
         <Services />
         <Gallery />
@@ -100,6 +105,7 @@ export default function App() {
         <Booking />
       </main>
       <Footer theme={theme} />
+      <BookingModal isOpen={isBookingModalOpen} onClose={closeBookingModal} />
     </>
   )
 }

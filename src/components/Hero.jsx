@@ -3,7 +3,7 @@ import { useParallax } from '../hooks/useAnimations'
 import MagneticButton from './MagneticButton'
 import './Hero.css'
 
-export default function Hero() {
+export default function Hero({ onOpenBooking }) {
   const imageRef = useRef(null)
   useParallax(imageRef, 0.15)
 
@@ -36,7 +36,7 @@ export default function Hero() {
           </p>
           <div className="hero__actions reveal reveal-delay-3">
             <MagneticButton 
-              onClick={() => window.location.hash = '#agendar'} 
+              onClick={onOpenBooking} 
               className="btn-primary" 
               id="hero-cta"
             >

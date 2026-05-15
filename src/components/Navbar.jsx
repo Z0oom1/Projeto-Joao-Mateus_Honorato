@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import MagneticButton from './MagneticButton'
 import './Navbar.css'
 
-export default function Navbar({ theme }) {
+export default function Navbar({ theme, onOpenBooking }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -59,7 +59,7 @@ export default function Navbar({ theme }) {
 
         {/* CTA Desktop */}
         <MagneticButton
-          onClick={() => window.location.hash = '#agendar'}
+          onClick={onOpenBooking}
           className="navbar__cta"
         >
           Agendar Consulta
@@ -92,13 +92,13 @@ export default function Navbar({ theme }) {
               </li>
             ))}
             <li style={{ transitionDelay: `${(navLinks.length + 1) * 80}ms` }}>
-              <a
-                href="#agendar"
+              <button
                 className="btn-primary navbar__mobile-cta"
-                onClick={handleNavClick}
+                onClick={() => { handleNavClick(); onOpenBooking(); }}
+                style={{ width: '100%', border: 'none' }}
               >
                 Agendar Consulta
-              </a>
+              </button>
             </li>
           </ul>
         </div>

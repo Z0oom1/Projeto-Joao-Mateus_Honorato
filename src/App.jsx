@@ -59,9 +59,29 @@ export default function App() {
     return () => observer.disconnect()
   }, [])
 
+  /* Controle do background dinâmico via scroll */
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const percentage = Math.min(scrolled / maxScroll, 1);
+      
+      const bg = document.querySelector('.dynamic-bg');
+      if (bg) {
+        // Interpola entre 0.05 e 0.2 de opacidade para um efeito sutil
+        bg.style.opacity = 0.05 + (percentage * 0.15);
+        bg.style.transform = `scale(${1 + percentage * 0.1}) rotate(${percentage * 5}deg)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       <div className="noise-overlay"></div>
+      <div className="dynamic-bg"></div>
       <Navbar />
       <main>
         <Hero />

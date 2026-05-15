@@ -64,6 +64,40 @@ body.theme-gold {
   --color-gray-light: #B5A992;
 }
 
+/* --- Dynamic Background --- */
+.dynamic-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--color-accent-light) 0%,
+    var(--color-bone) 100%
+  );
+  opacity: 0.05;
+  transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+  pointer-events: none;
+}
+
+body.theme-blue .dynamic-bg {
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--color-accent-light) 0%,
+    var(--color-bone) 100%
+  );
+}
+
+body.theme-gold .dynamic-bg {
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--color-accent-light) 0%,
+    var(--color-bone) 100%
+  );
+}
+
+
 
 
 /* --- Reset & Base --- */

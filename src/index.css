@@ -234,40 +234,44 @@ p {
 .btn-primary, .btn-outline, .navbar__cta, .magnetic-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  padding: 16px 40px;
+  padding: 18px 44px; /* Slightly larger */
   font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
+  font-size: 0.88rem;
+  font-weight: 500; /* Bolder for legibility */
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   border-radius: 4px;
-  transition: background-color var(--transition-fast), 
-              color var(--transition-fast),
-              border-color var(--transition-fast);
+  transition: all var(--transition-medium);
   cursor: pointer;
   white-space: nowrap;
 }
 
 .btn-primary {
-  background-color: var(--color-matte-black);
-  color: var(--color-warm-white);
+  background-color: var(--color-accent); /* Use theme accent */
+  color: #FFFFFF; /* High contrast white */
+  border: 1px solid var(--color-accent);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-charcoal);
+  background-color: var(--color-matte-black);
+  border-color: var(--color-matte-black);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .btn-outline, .navbar__cta {
   background-color: transparent;
   color: var(--color-matte-black);
-  border: 1px solid var(--color-beige-dark);
+  border: 1px solid var(--color-accent);
 }
 
 .btn-outline:hover, .navbar__cta:hover {
-  border-color: var(--color-matte-black);
-  background-color: var(--color-matte-black);
-  color: var(--color-warm-white);
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  border-color: var(--color-accent);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .magnetic-button {

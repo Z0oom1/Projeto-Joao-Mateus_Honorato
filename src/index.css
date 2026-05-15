@@ -304,18 +304,14 @@ p {
   border: 1px solid var(--color-matte-black) !important;
 }
 
-.btn-outline:hover {
-  background-color: var(--color-matte-black) !important;
-  color: #FFFFFF !important;
-  transform: translateY(-3px);
-}
-
+.btn-outline:hover,
 .navbar__cta:hover {
   background-color: var(--color-accent) !important;
   border-color: var(--color-accent) !important;
   color: #FFFFFF !important;
   transform: translateY(-3px);
 }
+
 
 
 

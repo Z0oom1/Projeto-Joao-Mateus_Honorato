@@ -40,7 +40,7 @@ export default function Hero({ onOpenBooking }) {
           <div className="hero__actions reveal reveal-delay-3">
             <MagneticButton 
               onClick={onOpenBooking} 
-              className="btn-primary" 
+              className="btn-outline" 
               id="hero-cta"
             >
               Agendar Consulta

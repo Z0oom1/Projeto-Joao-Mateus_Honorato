@@ -182,10 +182,77 @@ body.theme-gold .hero__image-overlay {
 
 
 
+/* Botões Hero Premium */
+.btn-hero-primary,
+.btn-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 22px 72px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  transition: all 0.5s var(--ease-out-expo);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Agendar Consulta - Dark Glass */
+.btn-hero-primary {
+  background-color: rgba(26, 26, 26, 0.8);
+  color: var(--color-warm-white);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.btn-hero-primary:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+}
+
+/* Nossos Tratamentos - Light Glass */
+.btn-hero-secondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-matte-black);
+  border: 1.5px solid var(--color-matte-black);
+}
+
+.btn-hero-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Micro-animação do ícone */
+.btn-hero-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.btn-hero-primary:hover .btn-hero-icon {
+  transform: translateX(6px);
+}
+
 /* Responsive */
-@media (max-width: 1024px) {
-  .hero__title {
-    font-size: clamp(3rem, 10vw, 4.5rem);
+@media (max-width: 768px) {
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    width: 100%;
+    padding: 18px 40px;
   }
 }
 

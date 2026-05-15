@@ -40,22 +40,26 @@ export default function Hero({ onOpenBooking }) {
           <div className="hero__actions reveal reveal-delay-3">
             <MagneticButton 
               onClick={onOpenBooking} 
-              className="btn-outline" 
+              className="btn-hero-primary" 
               id="hero-cta"
             >
-              Agendar Consulta
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <span>Agendar Consulta</span>
+              <div className="btn-hero-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
             </MagneticButton>
+
             <MagneticButton 
               onClick={() => window.location.hash = '#tratamentos'} 
-              className="btn-outline" 
+              className="btn-hero-secondary" 
               id="hero-services"
             >
-              Nossos Tratamentos
+              <span>Nossos Tratamentos</span>
             </MagneticButton>
           </div>
+
         </div>
 
       </div>

@@ -141,8 +141,9 @@ body.theme-gold .hero__image-overlay {
 /* Indicador de Scroll Minimalista Centralizado */
 .hero__scroll-indicator {
   position: absolute;
-  bottom: 15px; /* Deixado mais para baixo conforme pedido */
+  bottom: 8px; /* Quase no limite da tela para maximizar o espaço */
   left: 50%;
+
 
   transform: translateX(-50%);
   display: flex;

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Lenis from 'lenis'
 import MagneticButton from './components/MagneticButton'
 import ParticlesBackground from './components/ParticlesBackground'
 import { useScrollReveal } from './hooks/useAnimations'
@@ -17,6 +18,31 @@ export default function App() {
   const [theme, setTheme] = useState('bege') // 'bege', 'blue', 'gold'
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
   useScrollReveal()
+
+  // Inicializa o Lenis para Scroll Suave Premium
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+    })
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
 
   const openBookingModal = () => setIsBookingModalOpen(true)
   const closeBookingModal = () => setIsBookingModalOpen(false)

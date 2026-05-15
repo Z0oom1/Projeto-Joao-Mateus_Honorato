@@ -7,9 +7,9 @@
 /* --- CSS Custom Properties --- */
 :root {
   /* Cores neutras premium */
-  --color-bone: #F7F5F0;
+  --color-bone: #F0EDE6; /* Slightly deeper for contrast */
   --color-cream: #FAFAF7;
-  --color-warm-white: #FEFDFB;
+  --color-warm-white: #FFFFFF; /* Pure white */
   --color-beige: #E8E4DD;
   --color-beige-dark: #D4CFC6;
   --color-charcoal: #2B2B2B;
@@ -40,9 +40,9 @@
 
 /* --- Blue Theme Overrides --- */
 body.theme-blue {
-  --color-bone: #EBF1F5;
+  --color-bone: #DDE6ED; /* Deeper blue */
   --color-cream: #F4F7F9;
-  --color-warm-white: #F8FAFB;
+  --color-warm-white: #FFFFFF;
   --color-beige: #CFDBE3;
   --color-beige-dark: #A9BDC9;
   --color-accent: #4A7C9D;
@@ -53,9 +53,9 @@ body.theme-blue {
 
 /* --- Gold Theme Overrides --- */
 body.theme-gold {
-  --color-bone: #F7F3EA;
+  --color-bone: #F2EAD9; /* Deeper gold/champagne */
   --color-cream: #FDFBF7;
-  --color-warm-white: #FFFEFA;
+  --color-warm-white: #FFFFFF;
   --color-beige: #D9C5A3;
   --color-beige-dark: #A68D65;
   --color-accent: #94743D; /* Deep Metallic Gold */

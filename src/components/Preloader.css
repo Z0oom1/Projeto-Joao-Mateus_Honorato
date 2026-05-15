@@ -1,0 +1,123 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-warm-white);
+  transition: opacity 800ms var(--ease-out-expo),
+              visibility 800ms var(--ease-out-expo);
+}
+
+.preloader--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.preloader__logo {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preloader__text {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-matte-black);
+  animation: revealText 1.5s var(--ease-out-expo) forwards;
+  opacity: 0;
+}
+
+.preloader__line {
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+  margin: 10px 0;
+  animation: growLine 1s 0.5s var(--ease-out-expo) forwards;
+}
+
+.preloader__sub {
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-gray-warm);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: revealSub 1s 1s var(--ease-out-expo) forwards;
+}
+
+.preloader__progress {
+  width: 120px;
+  height: 2px;
+  background-color: var(--color-border);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader__progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--color-accent);
+  animation: progress 2.2s ease-in-out forwards;
+}
+
+@keyframes revealText {
+  from {
+    opacity: 0;
+    letter-spacing: 0.4em;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.2em;
+    transform: translateY(0);
+  }
+}
+
+@keyframes growLine {
+  to { width: 100%; }
+}
+
+@keyframes revealSub {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progress {
+  0% { width: 0; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
+/* Temas do Preloader */
+.preloader.theme-blue {
+  background-color: #0d1b2a; /* Azul ultra dark para luxo */
+}
+.preloader.theme-blue .preloader__text { color: var(--color-warm-white); }
+.preloader.theme-blue .preloader__sub { color: rgba(255,255,255,0.5); }
+.preloader.theme-blue .preloader__progress { background-color: rgba(255,255,255,0.1); }
+
+.preloader.theme-gold {
+  background-color: #1a1612; /* Dourado/Preto luxo */
+}
+.preloader.theme-gold .preloader__text { color: var(--color-warm-white); }
+.preloader.theme-gold .preloader__sub { color: rgba(255,255,255,0.5); }
+.preloader.theme-gold .preloader__progress { background-color: rgba(255,255,255,0.1); }

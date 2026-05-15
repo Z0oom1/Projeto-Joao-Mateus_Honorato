@@ -11,6 +11,7 @@ import Testimonials from './components/Testimonials'
 import Booking from './components/Booking'
 import Footer from './components/Footer'
 import BookingModal from './components/BookingModal'
+import Preloader from './components/Preloader'
 
 export default function App() {
   const [theme, setTheme] = useState('bege') // 'bege', 'blue', 'gold'
@@ -92,6 +93,7 @@ export default function App() {
 
   return (
     <>
+      <Preloader theme={theme} />
       <div className="noise-overlay"></div>
       <div className="dynamic-bg"></div>
       <ParticlesBackground />

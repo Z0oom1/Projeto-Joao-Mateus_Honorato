@@ -34,9 +34,11 @@
 }
 
 .navbar__logo-img {
-  height: clamp(50px, 7vh, 100px);
+  height: clamp(80px, 10vh, 140px); /* Increased height to make it "large" */
   width: auto;
   object-fit: contain;
+  margin-top: -20px; /* Crops top transparency */
+  margin-bottom: -20px; /* Crops bottom transparency */
 }
 
 /* Links Desktop */

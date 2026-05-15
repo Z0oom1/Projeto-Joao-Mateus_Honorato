@@ -60,7 +60,17 @@ export default function Hero({ onOpenBooking }) {
 
       </div>
 
+      {/* Elementos Decorativos de Fundo */}
+      <div className="decor-element decor-sparkle" style={{ top: '15%', left: '8%', animationDelay: '0s' }}>
+        <svg viewBox="0 0 24 24"><path d="M12 0l2.5 9.5 9.5 2.5-9.5 2.5-2.5 9.5-2.5-9.5-9.5-2.5 9.5-2.5z"/></svg>
+      </div>
+      <div className="decor-element decor-circle" style={{ top: '60%', right: '-5%', animationDelay: '-2s' }}></div>
+      <div className="decor-element decor-cross" style={{ bottom: '20%', left: '15%', animationDelay: '-4s' }}>
+        <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      </div>
+
       {/* Indicador de scroll - Movido para fora para alinhamento absoluto real */}
+
       <div className="hero__scroll-indicator reveal reveal-delay-5">
         <div className="hero__scroll-line"></div>
         <span className="hero__scroll-text">Deslize para baixo</span>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Lenis from 'lenis'
 import MagneticButton from './components/MagneticButton'
-import ParticlesBackground from './components/ParticlesBackground'
 import { useScrollReveal } from './hooks/useAnimations'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -126,7 +125,6 @@ export default function App() {
         <div className="glow-orb glow-orb-2"></div>
         <div className="glow-orb glow-orb-3"></div>
       </div>
-      <ParticlesBackground />
       <Navbar theme={theme} onOpenBooking={openBookingModal} />
       <main>
         <Hero onOpenBooking={openBookingModal} />

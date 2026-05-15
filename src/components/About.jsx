@@ -58,6 +58,13 @@ export default function About() {
             </div>
           </div>
         </div>
+      <div className="container">
+        {/* ... existing content ... */}
+        {/* Elementos Decorativos */}
+        <div className="decor-element decor-circle" style={{ top: '10%', left: '-80px', opacity: '0.08' }}></div>
+        <div className="decor-element decor-sparkle" style={{ bottom: '15%', right: '10%', animationDelay: '-1.5s' }}>
+          <svg viewBox="0 0 24 24"><path d="M12 0l2.5 9.5 9.5 2.5-9.5 2.5-2.5 9.5-2.5-9.5-9.5-2.5 9.5-2.5z"/></svg>
+        </div>
       </div>
     </section>
   )

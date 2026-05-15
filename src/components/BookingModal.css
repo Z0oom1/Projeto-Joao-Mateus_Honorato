@@ -16,21 +16,21 @@
 .booking-modal__content {
   background-color: var(--color-warm-white);
   width: 100%;
-  max-width: 900px;
-  max-height: 90vh;
+  max-width: 800px; /* Reduzido levemente para melhor foco */
+  max-height: 85vh; /* Reduzido para caber melhor em telas menores */
   overflow-y: auto;
-  border-radius: 20px;
+  border-radius: 12px; /* Consistente com o sistema */
   position: relative;
-  padding: clamp(30px, 5vw, 60px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+  padding: 40px; /* Padding fixo e mais controlado */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
 }
 
 .booking-modal__close {
   position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 40px;
-  height: 40px;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background-color: var(--color-bone);
   display: flex;
@@ -38,33 +38,42 @@
   justify-content: center;
   color: var(--color-matte-black);
   transition: all 0.3s ease;
-  z-index: 10;
+  z-index: 100;
+  border: none;
+  cursor: pointer;
 }
 
 .booking-modal__close:hover {
-  background-color: var(--color-accent);
+  background-color: var(--color-matte-black);
   color: white;
-  transform: rotate(90deg);
 }
 
-/* Ajustes para o formulário dentro do modal */
+/* Ajustes para o formulário dentro do modal para evitar bugs de layout */
 .booking__layout--modal {
-  grid-template-columns: 1fr;
-  gap: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .booking__layout--modal .booking__header {
+  position: static !important; /* Remove o sticky que quebra o modal */
   text-align: center;
-  margin: 0 auto;
+  margin-bottom: 10px;
 }
 
-.booking__layout--modal .divider {
-  margin: 24px auto;
+.booking__layout--modal .booking__title {
+  font-size: 1.8rem; /* Titulo menor para economizar espaço vertical */
 }
 
 .booking__layout--modal .booking__steps {
   justify-content: center;
+  margin-top: 20px;
 }
+
+.booking__layout--modal .booking__form {
+  padding: 30px; /* Padding menor dentro do modal */
+}
+
 
 @keyframes fadeIn {
   from { opacity: 0; }

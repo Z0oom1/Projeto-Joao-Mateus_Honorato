@@ -80,12 +80,12 @@ export default function BookingForm({ isModal = false, onClose }) {
     <div className={`booking__layout ${isModal ? 'booking__layout--modal' : ''}`}>
       {/* Cabeçalho */}
       <div className="booking__header">
-        <span className="booking__label">Agendamento</span>
+        {!isModal && <span className="booking__label">Agendamento</span>}
         <h2 className="booking__title">
-          {isModal ? 'Agende sua visita' : 'Simples assim.'}<br />
-          <em>{isModal ? 'Estamos esperando por você' : 'Sem complicação.'}</em>
+          {isModal ? 'Agende sua consulta' : 'Simples assim.'}<br />
+          <em>{isModal ? 'Rápido e prático' : 'Sem complicação.'}</em>
         </h2>
-        <div className="divider"></div>
+        {!isModal && <div className="divider"></div>}
         
         {/* Indicador de passos */}
         <div className="booking__steps">
@@ -95,13 +95,16 @@ export default function BookingForm({ isModal = false, onClose }) {
               className={`booking__step-indicator ${step >= s ? 'booking__step-indicator--active' : ''}`}
             >
               <span className="booking__step-number">{s}</span>
-              <span className="booking__step-label">
-                {s === 1 ? 'Dados' : s === 2 ? 'Tratamento' : 'Horário'}
-              </span>
+              {!isModal && (
+                <span className="booking__step-label">
+                  {s === 1 ? 'Dados' : s === 2 ? 'Tratamento' : 'Horário'}
+                </span>
+              )}
             </div>
           ))}
         </div>
       </div>
+
 
       {/* Formulário */}
       <form className="booking__form" onSubmit={handleSubmit}>

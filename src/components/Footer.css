@@ -19,15 +19,17 @@
 .footer__logo {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  max-height: 70px;
 }
 
 .footer__logo-img {
-  height: clamp(100px, 12vh, 160px);
+  height: clamp(120px, 15vh, 180px);
   width: auto;
   object-fit: contain;
-  margin-top: -30px;
-  margin-bottom: -30px;
+  margin-top: -35px;
+  margin-bottom: -65px;
 }
 
 .footer__tagline {

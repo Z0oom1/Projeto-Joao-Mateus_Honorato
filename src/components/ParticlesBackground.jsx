@@ -84,7 +84,7 @@ export default function ParticlesBackground() {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: 0, /* Movido para o fundo absoluto */
+        zIndex: 2, /* Acima do dynamic-bg, mas atrás do conteúdo principal */
         pointerEvents: 'none',
         opacity: 0.5,
         filter: 'blur(16px)', /* Efeito blur intenso */

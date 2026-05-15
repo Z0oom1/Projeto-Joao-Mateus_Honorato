@@ -52,17 +52,19 @@
 .booking__layout--modal {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
+  align-items: center; /* Centraliza tudo horizontalmente */
+  width: 100%;
 }
 
 .booking__layout--modal .booking__header {
-  position: static !important; /* Remove o sticky que quebra o modal */
+  position: static !important;
   text-align: center;
-  margin-bottom: 10px;
+  width: 100%;
 }
 
 .booking__layout--modal .booking__title {
-  font-size: 1.8rem; /* Titulo menor para economizar espaço vertical */
+  font-size: 2rem;
 }
 
 .booking__layout--modal .booking__steps {
@@ -71,8 +73,12 @@
 }
 
 .booking__layout--modal .booking__form {
-  padding: 30px; /* Padding menor dentro do modal */
+  padding: 40px;
+  width: 100%;
+  max-width: 550px; /* Largura elegante para o formulário */
+  margin: 0 auto;
 }
+
 
 
 @keyframes fadeIn {

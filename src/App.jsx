@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import MagneticButton from './components/MagneticButton'
+import ParticlesBackground from './components/ParticlesBackground'
 import { useScrollReveal } from './hooks/useAnimations'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -82,6 +83,7 @@ export default function App() {
     <>
       <div className="noise-overlay"></div>
       <div className="dynamic-bg"></div>
+      <ParticlesBackground />
       <Navbar />
       <main>
         <Hero />

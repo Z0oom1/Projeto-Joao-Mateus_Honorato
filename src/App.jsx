@@ -97,24 +97,34 @@ export default function App() {
     return () => observer.disconnect()
   }, [])
 
-  /* Controle do background dinâmico via scroll */
+  /* Controle do background dinâmico via scroll otimizado com RAF */
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false;
+
+    const updateBg = () => {
       const scrolled = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       const percentage = Math.min(scrolled / maxScroll, 1);
       
       const bg = document.querySelector('.dynamic-bg');
       if (bg) {
-        // Interpola entre 0.1 e 0.4 de opacidade para ser mais visível
-        bg.style.opacity = 0.1 + (percentage * 0.3);
-        bg.style.transform = `scale(${1 + percentage * 0.15}) rotate(${percentage * 8}deg)`;
+        bg.style.opacity = (0.1 + (percentage * 0.4)).toString();
+        bg.style.transform = `scale(${1 + percentage * 0.1}) translateY(${percentage * -20}px)`;
+      }
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateBg);
+        ticking = true;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
 
   return (
     <>

@@ -58,7 +58,7 @@ export default function Hero({ onOpenBooking }) {
         {/* Indicador de scroll */}
         <div className="hero__scroll-indicator reveal reveal-delay-5">
           <div className="hero__scroll-line"></div>
-          <span className="hero__scroll-text">Deslize</span>
+          <span className="hero__scroll-text">Deslize para baixo</span>
         </div>
       </div>
     </section>

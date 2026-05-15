@@ -130,17 +130,20 @@ body.theme-gold .hero__image-overlay {
   gap: 24px;
 }
 
-/* Indicador de Scroll Minimalista */
+/* Indicador de Scroll Minimalista Centralizado */
 .hero__scroll-indicator {
   position: absolute;
-  bottom: 40px;
-  right: clamp(24px, 5vw, 80px); /* De volta para a lateral para não poluir o centro */
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  opacity: 0.6;
+  opacity: 0.7;
+  z-index: 20;
 }
+
 
 
 .hero__scroll-line {
@@ -159,11 +162,12 @@ body.theme-gold .hero__image-overlay {
 
 .hero__scroll-text {
   font-size: 0.65rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--color-matte-black);
-  writing-mode: vertical-lr; /* Estilo editorial clássico */
+  font-weight: 400;
 }
+
 
 
 /* Responsive */

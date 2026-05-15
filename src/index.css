@@ -263,36 +263,38 @@ p {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* --- Botões de Alta Performance (Minimalista Premium) --- */
+/* --- Botões de Alta Performance (Premium High-End) --- */
 .btn-primary, .btn-outline, .navbar__cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 24px 52px; /* Aumento de padding para efeito "gordinho" */
+  padding: 16px 48px;
   font-family: var(--font-sans);
-  font-size: 0.95rem; /* Fonte levemente maior */
+  font-size: 0.85rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  border-radius: 8px; /* Cantos mais suaves */
-  transition: all 0.3s var(--ease-out-expo);
+  border-radius: 100px; /* Pill-shape: ultra luxo */
+  transition: all 0.4s var(--ease-out-expo);
   cursor: pointer;
   white-space: nowrap;
-  border: none;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Botão Principal: Atendimento ao Padrão do Sistema */
 .btn-primary {
   background-color: var(--color-matte-black) !important;
   color: #FFFFFF !important;
-  border: 1px solid var(--color-matte-black) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary:hover {
   background-color: var(--color-accent) !important;
-  border-color: var(--color-accent) !important;
-  transform: translateY(-2px); /* Movimento sutil */
+  box-shadow: 0 15px 30px rgba(196, 168, 130, 0.2);
+  transform: translateY(-3px);
 }
 
 /* Botão Secundário / Outline */
@@ -305,8 +307,9 @@ p {
 .btn-outline:hover, .navbar__cta:hover {
   background-color: var(--color-matte-black) !important;
   color: #FFFFFF !important;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
+
 
 /* Ajuste fino para o MagneticButton */
 .magnetic-button {

@@ -12,10 +12,13 @@ export default function Hero({ onOpenBooking }) {
       {/* Imagem de fundo com parallax suave */}
       <div className="hero__image-wrap">
         <div className="hero__image" ref={imageRef}>
-          <img
-            src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1400&q=80&auto=format&fit=crop"
-            alt="Interior de clínica odontológica moderna e elegante"
-            loading="eager"
+          <video
+            src="/background/background.webm"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="hero__video"
           />
         </div>
         <div className="hero__image-overlay"></div>

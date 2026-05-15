@@ -58,8 +58,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      <div className="container">
-        {/* ... existing content ... */}
+        
         {/* Elementos Decorativos */}
         <div className="decor-element decor-circle" style={{ top: '10%', left: '-80px', opacity: '0.08' }}></div>
         <div className="decor-element decor-sparkle" style={{ bottom: '15%', right: '10%', animationDelay: '-1.5s' }}>
@@ -67,5 +66,6 @@ export default function About() {
         </div>
       </div>
     </section>
+
   )
 }

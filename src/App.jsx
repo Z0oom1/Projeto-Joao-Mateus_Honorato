@@ -13,12 +13,14 @@ import Footer from './components/Footer'
 export default function App() {
   useScrollReveal()
 
-  /* Atalhos de teclado para troca de tema (Ctrl+1: Bege, Ctrl+2: Azul) */
+  /* Atalhos de teclado para troca de tema (Alt+1: Bege, Alt+2: Azul) */
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.altKey && e.key === '1') {
+        e.preventDefault();
         document.body.classList.remove('theme-blue');
       } else if (e.altKey && e.key === '2') {
+        e.preventDefault();
         document.body.classList.add('theme-blue');
       }
     };

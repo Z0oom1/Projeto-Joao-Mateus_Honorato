@@ -105,7 +105,6 @@ export default function BookingForm({ isModal = false, onClose }) {
         </div>
       </div>
 
-
       {/* Formulário */}
       <form className="booking__form" onSubmit={handleSubmit}>
         {/* Passo 1: Dados Pessoais */}

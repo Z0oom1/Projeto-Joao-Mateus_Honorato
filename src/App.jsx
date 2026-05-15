@@ -16,14 +16,14 @@ export default function App() {
   /* Atalhos de teclado para troca de tema (Alt+1: Bege, Alt+2: Azul) */
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.altKey && e.key === '1') {
+      if (e.altKey && e.code === 'Digit1') {
         e.preventDefault();
         document.body.classList.remove('theme-blue', 'theme-gold');
-      } else if (e.altKey && e.key === '2') {
+      } else if (e.altKey && e.code === 'Digit2') {
         e.preventDefault();
         document.body.classList.remove('theme-gold');
         document.body.classList.add('theme-blue');
-      } else if (e.altKey && e.key === '3') {
+      } else if (e.altKey && e.code === 'Digit3') {
         e.preventDefault();
         document.body.classList.remove('theme-blue');
         document.body.classList.add('theme-gold');

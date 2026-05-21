@@ -7,7 +7,7 @@ export default function Footer({ siteType }) {
   const descText = isEstetica 
     ? 'Procedimentos estéticos faciais avançados e rejuvenescimento natural de alto padrão em um ambiente spa exclusivo.'
     : 'Odontologia de alta performance, reabilitação oral e estética do sorriso com a sensibilidade de um spa premium.'
-  const logoSrc = isEstetica ? '/logos/logo-leiah.png' : '/logos/logo-joaom.png'
+  const logoSrc = isEstetica ? '/logos/logo-leiah.webp' : '/logos/logo-joaom.webp'
 
   return (
     <footer className="footer" id="contato" aria-label="Rodapé da página">
@@ -111,7 +111,7 @@ export default function Footer({ siteType }) {
           </p>
           <div className="footer__parent-branding">
             <span>Uma clínica integrada</span>
-            <img src="/logos/facesmile-icone.png" alt="FaceSmile Icon" className="footer__parent-icon" />
+            <img src="/logos/facesmile-icone.webp" alt="FaceSmile Icon" className="footer__parent-icon" />
             <span className="footer__parent-name">FaceSmile Clinic</span>
           </div>
         </div>

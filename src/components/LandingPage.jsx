@@ -18,7 +18,7 @@ export default function LandingPage({ onSelectClinic }) {
       }`}>
         <div className="landing__logo-wrap">
           <img
-            src="/logos/facesmile.png"
+            src="/logos/facesmile.webp"
             alt="FaceSmile Clinic — Odontologia & Estética"
             className="landing__logo-full"
           />
@@ -124,7 +124,7 @@ export default function LandingPage({ onSelectClinic }) {
               <div className="landing__team-profile">
                 <div className="landing__team-photo-wrap landing__team-photo-wrap--odonto">
                   <img
-                    src="/team/dr-joao-real.png"
+                    src="/team/dr-joao-real.webp"
                     alt="Dr. João Mateus — Cirurgião-Dentista"
                     className="landing__team-photo"
                   />
@@ -172,7 +172,7 @@ export default function LandingPage({ onSelectClinic }) {
               <div className="landing__team-profile">
                 <div className="landing__team-photo-wrap landing__team-photo-wrap--estetica">
                   <img
-                    src="/team/leia-honorato-real.png"
+                    src="/team/leia-honorato-real.webp"
                     alt="Leia Honorato — Biomédica Esteta"
                     className="landing__team-photo"
                   />
@@ -294,7 +294,7 @@ export default function LandingPage({ onSelectClinic }) {
       <footer className="landing__footer-main reveal">
         <div className="landing__container">
           <div className="landing__footer-content">
-            <img src="/logos/facesmile.png" alt="FaceSmile Logo" className="landing__footer-logo" />
+            <img src="/logos/facesmile.webp" alt="FaceSmile Logo" className="landing__footer-logo" />
             <p className="landing__footer-desc">Responsabilidade Técnica: Dr. João Mateus (CRO-SP) & Leia Honorato (CRBM-SP)</p>
             <p className="landing__footer-contact">
               Rua José Colnago, 03, Vila Nova — Regente Feijó/SP | Contato: <a href="tel:+5518999998888">(18) 99999-8888</a>

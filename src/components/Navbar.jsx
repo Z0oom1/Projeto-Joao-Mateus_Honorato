@@ -7,7 +7,7 @@ export default function Navbar({ siteType, onOpenBooking, onGoBack }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const isEstetica = siteType === 'estetica'
   const professionalName = isEstetica ? 'Leia Honorato' : 'Dr. João Mateus'
-  const logoSrc = isEstetica ? '/logos/logo-leiah.png' : '/logos/logo-joaom.png'
+  const logoSrc = isEstetica ? '/logos/logo-leiah.webp' : '/logos/logo-joaom.webp'
 
   useEffect(() => {
     const handleScroll = () => {

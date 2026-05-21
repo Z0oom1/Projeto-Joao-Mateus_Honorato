@@ -16,8 +16,8 @@ export default function About({ siteType }) {
   )
 
   const imageSrc = isEstetica 
-    ? '/team/leia-honorato-real.png'
-    : '/team/dr-joao-real.png'
+    ? '/team/leia-honorato-real.webp'
+    : '/team/dr-joao-real.webp'
 
   const imageAlt = isEstetica 
     ? 'Leia Honorato, especialista em Estética Avançada na FaceSmile'

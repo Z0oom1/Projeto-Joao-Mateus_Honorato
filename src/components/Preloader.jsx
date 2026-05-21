@@ -28,7 +28,7 @@ export default function Preloader({ siteType, onDone }) {
   const title = isEstetica ? 'Leia Honorato' : 'Dr. João Mateus'
   const subtitle = isEstetica ? 'Clínica de Estética' : 'Odontologia'
   const themeClass = isEstetica ? 'theme-purple' : 'theme-bege'
-  const logoSrc = isEstetica ? '/logos/logo-leiah.png' : '/logos/logo-joaom.png'
+  const logoSrc = isEstetica ? '/logos/logo-leiah.webp' : '/logos/logo-joaom.webp'
 
   return (
     <div className={`preloader ${!loading ? 'preloader--hidden' : ''} ${themeClass}`}>

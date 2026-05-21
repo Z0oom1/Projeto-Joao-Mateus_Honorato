@@ -41,6 +41,13 @@ body.theme-purple .booking-form {
   -webkit-backdrop-filter: none;
 }
 
+/* Garante que os inputs dentro do modal tenham fonte escura, mesmo em modo escuro do sistema */
+.booking-form--modal input,
+.booking-form--modal select,
+.booking-form--modal textarea {
+  color: var(--color-matte-black) !important;
+}
+
 body.theme-purple .booking-form--modal {
   background-color: #ffffff;
   border: none;
@@ -779,7 +786,7 @@ body.theme-purple .booking-form__success-icon {
   .booking-form__step-content select,
   .booking-form__step-content textarea {
     background-color: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
+    color: inherit;
   }
 
   .booking-form__fields input::placeholder,

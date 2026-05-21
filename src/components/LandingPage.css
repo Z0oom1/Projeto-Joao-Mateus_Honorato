@@ -912,13 +912,16 @@
   .landing__side {
     width: 100%;
     height: 50vh; /* Exatamente metade da tela */
-    min-height: auto;
-    padding: 0 24px 20px; /* Padding reduzido para dar mais espaço */
+    min-height: 50vh;
+    max-height: 50vh;
+    padding: 0 24px; /* Padding vertical será controlado pelo flex */
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
   }
 
   .landing__side--odonto {
@@ -926,7 +929,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     /* Gradiente ajustado para mobile */
     background: linear-gradient(180deg, #161007 0%, #291D09 100%);
-    padding-top: 80px; /* Espaço para o logo fixo no topo */
+    padding-top: 40px; /* Espaço reduzido para o logo fixo no topo */
   }
 
   .landing__side--estetica {
@@ -978,7 +981,7 @@
   }
 
   .landing__logo-full {
-    height: clamp(60px, 8vh, 80px); /* Logo um pouco menor para não sobrepor */
+    height: clamp(55px, 7vh, 75px); /* Logo ainda menor para garantir espaço */
   }
 
   .landing__logo-wrap {
@@ -996,31 +999,44 @@
     max-width: 100%;
     padding-bottom: 0;
     margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 
   .landing__side-name {
-    font-size: clamp(1.6rem, 6vw, 2rem);
+    font-size: clamp(1.3rem, 5vw, 1.6rem); /* Reduzido para caber melhor */
+    margin-bottom: 2px;
   }
 
   .landing__side-desc {
-    margin-bottom: 20px;
-    font-size: 0.8rem;
-    max-width: 100%;
+    margin-bottom: 12px;
+    font-size: 0.75rem;
+    max-width: 280px;
     color: rgba(255, 255, 255, 0.6);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
   }
 
   .landing__side-cta {
-    padding: 12px 24px;
-    font-size: 0.72rem;
+    padding: 10px 20px;
+    font-size: 0.68rem;
   }
 
   .landing__side-tag {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+    font-size: 0.6rem;
+    padding: 4px 12px;
   }
 
   .landing__side-category {
-    margin-bottom: 12px;
-    font-size: 0.75rem;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
   }
 
   /* ---- Scroll Indicator Mobile ---- */
@@ -1175,23 +1191,28 @@
 
 @media (max-width: 480px) {
   .landing__side {
-    min-height: 260px;
+    height: 50vh;
+    min-height: 50vh;
+    max-height: 50vh;
+    padding: 70px 20px 20px;
   }
 
   .landing__side-name {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
 
   .landing__side-desc {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
+    -webkit-line-clamp: 2;
   }
 
   .landing__side-category {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
   }
 
   .landing__logo-full {
-    height: clamp(72px, 10vh, 96px);
+    height: 60px;
   }
 
   .landing__team-card {

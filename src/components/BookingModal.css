@@ -39,8 +39,9 @@
   flex-direction: column;
   scrollbar-width: thin;
   scrollbar-color: var(--color-beige-dark) var(--color-bone);
-  border-radius: 0;
+  border-radius: 24px;
   animation: modalSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
 }
 
 .booking-modal__content::-webkit-scrollbar {
@@ -187,7 +188,7 @@
   }
 
   .booking-modal__content {
-    border-radius: 0;
+    border-radius: 20px;
     max-height: calc(100vh - 60px);
     width: 100%;
     margin: 0;
@@ -238,7 +239,7 @@
 
   .booking-modal__content {
     max-height: calc(100vh - 50px);
-    border-radius: 0;
+    border-radius: 16px;
   }
 
   .booking-modal__inner {

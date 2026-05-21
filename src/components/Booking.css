@@ -190,12 +190,12 @@ body.theme-purple .booking-form__progress-fill {
 .booking-form__step-content textarea {
   width: 100%;
   padding: 16px 20px;
-  background-color: #fcfcfc;
+  background-color: #ffffff;
   border: 1.5px solid var(--color-beige);
-  border-radius: 12px;
+  border-radius: 16px;
   font-family: var(--font-sans);
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-matte-black);
   outline: none;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -207,7 +207,21 @@ body.theme-purple .booking-form__progress-fill {
 .booking-form__step-content input::placeholder,
 .booking-form__step-content textarea::placeholder {
   color: var(--color-gray-warm);
-  opacity: 0.6;
+  opacity: 0.7;
+}
+
+/* Cor do texto selecionado em selects */
+.booking-form__fields select option,
+.booking-form__step-content select option {
+  color: var(--color-matte-black);
+  background-color: #ffffff;
+}
+
+.booking-form__fields select option:checked,
+.booking-form__step-content select option:checked {
+  background: linear-gradient(var(--color-accent), var(--color-accent));
+  background-color: var(--color-accent) !important;
+  color: #ffffff !important;
 }
 
 /* Focus State */
@@ -547,7 +561,7 @@ body.theme-purple .booking-form__success-icon {
   .booking-form__step-content textarea {
     padding: 14px 16px;
     font-size: 16px; /* Evita zoom no iOS */
-    border-radius: 10px;
+    border-radius: 14px;
   }
 
   .form-error {
@@ -646,7 +660,7 @@ body.theme-purple .booking-form__success-icon {
   .booking-form__step-content textarea {
     padding: 12px 14px;
     font-size: 16px;
-    border-radius: 8px;
+    border-radius: 12px;
   }
 
   .form-error {

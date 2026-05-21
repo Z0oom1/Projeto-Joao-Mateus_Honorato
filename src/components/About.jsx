@@ -17,7 +17,7 @@ export default function About({ siteType }) {
 
   const imageSrc = isEstetica 
     ? 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80&auto=format&fit=crop'
-    : 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=800&q=80&auto=format&fit=crop'
+    : '/team/dr-joao-real.png'
 
   const imageAlt = isEstetica 
     ? 'Leia Honorato, especialista em Estética Avançada na FaceSmile'

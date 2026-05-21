@@ -124,7 +124,7 @@ export default function LandingPage({ onSelectClinic }) {
               <div className="landing__team-profile">
                 <div className="landing__team-photo-wrap landing__team-photo-wrap--odonto">
                   <img
-                    src="/team/dr-joao.png"
+                    src="/team/dr-joao-real.png"
                     alt="Dr. João Mateus — Cirurgião-Dentista"
                     className="landing__team-photo"
                   />

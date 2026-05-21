@@ -1,225 +1,193 @@
 import { useState } from 'react'
 import './Booking.css'
 
-const timeSlots = [
-  '08:00', '09:00', '10:00', '11:00',
-  '14:00', '15:00', '16:00', '17:00',
-]
-
-const treatments = [
-  'Avaliação Inicial',
-  'Clareamento',
-  'Lentes de Contato',
-  'Implante',
-  'Ortodontia Invisível',
-  'Limpeza Profissional',
-  'Outro',
-]
-
-export default function BookingForm({ isModal = false, onClose }) {
-  const [step, setStep] = useState(1)
-  const [form, setForm] = useState({
+export default function BookingForm({ isModal = false, onClose, siteType }) {
+  const [formData, setFormData] = useState({
     name: '',
+    email: '',
     phone: '',
     treatment: '',
     date: '',
-    time: '',
+    message: '',
   })
+  
   const [submitted, setSubmitted] = useState(false)
 
-  const updateField = (field, value) => {
-    setForm((prev) => ({ ...prev, [field]: value }))
-  }
+  const isEstetica = siteType === 'estetica'
+
+  const titleText = isEstetica ? (
+    <>
+      Agende seu<br />
+      <em>procedimento</em>
+    </>
+  ) : (
+    <>
+      Agende sua<br />
+      <em>consulta</em>
+    </>
+  )
+
+  const descText = isEstetica
+    ? 'Escolha a data de preferência. Nossa equipe entrará em contato em instantes via WhatsApp para confirmar o seu horário.'
+    : 'Escolha o melhor dia e horário. Nossa equipe entrará em contato para confirmar seu agendamento em poucos minutos.'
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setSubmitted(true)
+    setTimeout(() => {
+      if (isModal && onClose) {
+        onClose()
+      }
+      setSubmitted(false)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        treatment: '',
+        date: '',
+        message: '',
+      })
+    }, 3000)
   }
 
-  /* Data mínima: amanhã */
-  const tomorrow = new Date()
-  tomorrow.setDate(tomorrow.getDate() + 1)
-  const minDate = tomorrow.toISOString().split('T')[0]
-
-  if (submitted) {
-    return (
-      <div className="booking__success">
-        <div className="booking__success-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <circle cx="24" cy="24" r="23" stroke="currentColor" strokeWidth="1"/>
-            <path d="M15 24l6 6 12-12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-        <h2 className="booking__success-title">Consulta Solicitada</h2>
-        <p className="booking__success-text">
-          Obrigada, {form.name}. Recebemos sua solicitação para
-          <strong> {form.treatment}</strong> no dia <strong>{form.date}</strong> às <strong>{form.time}</strong>.
-          Nossa equipe entrará em contato em até 2 horas para confirmar.
-        </p>
-        <div className="booking__nav-buttons" style={{ justifyContent: 'center', marginTop: '24px' }}>
-          <button
-            className="btn-outline"
-            onClick={() => { 
-              if (isModal && onClose) {
-                onClose();
-              } else {
-                setSubmitted(false); 
-                setStep(1); 
-                setForm({ name: '', phone: '', treatment: '', date: '', time: '' });
-              }
-            }}
-          >
-            {isModal ? 'Fechar' : 'Novo Agendamento'}
-          </button>
-        </div>
-      </div>
-    )
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
   }
 
   return (
-    <div className={`booking__layout ${isModal ? 'booking__layout--modal' : ''}`}>
-      {/* Cabeçalho */}
-      <div className="booking__header">
-        {!isModal && <span className="booking__label">Agendamento</span>}
-        <h2 className="booking__title">
-          {isModal ? 'Agende sua consulta' : 'Simples assim.'}<br />
-          <em>{isModal ? 'Rápido e prático' : 'Sem complicação.'}</em>
-        </h2>
-        {!isModal && <div className="divider"></div>}
-        
-        {/* Indicador de passos */}
-        <div className="booking__steps">
-          {[1, 2, 3].map((s) => (
-            <div
-              key={s}
-              className={`booking__step-indicator ${step >= s ? 'booking__step-indicator--active' : ''}`}
-            >
-              <span className="booking__step-number">{s}</span>
-              {!isModal && (
-                <span className="booking__step-label">
-                  {s === 1 ? 'Dados' : s === 2 ? 'Tratamento' : 'Horário'}
-                </span>
-              )}
-            </div>
-          ))}
+    <div className={`booking-form ${isModal ? 'booking-form--modal' : ''}`}>
+      {submitted ? (
+        <div className="booking-form__success">
+          <div className="booking-form__success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <polyline points="20 6 9 17 4 12" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <h3>Solicitação Recebida!</h3>
+          <p>
+            Em instantes nossa equipe entrará em contato pelo telefone informado para confirmar os detalhes do seu agendamento.
+          </p>
         </div>
-      </div>
-
-      {/* Formulário */}
-      <form className="booking__form" onSubmit={handleSubmit}>
-        {/* Passo 1: Dados Pessoais */}
-        {step === 1 && (
-          <div className="booking__form-step" key="step1">
-            <div className="booking__field">
-              <label className="booking__label-text">Nome Completo</label>
-              <input
-                type="text"
-                className="booking__input"
-                placeholder="Seu nome"
-                value={form.name}
-                onChange={(e) => updateField('name', e.target.value)}
-                required
-              />
-            </div>
-            <div className="booking__field">
-              <label className="booking__label-text">WhatsApp</label>
-              <input
-                type="tel"
-                className="booking__input"
-                placeholder="(00) 00000-0000"
-                value={form.phone}
-                onChange={(e) => updateField('phone', e.target.value)}
-                required
-              />
-            </div>
-            <button
-              type="button"
-              className="btn-primary booking__next"
-              onClick={() => form.name && form.phone && setStep(2)}
-            >
-              Continuar
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        )}
-
-        {/* Passo 2: Tratamento */}
-        {step === 2 && (
-          <div className="booking__form-step" key="step2">
-            <p className="booking__field-label">Selecione o tratamento</p>
-            <div className="booking__treatments">
-              {treatments.map((t) => (
-                <button
-                  type="button"
-                  key={t}
-                  className={`booking__treatment-btn ${form.treatment === t ? 'booking__treatment-btn--active' : ''}`}
-                  onClick={() => updateField('treatment', t)}
-                >
-                  {t}
-                </button>
-              ))}
-            </div>
-            <div className="booking__nav-buttons">
-              <button type="button" className="btn-outline" onClick={() => setStep(1)}>
-                Voltar
-              </button>
-              <button
-                type="button"
-                className="btn-primary"
-                onClick={() => form.treatment && setStep(3)}
-              >
-                Continuar
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Passo 3: Data e Horário */}
-        {step === 3 && (
-          <div className="booking__form-step" key="step3">
-            <div className="booking__field">
-              <label className="booking__label-text">Data preferida</label>
-              <input
-                type="date"
-                className="booking__input"
-                min={minDate}
-                value={form.date}
-                onChange={(e) => updateField('date', e.target.value)}
-                required
-              />
-            </div>
-            <div className="booking__field">
-              <p className="booking__label-text">Horário</p>
-              <div className="booking__time-grid">
-                {timeSlots.map((t) => (
-                  <button
-                    type="button"
-                    key={t}
-                    className={`booking__time-btn ${form.time === t ? 'booking__time-btn--active' : ''}`}
-                    onClick={() => updateField('time', t)}
-                  >
-                    {t}
-                  </button>
-                ))}
+      ) : (
+        <div className="booking-form__grid">
+          {/* Lado do Texto */}
+          <div className="booking-form__info">
+            <h2>{titleText}</h2>
+            <p>{descText}</p>
+            
+            <div className="booking-form__contact-details">
+              <div className="booking-form__contact-item">
+                <span className="booking-form__contact-icon">📞</span>
+                <div>
+                  <h4>Telefone / WhatsApp</h4>
+                  <p>(18) 99999-8888</p>
+                </div>
+              </div>
+              <div className="booking-form__contact-item">
+                <span className="booking-form__contact-icon">📍</span>
+                <div>
+                  <h4>Localização</h4>
+                  <p>Rua José Colnago, 03 - Vila Nova, Regente Feijó/SP</p>
+                </div>
               </div>
             </div>
-            <div className="booking__nav-buttons">
-              <button type="button" className="btn-outline" onClick={() => setStep(2)}>
-                Voltar
-              </button>
-              <button
-                type="submit"
-                className="btn-primary"
-                disabled={!form.date || !form.time}
-              >
-                Confirmar Agendamento
-              </button>
-            </div>
+
           </div>
-        )}
-      </form>
+
+          {/* Formulário */}
+          <form className="booking-form__fields" onSubmit={handleSubmit} id="schedule-form">
+            <div className="form-group">
+              <label htmlFor="name" className="sr-only">Nome Completo</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Seu nome completo"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group-row">
+              <div className="form-group">
+                <label htmlFor="phone" className="sr-only">Telefone</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="WhatsApp / Telefone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="date" className="sr-only">Data Preferencial</label>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="treatment" className="sr-only">Tratamento</label>
+              <select
+                id="treatment"
+                name="treatment"
+                value={formData.treatment}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Selecione o procedimento de interesse</option>
+                {isEstetica ? (
+                  <>
+                    <option value="harmonizacao">Harmonização Facial</option>
+                    <option value="botox">Aplicação de Botox</option>
+                    <option value="bioestimuladores">Bioestimuladores de Colágeno</option>
+                    <option value="tecnologias">Tecnologias & Peelings</option>
+                    <option value="outro">Outro Procedimento Estético</option>
+                  </>
+                ) : (
+                  <>
+                    <option value="estetica">Estética Dental</option>
+                    <option value="implantes">Implantes Dentários</option>
+                    <option value="ortodontia">Ortodontia Invisível</option>
+                    <option value="preventiva">Odontologia Preventiva</option>
+                    <option value="outro">Outro Procedimento Odontológico</option>
+                  </>
+                )}
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="message" className="sr-only">Mensagem (opcional)</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Mensagem adicional ou observações"
+                value={formData.message}
+                onChange={handleChange}
+                rows="3"
+              ></textarea>
+            </div>
+
+            <button type="submit" className="btn-primary" style={{ width: '100%', border: 'none' }} id="submit-booking">
+              Solicitar Agendamento
+            </button>
+          </form>
+        </div>
+      )}
     </div>
   )
 }

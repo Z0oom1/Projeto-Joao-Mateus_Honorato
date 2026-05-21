@@ -58,23 +58,15 @@
 }
 
 /* Ajustes de Overlay para Temas */
-body.theme-blue .hero__image-overlay {
+body.theme-purple .hero__image-overlay {
   background: radial-gradient(
     circle at 30% 50%,
-    rgba(235, 241, 245, 0.95) 0%,
-    rgba(235, 241, 245, 0.7) 40%,
-    rgba(235, 241, 245, 0.2) 100%
+    rgba(237, 229, 240, 0.95) 0%,
+    rgba(237, 229, 240, 0.7) 40%,
+    rgba(237, 229, 240, 0.2) 100%
   );
 }
 
-body.theme-gold .hero__image-overlay {
-  background: radial-gradient(
-    circle at 30% 50%,
-    rgba(249, 247, 242, 0.95) 0%,
-    rgba(249, 247, 242, 0.7) 40%,
-    rgba(249, 247, 242, 0.2) 100%
-  );
-}
 
 /* Conteúdo */
 .hero__content {

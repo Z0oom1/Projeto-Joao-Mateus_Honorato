@@ -1,6 +1,48 @@
 import './About.css'
 
-export default function About() {
+export default function About({ siteType }) {
+  const isEstetica = siteType === 'estetica'
+
+  const titleText = isEstetica ? (
+    <>
+      Onde a beleza<br />
+      encontra a <em>harmonia</em>
+    </>
+  ) : (
+    <>
+      Onde o cuidado<br />
+      encontra a <em>elegância</em>
+    </>
+  )
+
+  const imageSrc = isEstetica 
+    ? 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80&auto=format&fit=crop'
+    : 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=800&q=80&auto=format&fit=crop'
+
+  const imageAlt = isEstetica 
+    ? 'Leia Honorato, especialista em Estética Avançada na FaceSmile'
+    : 'Dr. João Mateus, cirurgião-dentista e fundador da FaceSmile'
+
+  const text1 = isEstetica
+    ? 'A clínica de estética Leia Honorato nasceu com a missão de oferecer tratamentos faciais e corporais personalizados de alta performance. Acreditamos que a verdadeira beleza se manifesta quando cuidamos da saúde da pele de dentro para fora, respeitando as características naturais e a harmonia de cada rosto.'
+    : 'A FaceSmile Odontologia foi fundada pelo Dr. João Mateus com o propósito de transformar a ida ao dentista em uma experiência relaxante e acolhedora. Nosso espaço premium foi projetado com a sofisticação e o cuidado de um spa, aliando tecnologia digital de ponta a uma abordagem profundamente humana.'
+
+  const text2 = isEstetica
+    ? 'Especialista em rejuvenescimento facial, harmonização de traços e terapias corporais avançadas, Leia Honorato adota técnicas modernas e seguras para entregar resultados refinados e naturais que fortalecem a autoestima e o bem-estar diário.'
+    : 'Com ampla experiência em implantes, reabilitação oral e estética do sorriso, Dr. João Mateus elabora tratamentos sob medida. Aliamos materiais de alta biocompatibilidade e planejamento 3D para criar sorrisos perfeitos, saudáveis e duradouros.'
+
+  const stats = isEstetica 
+    ? [
+        { value: '10+', label: 'Anos de\nexperiência' },
+        { value: '3.500+', label: 'Procedimentos\nrealizados' },
+        { value: '99%', label: 'Autoestima\nrenovada' }
+      ]
+    : [
+        { value: '12+', label: 'Anos de\nexperiência' },
+        { value: '5.000+', label: 'Sorrisos\ntransformados' },
+        { value: '98%', label: 'Satisfação\ndos pacientes' }
+      ]
+
   return (
     <section className="about section" id="sobre" aria-label="Sobre a clínica">
       <div className="container">
@@ -8,8 +50,7 @@ export default function About() {
         <div className="about__header">
           <span className="about__label reveal">Sobre Nós</span>
           <h2 className="about__title reveal reveal-delay-1">
-            Onde o cuidado<br />
-            encontra a <em>elegância</em>
+            {titleText}
           </h2>
         </div>
 
@@ -18,8 +59,8 @@ export default function About() {
           <div className="about__image-block reveal reveal-delay-2">
             <div className="about__image-wrapper">
               <img
-                src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80&auto=format&fit=crop"
-                alt="Dra. Carolina Menezes, fundadora da Blanc Odontologia"
+                src={imageSrc}
+                alt={imageAlt}
                 loading="lazy"
               />
             </div>
@@ -29,32 +70,22 @@ export default function About() {
           <div className="about__text-block">
             <div className="divider reveal reveal-delay-2"></div>
             <p className="about__text reveal reveal-delay-3">
-              A Blanc nasceu da convicção de que o cuidado dental pode ser
-              uma experiência transformadora. Nosso espaço foi desenhado
-              para dissolver a ansiedade — cada detalhe, da iluminação ao
-              aroma, foi pensado para que você se sinta acolhido.
+              {text1}
             </p>
             <p className="about__text reveal reveal-delay-4">
-              Com mais de 15 anos dedicados à odontologia estética e
-              restauradora, nossa equipe combina técnicas avançadas com
-              uma abordagem profundamente humana. Aqui, cada sorriso
-              é um projeto único.
+              {text2}
             </p>
 
             {/* Estatísticas */}
             <div className="about__stats reveal reveal-delay-5">
-              <div className="about__stat">
-                <span className="about__stat-number">15+</span>
-                <span className="about__stat-label">Anos de<br/>experiência</span>
-              </div>
-              <div className="about__stat">
-                <span className="about__stat-number">4.200+</span>
-                <span className="about__stat-label">Sorrisos<br/>transformados</span>
-              </div>
-              <div className="about__stat">
-                <span className="about__stat-number">98%</span>
-                <span className="about__stat-label">Satisfação<br/>dos pacientes</span>
-              </div>
+              {stats.map((stat, idx) => (
+                <div key={idx} className="about__stat">
+                  <span className="about__stat-number">{stat.value}</span>
+                  <span className="about__stat-label">
+                    {stat.label.split('\n')[0]}<br/>{stat.label.split('\n')[1]}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -66,6 +97,5 @@ export default function About() {
         </div>
       </div>
     </section>
-
   )
 }

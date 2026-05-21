@@ -1,30 +1,31 @@
 /* ============================================
-   BLANC ODONTOLOGIA — Design System
+   FACESMILE CLINIC — Design System
    Inspired by taste-skill + ui-ux-pro-max
    Warm Monochrome · Editorial · Premium Spa
    ============================================ */
 
 /* --- CSS Custom Properties --- */
 :root {
-  /* Cores neutras premium */
-  --color-bone: #F0EDE6; /* Slightly deeper for contrast */
-  --color-cream: #FAFAF7;
-  --color-warm-white: #FFFFFF; /* Pure white */
-  --color-beige: #E8E4DD;
-  --color-beige-dark: #D4CFC6;
-  --color-charcoal: #2B2B2B;
-  --color-matte-black: #1A1A1A;
-  --color-gray-warm: #8A8580;
-  --color-gray-light: #B5B0A9;
-  --color-border: rgba(0, 0, 0, 0.06);
+  /* Cores neutras premium (João Mateus — Dourado & Bege) */
+  --color-bone: #F3E7D3;         /* Bege claro */
+  --color-cream: #FAF6EE;
+  --color-warm-white: #FFFFFF;
+  --color-beige: #DCC7A7;        /* Bege quente */
+  --color-beige-dark: #C89B3C;   /* Dourado médio */
+  --color-charcoal: #3E2F16;     /* Dourado escuro / Marrom escuro legível */
+  --color-matte-black: #2A1D07;  /* Dourado escuro quase preto */
+  --color-gray-warm: #8A6422;    /* Dourado escuro */
+  --color-gray-light: #E7C77B;   /* Dourado claro */
+  --color-border: rgba(138, 100, 34, 0.08);
 
-  /* Acento premium (ouro rosé discreto) */
-  --color-accent: #C4A882;
-  --color-accent-light: #E8DCCF;
+  /* Acento premium */
+  --color-accent: #C89B3C;       /* Dourado médio */
+  --color-accent-light: #E7C77B; /* Dourado claro */
 
   /* Tipografia */
   --font-serif: 'Cormorant Garamond', 'Georgia', serif;
   --font-sans: 'Outfit', 'Helvetica Neue', sans-serif;
+  --font-display: 'Playfair Display', 'Georgia', serif;
 
   /* Espaçamento */
   --section-padding: clamp(80px, 12vh, 160px);
@@ -36,33 +37,49 @@
   --transition-slow: 800ms var(--ease-out-expo);
   --transition-medium: 500ms var(--ease-out-expo);
   --transition-fast: 300ms var(--ease-out-expo);
+
+  /* Scrollbar Config */
+  --scrollbar-track: var(--color-bone);
+  --scrollbar-thumb: var(--color-beige-dark);
+  --scrollbar-thumb-hover: var(--color-gray-warm);
 }
 
-/* --- Blue Theme Overrides --- */
-body.theme-blue {
-  --color-bone: #DDE6ED; /* Deeper blue */
-  --color-cream: #F4F7F9;
+/* --- Purple Theme (Leia Honorato — Roxos & Lilás) --- */
+body.theme-purple {
+  --color-bone: #EAD7FF;         /* Lilás claro glow */
+  --color-cream: #F5EEFF;
   --color-warm-white: #FFFFFF;
-  --color-beige: #CFDBE3;
-  --color-beige-dark: #A9BDC9;
-  --color-accent: #4A7C9D;
-  --color-accent-light: #D1DFE8;
-  --color-gray-warm: #6B7B87;
-  --color-gray-light: #9AAAB5;
+  --color-beige: #D6B4FF;        /* Lavanda suave */
+  --color-beige-dark: #9B5DE5;   /* Lilás médio */
+  --color-charcoal: #2A0F4E;     /* Roxo profundo escuro */
+  --color-matte-black: #1D0638;  /* Roxo profundo quase preto */
+  --color-gray-warm: #4B148C;    /* Roxo profundo */
+  --color-gray-light: #6A1FBF;   /* Roxo vibrante */
+  --color-border: rgba(75, 20, 140, 0.12);
+
+  --color-accent: #6A1FBF;       /* Roxo vibrante */
+  --color-accent-light: #D6B4FF; /* Lavanda suave */
+
+  /* Scrollbar purple variables */
+  --scrollbar-track: var(--color-bone);
+  --scrollbar-thumb: var(--color-beige-dark);
+  --scrollbar-thumb-hover: var(--color-gray-warm);
 }
 
-/* --- Gold Theme Overrides --- */
-body.theme-gold {
-  --color-bone: #F2EAD9; /* Deeper gold/champagne */
-  --color-cream: #FDFBF7;
-  --color-warm-white: #FFFFFF;
-  --color-beige: #D9C5A3;
-  --color-beige-dark: #A68D65;
-  --color-accent: #94743D; /* Deep Metallic Gold */
-  --color-accent-light: #EBE0CD;
-  --color-gray-warm: #5C5245;
-  --color-gray-light: #8C7E6A;
+/* --- Landing Theme (Sleek Dark Luxe) --- */
+body.theme-landing {
+  --scrollbar-track: #0A0A0A;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb-hover: #C89B3C;
 }
+
+/* --- Odonto Theme (Dourado & Bege) --- */
+body.theme-odonto {
+  --scrollbar-track: var(--color-bone);
+  --scrollbar-thumb: var(--color-beige-dark);
+  --scrollbar-thumb-hover: var(--color-gray-warm);
+}
+
 
 
 /* --- Decorative Elements --- */
@@ -114,7 +131,7 @@ body.theme-gold {
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* Elevado para ser visível sob o conteúdo, mas acima dos fundos base */
+  z-index: 1;
   background: radial-gradient(
     circle at 50% 50%,
     transparent 0%,
@@ -179,7 +196,6 @@ body.theme-gold {
 
 
 
-
 /* --- Responsividade Global Extra --- */
 @media (max-width: 1024px) {
   .container {
@@ -193,9 +209,9 @@ body.theme-gold {
   }
 
   .btn-primary, .btn-outline, .navbar__cta {
-    padding: 18px 36px; /* Botões um pouco menores no mobile */
+    padding: 18px 36px;
     font-size: 0.85rem;
-    width: 100%; /* Botões ocupam largura total no mobile se necessário */
+    width: 100%;
   }
 
   .section-header__title {
@@ -223,6 +239,8 @@ body.theme-gold {
 }
 
 html {
+  overflow-x: hidden;
+  overflow-y: auto;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -232,9 +250,31 @@ body {
   font-family: var(--font-sans);
   font-weight: 300;
   color: var(--color-charcoal);
-  background-color: var(--color-bone); /* Base background color */
+  background-color: var(--color-bone);
   line-height: 1.7;
   overflow-x: hidden;
+  overflow-y: visible; /* Impede barra de rolagem duplicada no body */
+}
+
+/* Integração Premium de Scroll Suave (Lenis) */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 .about {
@@ -427,7 +467,6 @@ p {
 
 
 
-
 /* --- Divider elegante --- */
 .divider {
   width: 40px;
@@ -454,11 +493,12 @@ p {
 
 /* --- Scrollbar personalizada --- */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bone);
+  background: var(--scrollbar-track);
 }
 
 .services {
@@ -466,12 +506,13 @@ p {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-beige-dark);
-  border-radius: 3px;
+  background: var(--scrollbar-thumb);
+  border-radius: 20px;
+  border: 3px solid var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gray-warm);
+  background: var(--scrollbar-thumb-hover);
 }
 
 /* --- Prefers Reduced Motion --- */

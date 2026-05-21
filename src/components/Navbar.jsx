@@ -2,15 +2,12 @@ import { useState, useEffect } from 'react'
 import MagneticButton from './MagneticButton'
 import './Navbar.css'
 
-export default function Navbar({ theme, onOpenBooking }) {
+export default function Navbar({ siteType, onOpenBooking, onGoBack }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-
-  const logoSrc = theme === 'blue' 
-    ? '/logos/logotipo-azul.png' 
-    : theme === 'gold' 
-      ? '/logos/logotipo-dourado.png' 
-      : '/logos/logotipo-beje.png';
+  const isEstetica = siteType === 'estetica'
+  const professionalName = isEstetica ? 'Leia Honorato' : 'Dr. João Mateus'
+  const logoSrc = isEstetica ? '/logos/logo-leiah.png' : '/logos/logo-joaom.png'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,10 +38,30 @@ export default function Navbar({ theme, onOpenBooking }) {
   return (
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`} id="navbar">
       <nav className="navbar__inner container" aria-label="Navegação principal">
-        {/* Logo */}
-        <a href="#" className="navbar__logo" aria-label="Blanc Odontologia - Início">
-          <img src={logoSrc} alt="Blanc Odontologia" className="navbar__logo-img" />
-        </a>
+        {/* Back Button & Logo Container */}
+        <div className="navbar__logo-container">
+          <button 
+            className="navbar__back-btn" 
+            onClick={onGoBack} 
+            aria-label="Voltar para seleção de clínica"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Voltar</span>
+          </button>
+          
+          <a href="#" className="navbar__logo" aria-label="FaceSmile Clinic - Início">
+            <img src={logoSrc} alt="FaceSmile Clinic" className="navbar__logo-img" />
+          </a>
+        </div>
+
+        {/* Professional Badge */}
+        <div className="navbar__badge">
+          <span className="navbar__badge-dot"></span>
+          <span className="navbar__badge-text">{professionalName}</span>
+        </div>
 
         {/* Links Desktop */}
         <ul className="navbar__links" role="list">
@@ -58,12 +75,14 @@ export default function Navbar({ theme, onOpenBooking }) {
         </ul>
 
         {/* CTA Desktop */}
-        <MagneticButton
-          onClick={onOpenBooking}
-          className="navbar__cta"
-        >
-          Agendar Consulta
-        </MagneticButton>
+        <div className="navbar__cta-wrap">
+          <MagneticButton
+            onClick={onOpenBooking}
+            className="navbar__cta"
+          >
+            Agendar
+          </MagneticButton>
+        </div>
 
         {/* Menu Hamburger Mobile */}
         <button
@@ -80,8 +99,16 @@ export default function Navbar({ theme, onOpenBooking }) {
         {/* Menu Mobile Overlay */}
         <div className={`navbar__mobile ${menuOpen ? 'navbar__mobile--open' : ''}`}>
           <ul className="navbar__mobile-links" role="list">
+            <li>
+              <button 
+                onClick={() => { handleNavClick(); onGoBack(); }} 
+                className="navbar__mobile-back"
+              >
+                ← Voltar ao Início
+              </button>
+            </li>
             {navLinks.map((link, i) => (
-              <li key={link.href} style={{ transitionDelay: `${(i + 1) * 80}ms` }}>
+              <li key={link.href} style={{ transitionDelay: `${(i + 2) * 80}ms` }}>
                 <a
                   href={link.href}
                   className="navbar__mobile-link"
@@ -91,7 +118,7 @@ export default function Navbar({ theme, onOpenBooking }) {
                 </a>
               </li>
             ))}
-            <li style={{ transitionDelay: `${(navLinks.length + 1) * 80}ms` }}>
+            <li style={{ transitionDelay: `${(navLinks.length + 2) * 80}ms` }}>
               <button
                 className="btn-primary navbar__mobile-cta"
                 onClick={() => { handleNavClick(); onOpenBooking(); }}

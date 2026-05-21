@@ -1,0 +1,1002 @@
+/* =======================================================
+   Landing Page Split Screen & Information — FaceSmile Clinic
+   Premium Dark Theme with Integrated Themes (Gold/Purple)
+   ======================================================= */
+
+.landing {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: #0A0A0A;
+  color: #FFFFFF;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing__container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+/* Header Absoluto no Topo */
+.landing__header {
+  position: absolute;
+  top: 5vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 30;
+  text-align: center;
+  width: 90%;
+  max-width: 650px;
+  pointer-events: none;
+  transition: left 1000ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* Alinhamento dinâmico com a divisória móvel */
+.landing__header.landing__header--odonto {
+  left: 53.49%;
+}
+
+.landing__header.landing__header--estetica {
+  left: 46.51%;
+}
+
+
+.landing__logo-wrap {
+  margin-bottom: 16px;
+  filter: drop-shadow(0 15px 45px rgba(0, 0, 0, 0.9));
+  display: flex;
+  justify-content: center;
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.landing__logo-full {
+  height: clamp(220px, 30vh, 320px); /* Muito maior, visível e em destaque */
+  width: auto;
+  object-fit: contain;
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.landing__logo-wrap:hover {
+  transform: scale(1.04);
+}
+
+
+.landing__subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  margin-right: -0.4em; /* Compensa o letter-spacing para centralização matemática perfeita */
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 8px;
+}
+
+
+/* Primeiro Fold: Split Screen Layout */
+.landing__split {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.landing__side {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  padding: 120px clamp(24px, 4vw, 80px) 80px;
+  cursor: pointer;
+}
+
+/* Lado Odonto */
+.landing__side--odonto {
+  background: linear-gradient(135deg, #161007 0%, #291D09 100%);
+  border-right: 1px solid rgba(231, 199, 123, 0.05);
+}
+
+.landing__side--odonto .landing__side-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 25% 65%, rgba(200, 155, 60, 0.15) 0%, transparent 60%);
+  opacity: 0.7;
+  transition: opacity 600ms ease;
+}
+
+.landing__side--odonto:hover {
+  flex: 1.15;
+  background: linear-gradient(135deg, #1E160A 0%, #35260C 100%);
+}
+
+.landing__side--odonto:hover .landing__side-glow {
+  opacity: 1;
+  background: radial-gradient(circle at 25% 65%, rgba(231, 199, 123, 0.28) 0%, transparent 65%);
+}
+
+/* Lado Estética */
+.landing__side--estetica {
+  background: linear-gradient(135deg, #0E031E 0%, #20073B 100%);
+}
+
+.landing__side--estetica .landing__side-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 75% 65%, rgba(106, 31, 191, 0.18) 0%, transparent 60%);
+  opacity: 0.7;
+  transition: opacity 600ms ease;
+}
+
+.landing__side--estetica:hover {
+  flex: 1.15;
+  background: linear-gradient(135deg, #15052C 0%, #2A094F 100%);
+}
+
+.landing__side--estetica:hover .landing__side-glow {
+  opacity: 1;
+  background: radial-gradient(circle at 75% 65%, rgba(155, 93, 229, 0.28) 0%, transparent 65%);
+}
+
+/* Lado - Conteúdo */
+.landing__side-content {
+  position: relative;
+  z-index: 15;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.landing__side:hover .landing__side-content {
+  transform: translateY(-12px);
+}
+
+.landing__side-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  margin-right: -0.25em; /* Compensa o letter-spacing no alinhamento */
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding: 6px 16px;
+  border-radius: 40px;
+}
+
+.landing__side--odonto .landing__side-tag {
+  background: rgba(231, 199, 123, 0.08);
+  color: #E7C77B;
+  border: 1px solid rgba(231, 199, 123, 0.15);
+}
+
+.landing__side--estetica .landing__side-tag {
+  background: rgba(214, 180, 255, 0.08);
+  color: #D6B4FF;
+  border: 1px solid rgba(214, 180, 255, 0.15);
+}
+
+.landing__side-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.landing__side-category {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  margin-right: -0.25em; /* Compensa o letter-spacing no alinhamento */
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.landing__side--odonto .landing__side-category {
+  color: #C89B3C;
+}
+
+.landing__side--estetica .landing__side-category {
+  color: #9B5DE5;
+}
+
+.landing__side-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 36px;
+  max-width: 320px;
+  transition: color 400ms ease;
+}
+
+.landing__side:hover .landing__side-desc {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* CTA Buttons */
+.landing__side-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 18px 38px;
+  border-radius: 100px;
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.landing__side--odonto .landing__side-cta {
+  color: #E7C77B;
+  border: 1px solid rgba(231, 199, 123, 0.2);
+}
+
+.landing__side--odonto:hover .landing__side-cta {
+  background: #C89B3C;
+  border-color: #C89B3C;
+  color: #161007;
+  box-shadow: 0 10px 30px rgba(200, 155, 60, 0.25);
+}
+
+.landing__side--estetica .landing__side-cta {
+  color: #D6B4FF;
+  border: 1px solid rgba(214, 180, 255, 0.2);
+}
+
+.landing__side--estetica:hover .landing__side-cta {
+  background: #6A1FBF;
+  border-color: #6A1FBF;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(106, 31, 191, 0.35);
+}
+
+.landing__side-cta svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.landing__side:hover .landing__side-cta svg {
+  transform: translateX(5px);
+}
+
+/* Indicador de Scroll */
+.landing__scroll-indicator {
+  position: absolute;
+  bottom: 4vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 25;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  transition: transform 1000ms cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.landing__scroll-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  margin-right: -0.25em; /* Compensa o letter-spacing no alinhamento */
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.landing__scroll-arrow {
+  color: rgba(255, 255, 255, 0.4);
+  animation: bounceIndicator 2s infinite ease-in-out;
+}
+
+@keyframes bounceIndicator {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+/* =======================================================
+   Segundo Fold: Informações Clínicas & Profissionais
+   ======================================================= */
+
+.landing__about-section {
+  padding: clamp(80px, 12vh, 160px) 0;
+  background-color: #0A0A0A;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(200, 155, 60, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(106, 31, 191, 0.05) 0%, transparent 50%);
+  position: relative;
+  z-index: 15;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.landing__about-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 80px;
+}
+
+.landing__section-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  margin-right: -0.25em; /* Compensa o letter-spacing no alinhamento */
+  text-transform: uppercase;
+  color: #C89B3C;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.landing__about-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.landing__about-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.landing__about-desc strong {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* Grid da Equipe */
+.landing__team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 4vw, 64px);
+  margin-bottom: 100px;
+}
+
+/* Card Especialista */
+.landing__team-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 28px;
+  padding: 48px;
+  transition: all 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.landing__team-badge {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 30px;
+}
+
+/* Card Odonto Hover & Estilo */
+.landing__team-card--odonto .landing__team-badge {
+  background: rgba(231, 199, 123, 0.08);
+  color: #E7C77B;
+  border: 1px solid rgba(231, 199, 123, 0.15);
+}
+
+.landing__team-card--odonto:hover {
+  background: rgba(231, 199, 123, 0.02);
+  border-color: rgba(231, 199, 123, 0.25);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(200, 155, 60, 0.06);
+}
+
+/* Card Estética Hover & Estilo */
+.landing__team-card--estetica .landing__team-badge {
+  background: rgba(214, 180, 255, 0.08);
+  color: #D6B4FF;
+  border: 1px solid rgba(214, 180, 255, 0.15);
+}
+
+.landing__team-card--estetica:hover {
+  background: rgba(106, 31, 191, 0.02);
+  border-color: rgba(214, 180, 255, 0.25);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(106, 31, 191, 0.08);
+}
+
+/* Profile (Photo + Identity) */
+.landing__team-profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.landing__team-photo-wrap {
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.landing__team-photo-wrap--odonto {
+  border-color: rgba(231, 199, 123, 0.35);
+  box-shadow: 0 8px 28px rgba(200, 155, 60, 0.2);
+}
+
+.landing__team-photo-wrap--estetica {
+  border-color: rgba(155, 93, 229, 0.4);
+  box-shadow: 0 8px 28px rgba(106, 31, 191, 0.25);
+}
+
+.landing__team-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 500ms ease;
+}
+
+.landing__team-card:hover .landing__team-photo {
+  transform: scale(1.06);
+}
+
+.landing__team-header {
+  flex: 1;
+}
+
+.landing__team-header h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 4px;
+  line-height: 1.1;
+}
+
+.landing__team-card--odonto .landing__team-header h3 {
+  color: #F5DFA0;
+}
+
+.landing__team-card--estetica .landing__team-header h3 {
+  color: #DFC1FF;
+}
+
+.landing__team-subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 2px;
+}
+
+.landing__team-cro {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+}
+
+.landing__team-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin-bottom: 32px;
+}
+
+.landing__team-info {
+  flex-grow: 1;
+}
+
+.landing__team-info h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  margin-top: 0;
+}
+
+.landing__team-card--odonto .landing__team-info h4 {
+  color: #E7C77B;
+}
+
+.landing__team-card--estetica .landing__team-info h4 {
+  color: #C29AFF;
+}
+
+/* Formações Listas */
+.landing__team-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.landing__team-list li {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 18px;
+}
+
+.landing__team-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+}
+
+.landing__team-card--odonto .landing__team-list li::before {
+  color: #C89B3C;
+}
+
+.landing__team-card--estetica .landing__team-list li::before {
+  color: #9B5DE5;
+}
+
+.landing__team-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 40px;
+}
+
+/* Button nos Cards */
+.landing__team-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 24px;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 400ms var(--ease-out-expo);
+  cursor: pointer;
+  width: 100%;
+}
+
+.landing__team-btn--odonto {
+  background: transparent;
+  color: #E7C77B;
+  border: 1px solid rgba(231, 199, 123, 0.25);
+}
+
+.landing__team-btn--odonto:hover {
+  background: #C89B3C;
+  border-color: #C89B3C;
+  color: #161007;
+  box-shadow: 0 10px 25px rgba(200, 155, 60, 0.2);
+}
+
+.landing__team-btn--estetica {
+  background: transparent;
+  color: #D6B4FF;
+  border: 1px solid rgba(214, 180, 255, 0.25);
+}
+
+.landing__team-btn--estetica:hover {
+  background: #6A1FBF;
+  border-color: #6A1FBF;
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(106, 31, 191, 0.3);
+}
+
+.landing__team-btn svg {
+  transition: transform 400ms ease;
+}
+
+.landing__team-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* =======================================================
+   Seção Diferenciais
+   ======================================================= */
+
+.landing__diferenciais {
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 80px;
+}
+
+.landing__diferenciais-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.landing__diferenciais-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.landing__diferencial-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.landing__diferencial-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.15);
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.landing__diferencial-item h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.landing__diferencial-item p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* =======================================================
+   Footer da Landing Page FaceSmile
+   ======================================================= */
+
+.landing__footer-main {
+  background-color: #050505;
+  padding: 60px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.landing__footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.landing__footer-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 24px;
+  opacity: 0.9;
+}
+
+.landing__footer-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 8px;
+}
+
+.landing__footer-contact {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 24px;
+}
+
+.landing__footer-contact a {
+  color: #E7C77B;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.landing__footer-contact a:hover {
+  text-decoration: underline;
+}
+
+.landing__footer-copy {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.25);
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+
+/* =======================================================
+   Seção de Localização na Landing (Mapa Estilizado)
+   ======================================================= */
+
+.landing__location-section {
+  padding: clamp(80px, 12vh, 140px) 0;
+  background-color: #0A0A0A;
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(106, 31, 191, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(200, 155, 60, 0.04) 0%, transparent 50%);
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.landing__location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+
+.landing__location-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.landing__location-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+
+.landing__location-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.landing__location-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+.landing__detail-box h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C89B3C; /* Padrão Gold */
+  margin-bottom: 8px;
+  position: relative;
+}
+
+/* Diferenciação de acentos por coluna */
+.landing__location-details .landing__detail-box:nth-child(2) h4 {
+  color: #9B5DE5; /* Roxo Estética */
+}
+
+.landing__detail-box p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 6px 0;
+  line-height: 1.5;
+}
+
+.landing__detail-box p a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.landing__detail-box p a:hover {
+  color: #ffffff;
+}
+
+/* Frame do Mapa */
+.landing__location-map-wrap {
+  width: 100%;
+  height: 440px;
+}
+
+.landing__map-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #111111;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.landing__map-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  /* Efeito dark luxuoso no mapa no estilo da identidade FaceSmile */
+  filter: grayscale(1) invert(0.9) contrast(1.2) brightness(0.85);
+}
+
+/* Responsividade do Mapa na Landing */
+@media (max-width: 992px) {
+  .landing__location-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  
+  .landing__location-map-wrap {
+    height: 380px;
+  }
+}
+
+/* =======================================================
+   Responsividade Mobile (Celular Perfeito)
+   ======================================================= */
+
+@media (max-width: 992px) {
+  .landing__team-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Primeiro fold */
+  .landing__split {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .landing__side {
+    width: 100%;
+    height: 50vh;
+    padding: clamp(100px, 15vh, 120px) 24px 40px;
+  }
+
+  .landing__side--odonto {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  .landing__side-name {
+    font-size: 1.8rem;
+  }
+
+  .landing__side-desc {
+    margin-bottom: 24px;
+    font-size: 0.8rem;
+    max-width: 280px;
+  }
+
+  .landing__side-cta {
+    padding: 14px 28px;
+    font-size: 0.72rem;
+  }
+
+  /* Logo no Header */
+  .landing__header,
+  .landing__header.reveal,
+  .landing__header.reveal.visible,
+  .landing__header.landing__header--odonto,
+  .landing__header.landing__header--estetica {
+    left: 50% !important;
+    transform: translate(-50%, 0) !important;
+    top: 3vh;
+  }
+
+
+  .landing__logo-full {
+    height: clamp(100px, 14vh, 130px); /* Aumentado no celular */
+  }
+
+  .landing__subtitle {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    margin-right: -0.35em; /* Compensa o letter-spacing no celular */
+  }
+
+
+  /* Scroll Indicator */
+  .landing__scroll-indicator,
+  .landing__scroll-indicator.reveal,
+  .landing__scroll-indicator.reveal.visible {
+    left: 50% !important;
+    transform: translate(-50%, 0) !important;
+    bottom: 2vh;
+  }
+  
+  .landing__scroll-text {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    margin-right: -0.25em; /* Compensa o letter-spacing no celular */
+  }
+
+  /* Team Card */
+  .landing__team-card {
+    padding: 28px 20px;
+  }
+
+  .landing__team-profile {
+    gap: 14px;
+  }
+
+  .landing__team-photo-wrap {
+    width: 70px;
+    height: 70px;
+  }
+
+  .landing__team-header h3 {
+    font-size: 1.5rem;
+  }
+
+  /* Diferenciais */
+  .landing__diferenciais-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing__side {
+    padding-top: clamp(110px, 18vh, 130px);
+  }
+  
+  .landing__side-name {
+    font-size: 1.6rem;
+  }
+  
+  .landing__side-desc {
+    display: none; /* Oculta a descrição longa em celulares minúsculos para não quebrar */
+  }
+
+  .landing__side-category {
+    margin-bottom: 16px;
+  }
+}

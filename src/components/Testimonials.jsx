@@ -1,32 +1,62 @@
 import { useState } from 'react'
 import './Testimonials.css'
 
-const testimonials = [
+const odontoTestimonials = [
   {
     id: 1,
     name: 'Beatriz Andrade',
     treatment: 'Lentes de Contato',
-    text: 'A experiência na Blanc foi completamente diferente de tudo que já vivi em consultórios. Desde o primeiro contato até o resultado final, cada etapa foi conduzida com um cuidado que me deixou genuinamente tranquila.',
+    text: 'A experiência com o Dr. João Mateus foi completamente diferente de tudo que já vivi em consultórios. Desde o primeiro contato até o resultado final, cada etapa foi conduzida com um cuidado que me deixou genuinamente tranquila.',
     initials: 'BA',
   },
   {
     id: 2,
     name: 'Rafael Monteiro',
     treatment: 'Implante Unitário',
-    text: 'Adiava o implante há anos por medo. Na Blanc, a equipe me explicou cada passo com tanta clareza que o medo simplesmente desapareceu. O resultado ficou natural — ninguém nota a diferença.',
+    text: 'Adiava o implante há anos por medo. O Dr. João me explicou cada passo com tanta clareza que o medo simplesmente desapareceu. O resultado ficou extremamente natural.',
     initials: 'RM',
   },
   {
     id: 3,
     name: 'Juliana Peixoto',
     treatment: 'Clareamento + Facetas',
-    text: 'Chorei quando vi meu sorriso novo. Não foi só estética — foi como se tivessem devolvido minha confiança. O ambiente é lindo, a equipe é atenciosa, e o resultado superou todas as expectativas.',
+    text: 'Chorei quando vi meu sorriso novo no espelho. Não foi só estética — foi como se tivessem devolvido minha confiança. O ambiente é lindo, a equipe é atenciosa, e o resultado superou todas as expectativas.',
     initials: 'JP',
   },
 ]
 
-export default function Testimonials() {
+const esteticaTestimonials = [
+  {
+    id: 1,
+    name: 'Camila Vasconcellos',
+    treatment: 'Harmonização Facial',
+    text: 'Fazer minha harmonização com a Leia foi maravilhoso. Ela tem um senso estético impecável, foca no natural e não exagera em nada. Me sinto muito mais confiante e elegante.',
+    initials: 'CV',
+  },
+  {
+    id: 2,
+    name: 'Mariana Costa',
+    treatment: 'Aplicação de Botox',
+    text: 'Faço meu botox preventivo com a Leia há anos. O resultado é sempre leve, descansado e natural, sem aquele aspecto artificial ou congelado. Super indico a clínica!',
+    initials: 'MC',
+  },
+  {
+    id: 3,
+    name: 'Alessandra Ribeiro',
+    treatment: 'Bioestimuladores',
+    text: 'O tratamento de colágeno superou todas as minhas expectativas. Sinto minha pele mais firme, viçosa e saudável. O atendimento e o cuidado da Leia fazem toda a diferença.',
+    initials: 'AR',
+  },
+]
+
+export default function Testimonials({ siteType }) {
   const [active, setActive] = useState(0)
+  const isEstetica = siteType === 'estetica'
+  const testimonials = isEstetica ? esteticaTestimonials : odontoTestimonials
+
+  const subtitleText = isEstetica
+    ? 'Histórias reais de quem resgatou sua autoestima e realçou sua beleza natural com a Leia Honorato.'
+    : 'Histórias reais de quem transformou o sorriso e a autoestima com o Dr. João Mateus.'
 
   return (
     <section className="testimonials section" id="depoimentos" aria-label="Depoimentos de pacientes">
@@ -41,8 +71,7 @@ export default function Testimonials() {
             </h2>
             <div className="divider reveal reveal-delay-2"></div>
             <p className="testimonials__subtitle reveal reveal-delay-3">
-              Histórias reais de quem transformou o sorriso e a autoestima
-              com a Blanc.
+              {subtitleText}
             </p>
           </div>
 

@@ -29,11 +29,23 @@
   align-items: center;
 }
 
+.preloader__logo-img {
+  width: clamp(200px, 24vw, 280px); /* Logo bem grande e destacado */
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15));
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealLogo 1.5s var(--ease-out-expo) forwards;
+}
+
 .preloader__text {
   font-family: var(--font-serif);
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 300;
   letter-spacing: 0.2em;
+  margin-right: -0.2em; /* Compensa o letter-spacing no alinhamento central */
   text-transform: uppercase;
   color: var(--color-matte-black);
   animation: revealText 1.5s var(--ease-out-expo) forwards;
@@ -51,6 +63,7 @@
 .preloader__sub {
   font-size: 0.75rem;
   letter-spacing: 0.4em;
+  margin-right: -0.4em; /* Compensa o letter-spacing no alinhamento central */
   text-transform: uppercase;
   color: var(--color-gray-warm);
   opacity: 0;
@@ -75,6 +88,17 @@
   width: 0;
   background-color: var(--color-accent);
   animation: progress 2.2s ease-in-out forwards;
+}
+
+@keyframes revealLogo {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes revealText {
@@ -108,16 +132,18 @@
 }
 
 /* Temas do Preloader */
-.preloader.theme-blue {
-  background-color: #0d1b2a; /* Azul ultra dark para luxo */
+.preloader.theme-purple {
+  background-color: #1D0638; /* Roxo profundo escuro */
 }
-.preloader.theme-blue .preloader__text { color: var(--color-warm-white); }
-.preloader.theme-blue .preloader__sub { color: rgba(255,255,255,0.5); }
-.preloader.theme-blue .preloader__progress { background-color: rgba(255,255,255,0.1); }
+.preloader.theme-purple .preloader__text { color: var(--color-warm-white); }
+.preloader.theme-purple .preloader__sub { color: #D6B4FF; }
+.preloader.theme-purple .preloader__progress { background-color: rgba(255, 255, 255, 0.1); }
 
-.preloader.theme-gold {
-  background-color: #1a1612; /* Dourado/Preto luxo */
+.preloader.theme-bege {
+  background-color: #F3E7D3; /* Bege claro */
 }
-.preloader.theme-gold .preloader__text { color: var(--color-warm-white); }
-.preloader.theme-gold .preloader__sub { color: rgba(255,255,255,0.5); }
-.preloader.theme-gold .preloader__progress { background-color: rgba(255,255,255,0.1); }
+.preloader.theme-bege .preloader__text { color: #2A1D07; }
+.preloader.theme-bege .preloader__sub { color: #8A6422; }
+.preloader.theme-bege .preloader__progress { background-color: rgba(0, 0, 0, 0.05); }
+
+

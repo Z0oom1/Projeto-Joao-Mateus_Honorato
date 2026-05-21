@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Lenis from 'lenis'
 import MagneticButton from './components/MagneticButton'
 import { useScrollReveal } from './hooks/useAnimations'
+import LandingPage from './components/LandingPage'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -14,8 +15,9 @@ import BookingModal from './components/BookingModal'
 import Preloader from './components/Preloader'
 
 export default function App() {
-  const [theme, setTheme] = useState('bege') // 'bege', 'blue', 'gold'
+  const [currentPage, setCurrentPage] = useState('landing') // 'landing', 'odonto', 'estetica'
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
+  const [showPreloader, setShowPreloader] = useState(true)
   useScrollReveal()
 
   // Inicializa o Lenis para Scroll Suave Premium
@@ -46,31 +48,17 @@ export default function App() {
   const openBookingModal = () => setIsBookingModalOpen(true)
   const closeBookingModal = () => setIsBookingModalOpen(false)
 
-  /* Atalhos de teclado para troca de tema (Alt+1: Bege, Alt+2: Azul, Alt+3: Dourado) */
+  /* Aplica a classe do tema ao body baseado no sub-site */
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.altKey && e.code === 'Digit1') {
-        e.preventDefault();
-        setTheme('bege');
-      } else if (e.altKey && e.code === 'Digit2') {
-        e.preventDefault();
-        setTheme('blue');
-      } else if (e.altKey && e.code === 'Digit3') {
-        e.preventDefault();
-        setTheme('gold');
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  /* Aplica a classe do tema ao body */
-  useEffect(() => {
-    document.body.classList.remove('theme-blue', 'theme-gold');
-    if (theme === 'blue') document.body.classList.add('theme-blue');
-    if (theme === 'gold') document.body.classList.add('theme-gold');
-  }, [theme]);
+    document.body.classList.remove('theme-purple', 'theme-landing', 'theme-odonto')
+    if (currentPage === 'estetica') {
+      document.body.classList.add('theme-purple')
+    } else if (currentPage === 'odonto') {
+      document.body.classList.add('theme-odonto')
+    } else if (currentPage === 'landing') {
+      document.body.classList.add('theme-landing')
+    }
+  }, [currentPage])
 
   /* Re-aplica scroll reveal após navegação e mudanças de estado */
   useEffect(() => {
@@ -125,27 +113,59 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  /* Navegar para sub-site */
+  const handleSelectClinic = (clinic) => {
+    setShowPreloader(true)
+    setCurrentPage(clinic)
+    window.scrollTo(0, 0)
+  }
 
+  /* Voltar para a landing */
+  const handleGoBack = () => {
+    setShowPreloader(false)
+    setCurrentPage('landing')
+    window.scrollTo(0, 0)
+    document.body.classList.remove('theme-purple')
+  }
+
+  /* Preloader concluiu */
+  const handlePreloaderDone = () => {
+    setShowPreloader(false)
+  }
+
+  // Landing Page
+  if (currentPage === 'landing') {
+    return (
+      <>
+        <div className="noise-overlay"></div>
+        <LandingPage onSelectClinic={handleSelectClinic} />
+      </>
+    )
+  }
+
+  // Sub-sites (Odonto ou Estética)
   return (
     <>
-      <Preloader theme={theme} />
+      {showPreloader && (
+        <Preloader siteType={currentPage} onDone={handlePreloaderDone} />
+      )}
       <div className="noise-overlay"></div>
       <div className="dynamic-bg">
         <div className="glow-orb glow-orb-1"></div>
         <div className="glow-orb glow-orb-2"></div>
         <div className="glow-orb glow-orb-3"></div>
       </div>
-      <Navbar theme={theme} onOpenBooking={openBookingModal} />
+      <Navbar siteType={currentPage} onOpenBooking={openBookingModal} onGoBack={handleGoBack} />
       <main>
-        <Hero onOpenBooking={openBookingModal} />
-        <About />
-        <Services />
-        <Gallery />
-        <Testimonials />
-        <Booking />
+        <Hero siteType={currentPage} onOpenBooking={openBookingModal} />
+        <About siteType={currentPage} />
+        <Services siteType={currentPage} />
+        <Gallery siteType={currentPage} />
+        <Testimonials siteType={currentPage} />
+        <Booking siteType={currentPage} />
       </main>
-      <Footer theme={theme} />
-      <BookingModal isOpen={isBookingModalOpen} onClose={closeBookingModal} />
+      <Footer siteType={currentPage} />
+      <BookingModal isOpen={isBookingModalOpen} onClose={closeBookingModal} siteType={currentPage} />
     </>
   )
 }

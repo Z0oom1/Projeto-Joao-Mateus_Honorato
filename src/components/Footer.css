@@ -1,88 +1,193 @@
-/* ============================
-   Footer — Premium Minimal
-   ============================ */
+/* =======================================================
+   Footer — Premium Spa & Clinic Styling
+   Organized, Beautiful, Fully Responsive
+   ======================================================= */
 
 .footer {
-  background-color: var(--color-bone);
-  padding: clamp(60px, 10vh, 100px) 0 clamp(30px, 4vh, 50px);
+  background-color: var(--color-cream);
+  border-top: 1px solid var(--color-border);
+  padding: clamp(80px, 12vh, 120px) 0 clamp(40px, 6vh, 60px);
+  position: relative;
+  z-index: 10;
 }
 
+/* Rodapé Principal - Grid */
 .footer__main {
   display: grid;
-  grid-template-columns: 1.4fr 0.8fr 1fr 0.8fr;
-  gap: clamp(32px, 4vw, 60px);
+  grid-template-columns: 1.4fr 0.8fr 1fr 1.1fr;
+  gap: clamp(32px, 4vw, 64px);
   padding-bottom: clamp(40px, 6vh, 60px);
   border-bottom: 1px solid var(--color-border);
 }
 
-/* Marca */
-.footer__logo {
+.footer__col {
   display: flex;
+  flex-direction: column;
+}
+
+/* Coluna Principal da Marca */
+.footer__col--brand {
+  max-width: 320px;
+}
+
+.footer__logo {
+  display: inline-flex;
   align-items: center;
-  margin-bottom: 10px;
-  overflow: hidden;
-  max-height: 90px;
+  margin-bottom: 24px;
+  height: clamp(45px, 6vh, 60px);
 }
 
 .footer__logo-img {
-  height: clamp(120px, 15vh, 180px);
+  height: 100%;
   width: auto;
   object-fit: contain;
-  margin-top: -20px;
-  margin-bottom: -30px;
 }
 
-.footer__tagline {
-  font-size: 0.9rem;
-  line-height: 1.6;
+.footer__desc {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.7;
   color: var(--color-gray-warm);
+  margin-bottom: 28px;
 }
 
-/* Colunas */
+/* Redes Sociais */
+.footer__socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer__social-link {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--color-beige);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gray-warm);
+  background-color: transparent;
+  transition: all 400ms var(--ease-out-expo);
+}
+
+.footer__social-link:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: var(--color-warm-white);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+}
+
+/* Títulos das Colunas */
 .footer__col-title {
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-matte-black);
-  margin-bottom: 20px;
+  margin-bottom: 28px;
+  position: relative;
 }
 
+.footer__col-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 24px;
+  height: 1px;
+  background-color: var(--color-accent);
+}
+
+/* Listas */
 .footer__col-list {
   list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer__col-list li {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--color-gray-warm);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footer__col-list li strong {
+  font-weight: 400;
+  color: var(--color-matte-black);
+}
+
+.footer__col-list a {
+  color: var(--color-gray-warm);
+  transition: color var(--transition-fast);
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.footer__col-list a:hover {
+  color: var(--color-accent);
+  padding-left: 2px;
+}
+
+.footer__time {
+  font-size: 0.85rem;
+}
+
+.footer__closed {
+  font-size: 0.85rem;
+  color: var(--color-gray-warm);
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* Contatos & Endereço */
+.footer__address {
+  font-style: normal;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.footer__col-list li {
-  font-size: 0.85rem;
+.footer__address-text {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
   font-weight: 300;
   color: var(--color-gray-warm);
   line-height: 1.5;
+  margin: 0;
 }
 
-.footer__col-list a {
-  transition: color var(--transition-fast);
+.footer__phone-link,
+.footer__email-link {
+  margin: 4px 0 0 0;
 }
 
-.footer__col-list a:hover {
-  color: var(--color-matte-black);
-}
-
-.footer__col-list strong {
+.footer__phone-link a,
+.footer__email-link a {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
   font-weight: 400;
-  color: var(--color-charcoal);
+  color: var(--color-matte-black);
+  transition: color var(--transition-fast);
+  text-decoration: none;
 }
 
-.footer__closed {
-  font-size: 0.75rem;
-  color: var(--color-gray-light);
-  font-style: italic;
+.footer__phone-link a:hover,
+.footer__email-link a:hover {
+  color: var(--color-accent);
 }
 
-/* Linha inferior */
+/* Rodapé Inferior */
 .footer__bottom {
   display: flex;
   align-items: center;
@@ -91,75 +196,102 @@
 }
 
 .footer__copyright {
+  font-family: var(--font-sans);
   font-size: 0.8rem;
+  font-weight: 300;
   color: var(--color-gray-warm);
-  line-height: 1.5;
+  margin: 0;
 }
 
-.footer__developer {
-  font-size: 0.72rem;
-  color: var(--color-gray-light);
-  display: inline-block;
-  margin-top: 6px;
-}
-
-.footer__developer a {
-  color: var(--color-accent);
-  text-decoration: none;
-  font-weight: 400;
-  transition: color var(--transition-fast);
-}
-
-.footer__developer a:hover {
-  color: var(--color-matte-black);
-}
-
-.footer__social {
-  display: flex;
-  gap: 16px;
-}
-
-.footer__social-link {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--color-beige-dark);
+/* Assinatura da Clínica Pai */
+.footer__parent-branding {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 300;
   color: var(--color-gray-warm);
-  transition: all var(--transition-fast);
 }
 
-.footer__social-link:hover {
-  border-color: var(--color-matte-black);
+.footer__parent-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  opacity: 0.8;
+}
+
+.footer__parent-name {
+  font-weight: 400;
   color: var(--color-matte-black);
+  letter-spacing: 0.05em;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Mapa Integrado no Rodapé */
+.footer__map-wrap {
+  width: 100%;
+  height: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 40px 0 20px 0;
+  border: 1px solid var(--color-border);
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  background-color: var(--color-warm-white);
+}
+
+.footer__map-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  transition: filter 500ms ease;
+  /* Sepia/Golden tint para Odonto (default theme) */
+  filter: sepia(0.35) hue-rotate(-5deg) saturate(0.9) brightness(0.96) contrast(1.02);
+}
+
+/* Purple tint para Estética */
+.theme-purple .footer__map-iframe {
+  filter: hue-rotate(240deg) saturate(0.6) brightness(1.02) contrast(0.98);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
   .footer__main {
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 48px;
   }
 
-  .footer__brand {
+  .footer__col--brand {
     grid-column: span 2;
+    max-width: 100%;
   }
 }
 
-@media (max-width: 480px) {
-  .footer__main {
-    grid-template-columns: 1fr;
+@media (max-width: 576px) {
+  .footer {
+    padding: clamp(60px, 8vh, 80px) 0 40px;
   }
 
-  .footer__brand {
+  .footer__main {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .footer__col--brand {
     grid-column: span 1;
+  }
+
+  .footer__col-title {
+    margin-bottom: 20px;
   }
 
   .footer__bottom {
     flex-direction: column;
     gap: 20px;
     text-align: center;
+  }
+
+  .footer__parent-branding {
+    justify-content: center;
   }
 }

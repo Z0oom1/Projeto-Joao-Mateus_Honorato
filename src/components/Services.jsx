@@ -1,50 +1,100 @@
 import './Services.css'
 
-const services = [
+const odontoServices = [
   {
-    id: 'estetica',
+    id: 'estetica-dental',
     number: '01',
     title: 'Estética Dental',
-    description: 'Facetas, lentes de contato e clareamento com técnicas minimamente invasivas para um sorriso naturalmente harmonioso.',
-    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80&auto=format&fit=crop',
+    description: 'Facetas de porcelana, lentes de contato e clareamento dental guiados por planejamento digital para um sorriso naturalmente harmônico.',
+    image: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80&auto=format&fit=crop',
   },
   {
     id: 'implantes',
     number: '02',
-    title: 'Implantes',
-    description: 'Reabilitação completa com implantes de última geração, planejamento digital 3D e recuperação acelerada.',
-    image: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80&auto=format&fit=crop',
+    title: 'Implantes Dentários',
+    description: 'Reabilitação oral de alta precisão com implantes nacionais e importados, planejados em ambiente digital 3D e cirurgia minimamente invasiva.',
+    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80&auto=format&fit=crop',
   },
   {
-    id: 'ortodontia',
+    id: 'ortodontia-invisivel',
     number: '03',
     title: 'Ortodontia Invisível',
-    description: 'Alinhadores transparentes que corrigem seu sorriso de forma discreta, confortável e com resultados previsíveis.',
+    description: 'Correção de alinhamento com alinhadores transparentes avançados, oferecendo discrição total, conforto e rapidez nos resultados.',
     image: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80&auto=format&fit=crop',
   },
   {
     id: 'preventiva',
     number: '04',
     title: 'Odontologia Preventiva',
-    description: 'Check-ups completos, limpeza profissional e acompanhamento personalizado para manter a saúde bucal em dia.',
+    description: 'Profilaxia avançada, raspagem ultrassônica e check-ups fotográficos preventivos periódicos para manutenção integral da sua saúde bucal.',
     image: 'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=600&q=80&auto=format&fit=crop',
   },
 ]
 
-export default function Services() {
+const esteticaServices = [
+  {
+    id: 'harmonizacao-facial',
+    number: '01',
+    title: 'Harmonização Facial',
+    description: 'Preenchimentos estratégicos com ácido hialurônico para devolver volumes, sustentar tecidos e valorizar a beleza dos seus contornos naturais.',
+    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    id: 'botox',
+    number: '02',
+    title: 'Aplicação de Botox',
+    description: 'Prevenção e suavização de linhas de expressão dinâmicas na testa, glabela e rugas ao redor dos olhos, mantendo a expressividade leve e natural.',
+    image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    id: 'bioestimuladores',
+    number: '03',
+    title: 'Bioestimuladores de Colágeno',
+    description: 'Tratamentos de ponta para combater a flacidez facial e corporal (braços, glúteos e abdômen), estimulando a produção natural de colágeno da pele.',
+    image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    id: 'tecnologias-peelings',
+    number: '04',
+    title: 'Tecnologias & Peelings',
+    description: 'Renovação celular profunda para controle de poros, cicatrizes de acne, melasma e manchas solares através de peelings e laser microfocado.',
+    image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80&auto=format&fit=crop',
+  },
+]
+
+export default function Services({ siteType }) {
+  const isEstetica = siteType === 'estetica'
+  const services = isEstetica ? esteticaServices : odontoServices
+
+  const labelText = isEstetica ? 'Procedimentos' : 'Tratamentos'
+
+  const titleText = isEstetica ? (
+    <>
+      Sua melhor versão,<br />
+      com <em>naturalidade</em>
+    </>
+  ) : (
+    <>
+      Cuidado que se vê<br />
+      no <em>resultado</em>
+    </>
+  )
+
+  const subtitleText = isEstetica
+    ? 'Técnicas avançadas focadas em rejuvenescimento, sustentação e equilíbrio dos traços faciais e contornos corporais.'
+    : 'Cada procedimento é conduzido com atenção cirúrgica e sensibilidade estética — porque seu sorriso merece os dois.'
+
   return (
     <section className="services section" id="tratamentos" aria-label="Tratamentos">
       <div className="container">
         {/* Cabeçalho */}
         <div className="services__header">
-          <span className="services__label reveal">Tratamentos</span>
+          <span className="services__label reveal">{labelText}</span>
           <h2 className="services__title reveal reveal-delay-1">
-            Cuidado que se vê<br />
-            no <em>resultado</em>
+            {titleText}
           </h2>
           <p className="services__subtitle reveal reveal-delay-2">
-            Cada procedimento é conduzido com atenção cirúrgica e
-            sensibilidade estética — porque seu sorriso merece os dois.
+            {subtitleText}
           </p>
         </div>
 
@@ -85,7 +135,6 @@ export default function Services() {
             </article>
           ))}
         </div>
-
       </div>
     </section>
   )

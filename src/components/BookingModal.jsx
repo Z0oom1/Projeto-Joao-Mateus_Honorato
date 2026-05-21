@@ -2,7 +2,7 @@ import BookingForm from './BookingForm'
 import './BookingModal.css'
 import { useEffect } from 'react'
 
-export default function BookingModal({ isOpen, onClose }) {
+export default function BookingModal({ isOpen, onClose, siteType }) {
   // Bloqueia o scroll quando o modal está aberto
   useEffect(() => {
     if (isOpen) {
@@ -24,7 +24,7 @@ export default function BookingModal({ isOpen, onClose }) {
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
-        <BookingForm isModal={true} onClose={onClose} />
+        <BookingForm isModal={true} onClose={onClose} siteType={siteType} />
       </div>
     </div>
   )

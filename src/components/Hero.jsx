@@ -3,9 +3,29 @@ import { useParallax } from '../hooks/useAnimations'
 import MagneticButton from './MagneticButton'
 import './Hero.css'
 
-export default function Hero({ onOpenBooking }) {
+export default function Hero({ siteType, onOpenBooking }) {
   const imageRef = useRef(null)
   useParallax(imageRef, 0.15)
+
+  const isEstetica = siteType === 'estetica'
+  
+  const labelText = isEstetica ? 'Leia Honorato — Estética' : 'Dr. João Mateus — Odonto'
+  
+  const titleText = isEstetica ? (
+    <>
+      Sua beleza,<br />
+      <em>nossa inspiração.</em>
+    </>
+  ) : (
+    <>
+      Seu sorriso,<br />
+      <em>nossa arte.</em>
+    </>
+  )
+
+  const descText = isEstetica 
+    ? 'Procedimentos estéticos avançados que unem ciência, delicadeza e bem-estar. Um refúgio dedicado à sua autoestima e rejuvenescimento natural.'
+    : 'Cuidado odontológico de excelência com a sensibilidade de um spa e a precisão científica. Um espaço desenhado para quem preza por saúde e sofisticação.'
 
   return (
     <section className="hero" id="inicio" aria-label="Seção principal">
@@ -27,15 +47,12 @@ export default function Hero({ onOpenBooking }) {
       {/* Conteúdo */}
       <div className="hero__content container">
         <div className="hero__text">
-          <span className="hero__label reveal">Blanc Odontologia</span>
+          <span className="hero__label reveal">{labelText}</span>
           <h1 className="hero__title reveal reveal-delay-1">
-            Seu sorriso,<br />
-            <em>nossa arte.</em>
+            {titleText}
           </h1>
           <p className="hero__description reveal reveal-delay-2">
-            Cuidado odontológico com a delicadeza de um spa e a
-            precisão da ciência. Um espaço pensado para quem
-            valoriza a saúde com conforto.
+            {descText}
           </p>
           <div className="hero__actions reveal reveal-delay-3">
             <MagneticButton 
@@ -52,17 +69,17 @@ export default function Hero({ onOpenBooking }) {
             </MagneticButton>
 
             <MagneticButton 
-              onClick={() => window.location.hash = '#tratamentos'} 
+              onClick={() => {
+                const target = document.getElementById('tratamentos')
+                if (target) target.scrollIntoView({ behavior: 'smooth' })
+              }} 
               className="btn-hero-alt" 
               id="hero-services"
             >
               <span>Nossos Tratamentos</span>
             </MagneticButton>
           </div>
-
-
         </div>
-
       </div>
 
       {/* Elementos Decorativos de Fundo */}
@@ -73,8 +90,6 @@ export default function Hero({ onOpenBooking }) {
       <div className="decor-element decor-cross" style={{ bottom: '20%', left: '15%', animationDelay: '-4s' }}>
         <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
       </div>
-
-      {/* Indicador de scroll - Movido para fora para alinhamento absoluto real */}
 
       <div className="hero__scroll-indicator reveal reveal-delay-5">
         <div className="hero__scroll-line"></div>

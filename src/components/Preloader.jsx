@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './Preloader.css'
 
-export default function Preloader({ theme }) {
+export default function Preloader({ siteType, onDone }) {
   const [loading, setLoading] = useState(true)
   const [shouldRender, setShouldRender] = useState(true)
 
@@ -9,27 +9,35 @@ export default function Preloader({ theme }) {
     // Simula o carregamento inicial
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 2500) // 2.5s para dar tempo da animação brilhar
+    }, 2000) // Reduzido ligeiramente para melhor usabilidade entre trocas
 
     const renderTimer = setTimeout(() => {
       setShouldRender(false)
-    }, 3200) // Remove do DOM após a transição de fade
+      if (onDone) onDone()
+    }, 2700)
 
     return () => {
       clearTimeout(timer)
       clearTimeout(renderTimer)
     }
-  }, [])
+  }, [onDone])
 
   if (!shouldRender) return null
 
+  const isEstetica = siteType === 'estetica'
+  const title = isEstetica ? 'Leia Honorato' : 'Dr. João Mateus'
+  const subtitle = isEstetica ? 'Clínica de Estética' : 'Odontologia'
+  const themeClass = isEstetica ? 'theme-purple' : 'theme-bege'
+  const logoSrc = isEstetica ? '/logos/logo-leiah.png' : '/logos/logo-joaom.png'
+
   return (
-    <div className={`preloader ${!loading ? 'preloader--hidden' : ''} theme-${theme}`}>
+    <div className={`preloader ${!loading ? 'preloader--hidden' : ''} ${themeClass}`}>
       <div className="preloader__content">
         <div className="preloader__logo">
-          <span className="preloader__text">Blanc</span>
+          <img src={logoSrc} alt={title} className="preloader__logo-img" />
+          <span className="preloader__text">{title}</span>
           <div className="preloader__line"></div>
-          <span className="preloader__sub">Odontologia</span>
+          <span className="preloader__sub">{subtitle}</span>
         </div>
         <div className="preloader__progress">
           <div className="preloader__progress-bar"></div>

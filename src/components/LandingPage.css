@@ -911,12 +911,14 @@
 
   .landing__side {
     width: 100%;
-    height: 50svh;
-    min-height: 280px;
-    padding: 0 24px 32px;
-    /* Centraliza verticalmente o conteúdo com padding-top dinâmico */
+    height: 50vh; /* Exatamente metade da tela */
+    min-height: auto;
+    padding: 0 24px 20px; /* Padding reduzido para dar mais espaço */
+    display: flex;
+    flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    box-sizing: border-box;
   }
 
   .landing__side--odonto {
@@ -924,6 +926,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     /* Gradiente ajustado para mobile */
     background: linear-gradient(180deg, #161007 0%, #291D09 100%);
+    padding-top: 80px; /* Espaço para o logo fixo no topo */
   }
 
   .landing__side--estetica {
@@ -958,8 +961,8 @@
     max-width: 100%;
     padding: 10px 16px 8px;
     z-index: 40;
-    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.98), rgba(10, 10, 10, 0.8), transparent);
-    pointer-events: auto;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.7), transparent);
+    pointer-events: none; /* Permite clicar nos botões atrás se necessário, mas o logo é pequeno */
   }
 
   .landing__header.landing__header--odonto,
@@ -975,7 +978,7 @@
   }
 
   .landing__logo-full {
-    height: clamp(70px, 10vh, 90px);
+    height: clamp(60px, 8vh, 80px); /* Logo um pouco menor para não sobrepor */
   }
 
   .landing__logo-wrap {
@@ -991,7 +994,8 @@
   /* ---- Conteúdo dos Lados Mobile ---- */
   .landing__side-content {
     max-width: 100%;
-    padding-bottom: 8px;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
 
   .landing__side-name {

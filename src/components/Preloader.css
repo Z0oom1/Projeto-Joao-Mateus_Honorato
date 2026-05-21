@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 24px; /* Reduzido gap para mobile */
 }
 
 .preloader__logo {
@@ -30,10 +30,10 @@
 }
 
 .preloader__logo-img {
-  width: clamp(200px, 24vw, 280px); /* Logo bem grande e destacado */
+  width: clamp(160px, 20vw, 280px); /* Reduzido levemente para mobile */
   height: auto;
   object-fit: contain;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15));
   opacity: 0;
   transform: translateY(20px);
@@ -42,7 +42,7 @@
 
 .preloader__text {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2rem, 5vw, 4rem); /* Reduzido levemente para mobile */
   font-weight: 300;
   letter-spacing: 0.2em;
   margin-right: -0.2em; /* Compensa o letter-spacing no alinhamento central */

@@ -172,7 +172,7 @@ export default function LandingPage({ onSelectClinic }) {
               <div className="landing__team-profile">
                 <div className="landing__team-photo-wrap landing__team-photo-wrap--estetica">
                   <img
-                    src="/team/leia-honorato.png"
+                    src="/team/leia-honorato-real.png"
                     alt="Leia Honorato — Biomédica Esteta"
                     className="landing__team-photo"
                   />

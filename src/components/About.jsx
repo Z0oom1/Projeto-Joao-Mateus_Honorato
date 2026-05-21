@@ -16,7 +16,7 @@ export default function About({ siteType }) {
   )
 
   const imageSrc = isEstetica 
-    ? 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80&auto=format&fit=crop'
+    ? '/team/leia-honorato-real.png'
     : '/team/dr-joao-real.png'
 
   const imageAlt = isEstetica 

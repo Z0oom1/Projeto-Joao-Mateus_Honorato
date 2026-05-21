@@ -10,8 +10,9 @@ export default function BookingForm({ isModal = false, onClose, siteType }) {
     date: '',
     message: '',
   })
-  
+
   const [submitted, setSubmitted] = useState(false)
+  const [errors, setErrors] = useState({})
 
   const isEstetica = siteType === 'estetica'
 
@@ -31,8 +32,43 @@ export default function BookingForm({ isModal = false, onClose, siteType }) {
     ? 'Escolha a data de preferência. Nossa equipe entrará em contato em instantes via WhatsApp para confirmar o seu horário.'
     : 'Escolha o melhor dia e horário. Nossa equipe entrará em contato para confirmar seu agendamento em poucos minutos.'
 
+  // Validação básica do formulário
+  const validateForm = () => {
+    const newErrors = {}
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Nome é obrigatório'
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Telefone é obrigatório'
+    } else if (!/^[\d\s\-\(\)]+$/.test(formData.phone)) {
+      newErrors.phone = 'Telefone inválido'
+    }
+
+    if (!formData.date) {
+      newErrors.date = 'Data é obrigatória'
+    }
+
+    if (!formData.treatment) {
+      newErrors.treatment = 'Selecione um procedimento'
+    }
+
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Email inválido'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    if (!validateForm()) {
+      return
+    }
+
     setSubmitted(true)
     setTimeout(() => {
       if (isModal && onClose) {
@@ -47,6 +83,7 @@ export default function BookingForm({ isModal = false, onClose, siteType }) {
         date: '',
         message: '',
       })
+      setErrors({})
     }, 3000)
   }
 
@@ -56,15 +93,22 @@ export default function BookingForm({ isModal = false, onClose, siteType }) {
       ...prev,
       [name]: value,
     }))
+    // Limpar erro do campo quando o usuário começa a digitar
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: '',
+      }))
+    }
   }
 
   return (
     <div className={`booking-form ${isModal ? 'booking-form--modal' : ''}`}>
       {submitted ? (
-        <div className="booking-form__success">
-          <div className="booking-form__success-icon">
+        <div className="booking-form__success" role="status" aria-live="polite">
+          <div className="booking-form__success-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <polyline points="20 6 9 17 4 12" strokeLinecap="round" strokeLinejoin="round"/>
+              <polyline points="20 6 9 17 4 12" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
           <h3>Solicitação Recebida!</h3>
@@ -78,30 +122,34 @@ export default function BookingForm({ isModal = false, onClose, siteType }) {
           <div className="booking-form__info">
             <h2>{titleText}</h2>
             <p>{descText}</p>
-            
+
             <div className="booking-form__contact-details">
               <div className="booking-form__contact-item">
-                <span className="booking-form__contact-icon">📞</span>
+                <span className="booking-form__contact-icon" aria-hidden="true">
+                  📞
+                </span>
                 <div>
                   <h4>Telefone / WhatsApp</h4>
-                  <p>(18) 99999-8888</p>
+                  <a href="tel:+5518999998888">(18) 99999-8888</a>
                 </div>
               </div>
               <div className="booking-form__contact-item">
-                <span className="booking-form__contact-icon">📍</span>
+                <span className="booking-form__contact-icon" aria-hidden="true">
+                  📍
+                </span>
                 <div>
                   <h4>Localização</h4>
                   <p>Rua José Colnago, 03 - Vila Nova, Regente Feijó/SP</p>
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* Formulário */}
-          <form className="booking-form__fields" onSubmit={handleSubmit} id="schedule-form">
+          <form className="booking-form__fields" onSubmit={handleSubmit} id="schedule-form" noValidate>
+            {/* Nome Completo */}
             <div className="form-group">
-              <label htmlFor="name" className="sr-only">Nome Completo</label>
+              <label htmlFor="name">Nome Completo *</label>
               <input
                 type="text"
                 id="name"
@@ -110,25 +158,42 @@ export default function BookingForm({ isModal = false, onClose, siteType }) {
                 value={formData.name}
                 onChange={handleChange}
                 required
+                aria-required="true"
+                aria-invalid={errors.name ? 'true' : 'false'}
+                aria-describedby={errors.name ? 'name-error' : undefined}
               />
+              {errors.name && (
+                <span id="name-error" className="form-error" role="alert">
+                  {errors.name}
+                </span>
+              )}
             </div>
 
+            {/* Telefone e Data */}
             <div className="form-group-row">
               <div className="form-group">
-                <label htmlFor="phone" className="sr-only">Telefone</label>
+                <label htmlFor="phone">Telefone / WhatsApp *</label>
                 <input
                   type="tel"
                   id="phone"
                   name="phone"
-                  placeholder="WhatsApp / Telefone"
+                  placeholder="(18) 99999-8888"
                   value={formData.phone}
                   onChange={handleChange}
                   required
+                  aria-required="true"
+                  aria-invalid={errors.phone ? 'true' : 'false'}
+                  aria-describedby={errors.phone ? 'phone-error' : undefined}
                 />
+                {errors.phone && (
+                  <span id="phone-error" className="form-error" role="alert">
+                    {errors.phone}
+                  </span>
+                )}
               </div>
 
               <div className="form-group">
-                <label htmlFor="date" className="sr-only">Data Preferencial</label>
+                <label htmlFor="date">Data Preferencial *</label>
                 <input
                   type="date"
                   id="date"
@@ -136,20 +201,52 @@ export default function BookingForm({ isModal = false, onClose, siteType }) {
                   value={formData.date}
                   onChange={handleChange}
                   required
+                  aria-required="true"
+                  aria-invalid={errors.date ? 'true' : 'false'}
+                  aria-describedby={errors.date ? 'date-error' : undefined}
                 />
+                {errors.date && (
+                  <span id="date-error" className="form-error" role="alert">
+                    {errors.date}
+                  </span>
+                )}
               </div>
             </div>
 
+            {/* Email (opcional) */}
             <div className="form-group">
-              <label htmlFor="treatment" className="sr-only">Tratamento</label>
+              <label htmlFor="email">Email (opcional)</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="seu.email@exemplo.com"
+                value={formData.email}
+                onChange={handleChange}
+                aria-invalid={errors.email ? 'true' : 'false'}
+                aria-describedby={errors.email ? 'email-error' : undefined}
+              />
+              {errors.email && (
+                <span id="email-error" className="form-error" role="alert">
+                  {errors.email}
+                </span>
+              )}
+            </div>
+
+            {/* Procedimento */}
+            <div className="form-group">
+              <label htmlFor="treatment">Procedimento de Interesse *</label>
               <select
                 id="treatment"
                 name="treatment"
                 value={formData.treatment}
                 onChange={handleChange}
                 required
+                aria-required="true"
+                aria-invalid={errors.treatment ? 'true' : 'false'}
+                aria-describedby={errors.treatment ? 'treatment-error' : undefined}
               >
-                <option value="">Selecione o procedimento de interesse</option>
+                <option value="">Selecione o procedimento</option>
                 {isEstetica ? (
                   <>
                     <option value="harmonizacao">Harmonização Facial</option>
@@ -168,23 +265,41 @@ export default function BookingForm({ isModal = false, onClose, siteType }) {
                   </>
                 )}
               </select>
+              {errors.treatment && (
+                <span id="treatment-error" className="form-error" role="alert">
+                  {errors.treatment}
+                </span>
+              )}
             </div>
 
+            {/* Mensagem Adicional */}
             <div className="form-group">
-              <label htmlFor="message" className="sr-only">Mensagem (opcional)</label>
+              <label htmlFor="message">Mensagem Adicional (opcional)</label>
               <textarea
                 id="message"
                 name="message"
-                placeholder="Mensagem adicional ou observações"
+                placeholder="Deixe uma mensagem ou observação"
                 value={formData.message}
                 onChange={handleChange}
                 rows="3"
+                aria-describedby="message-hint"
               ></textarea>
+              <small id="message-hint">Máximo 500 caracteres</small>
             </div>
 
-            <button type="submit" className="btn-primary" style={{ width: '100%', border: 'none' }} id="submit-booking">
+            {/* Botão Submit */}
+            <button
+              type="submit"
+              className="btn-primary"
+              style={{ width: '100%', border: 'none' }}
+              id="submit-booking"
+              aria-label="Enviar solicitação de agendamento"
+            >
               Solicitar Agendamento
             </button>
+
+            {/* Indicador de campos obrigatórios */}
+            <small className="form-required-note">* Campos obrigatórios</small>
           </form>
         </div>
       )}

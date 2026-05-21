@@ -1,3 +1,8 @@
+/* =======================================================
+   BookingModal — Premium Responsive Modal
+   Accessible Design for Desktop & Mobile
+   ======================================================= */
+
 .booking-modal {
   position: fixed;
   inset: 0;
@@ -12,56 +17,113 @@
   justify-content: center;
   padding: 0;
   animation: modalFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.booking-modal:focus {
+  outline: none;
 }
 
 .booking-modal__content {
   background-color: var(--color-warm-white);
   width: 100%;
   max-width: 900px;
-  height: 100%;
-  max-height: 100%;
+  max-height: 100vh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   position: relative;
   padding: 0;
   box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-beige-dark) var(--color-bone);
+  border-radius: 0;
+  animation: modalSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.booking-modal__content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.booking-modal__content::-webkit-scrollbar-track {
+  background: var(--color-bone);
+}
+
+.booking-modal__content::-webkit-scrollbar-thumb {
+  background: var(--color-beige-dark);
+  border-radius: 4px;
+}
+
+.booking-modal__content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-warm);
 }
 
 .booking-modal__inner {
   padding: clamp(60px, 10vw, 100px) clamp(20px, 5vw, 60px);
   width: 100%;
   max-width: 100%;
+  flex: 1;
 }
 
-.booking-modal__content::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
-}
-
+/* Botão Fechar */
 .booking-modal__close {
   position: fixed;
   top: 20px;
   right: 20px;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-matte-black);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 2100;
   border: 1px solid rgba(0, 0, 0, 0.05);
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  font-size: 0;
 }
 
 .booking-modal__close:hover {
   background-color: var(--color-matte-black);
   color: white;
   transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.booking-modal__close:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.booking-modal__close:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+/* Animações */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Ajustes para o formulário dentro do modal */
@@ -73,6 +135,8 @@
   background: transparent;
   border: none;
   box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .booking-form--modal .booking-form__grid {
@@ -112,20 +176,38 @@
   width: 100%;
 }
 
-@keyframes modalFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsividade Mobile */
+/* ============================================
+   RESPONSIVIDADE — Tablet (768px e abaixo)
+   ============================================ */
 @media (max-width: 768px) {
   .booking-modal {
     align-items: flex-start;
+    padding: 0;
+    padding-top: 60px;
   }
 
   .booking-modal__content {
     border-radius: 0;
-    padding: 80px 24px 60px;
+    max-height: calc(100vh - 60px);
+    width: 100%;
+    margin: 0;
+  }
+
+  .booking-modal__inner {
+    padding: clamp(40px, 8vw, 60px) clamp(16px, 4vw, 32px);
+  }
+
+  .booking-modal__close {
+    top: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    background-color: var(--color-matte-black);
+    color: white;
+  }
+
+  .booking-modal__close:hover {
+    background-color: var(--color-accent);
   }
 
   .booking-form--modal .booking-form__info h2 {
@@ -143,26 +225,119 @@
     flex-direction: column;
     gap: 8px;
   }
-  
-  .booking-modal__close {
-    top: 16px;
-    right: 16px;
-    background-color: var(--color-matte-black);
-    color: white;
-  }
 }
 
+/* ============================================
+   RESPONSIVIDADE — Mobile (480px e abaixo)
+   ============================================ */
 @media (max-width: 480px) {
+  .booking-modal {
+    padding: 0;
+    padding-top: 50px;
+  }
+
   .booking-modal__content {
-    padding: 70px 20px 40px;
+    max-height: calc(100vh - 50px);
+    border-radius: 0;
+  }
+
+  .booking-modal__inner {
+    padding: clamp(32px, 6vw, 48px) clamp(12px, 3vw, 24px);
+  }
+
+  .booking-modal__close {
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    height: 40px;
   }
 
   .booking-form--modal .booking-form__info h2 {
     font-size: 1.8rem;
+    margin-bottom: 12px;
   }
-  
+
+  .booking-form--modal .booking-form__info p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
   .booking-form--modal .booking-form__fields .form-group-row {
     flex-direction: column;
     gap: 0;
   }
+
+  .booking-form--modal .booking-form__contact-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .booking-form--modal .booking-form__contact-item {
+    gap: 12px;
+  }
+
+  .booking-form--modal .booking-form__contact-item h4 {
+    font-size: 0.65rem;
+  }
+
+  .booking-form--modal .booking-form__contact-item p {
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================
+   ACESSIBILIDADE — Modo Escuro
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  .booking-modal__close {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .booking-modal__close:hover {
+    background-color: var(--color-accent);
+  }
+}
+
+/* ============================================
+   ACESSIBILIDADE — Redução de Movimento
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .booking-modal,
+  .booking-modal__content,
+  .booking-modal__close {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   ACESSIBILIDADE — Contraste Alto
+   ============================================ */
+@media (prefers-contrast: more) {
+  .booking-modal__close {
+    border: 2px solid var(--color-matte-black);
+  }
+
+  .booking-modal__close:focus {
+    outline-width: 3px;
+  }
+}
+
+/* ============================================
+   Suporte a Tema Roxo (Leia Honorato)
+   ============================================ */
+body.theme-purple .booking-modal__close {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--color-matte-black);
+}
+
+body.theme-purple .booking-modal__close:hover {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+body.theme-purple .booking-form--modal .booking-form__info {
+  border-bottom-color: rgba(139, 92, 246, 0.1);
 }

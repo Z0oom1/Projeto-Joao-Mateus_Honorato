@@ -169,16 +169,25 @@ body.theme-purple .booking-form__contact-icon {
 .booking-form__fields textarea {
   width: 100%;
   padding: 18px 24px;
-  background-color: var(--color-warm-white);
+  background-color: #fcfcfc;
   border: 1.5px solid var(--color-beige);
-  border-radius: 12px;
+  border-radius: 14px;
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--color-matte-black);
   outline: none;
-  transition: all var(--transition-medium);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+}
+
+@media (max-width: 768px) {
+  .booking-form__fields input,
+  .booking-form__fields select,
+  .booking-form__fields textarea {
+    padding: 16px 20px;
+    font-size: 16px; /* Evita zoom no iOS */
+  }
 }
 
 body.theme-purple .booking-form__fields input,
@@ -191,8 +200,9 @@ body.theme-purple .booking-form__fields textarea {
 .booking-form__fields select:focus,
 .booking-form__fields textarea:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 4px rgba(200, 155, 60, 0.1);
-  background-color: var(--color-warm-white);
+  box-shadow: 0 10px 25px rgba(200, 155, 60, 0.08);
+  background-color: #ffffff;
+  transform: translateY(-2px);
 }
 
 body.theme-purple .booking-form__fields input:focus,

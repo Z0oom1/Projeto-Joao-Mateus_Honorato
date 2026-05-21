@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './Booking.css'
 
 export default function BookingForm({ isModal = false, onClose, siteType }) {
+  const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,57 +16,57 @@ export default function BookingForm({ isModal = false, onClose, siteType }) {
   const [errors, setErrors] = useState({})
 
   const isEstetica = siteType === 'estetica'
+  const totalSteps = 3
 
-  const titleText = isEstetica ? (
-    <>
-      Agende seu<br />
-      <em>procedimento</em>
-    </>
-  ) : (
-    <>
-      Agende sua<br />
-      <em>consulta</em>
-    </>
-  )
-
-  const descText = isEstetica
-    ? 'Escolha a data de preferência. Nossa equipe entrará em contato em instantes via WhatsApp para confirmar o seu horário.'
-    : 'Escolha o melhor dia e horário. Nossa equipe entrará em contato para confirmar seu agendamento em poucos minutos.'
-
-  // Validação básica do formulário
-  const validateForm = () => {
+  // Validação por etapa
+  const validateStep = (step) => {
     const newErrors = {}
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'Nome é obrigatório'
+    if (step === 1) {
+      if (!formData.name.trim()) {
+        newErrors.name = 'Nome é obrigatório'
+      }
+      if (!formData.phone.trim()) {
+        newErrors.phone = 'Telefone é obrigatório'
+      } else if (!/^[\d\s\-\(\)]+$/.test(formData.phone)) {
+        newErrors.phone = 'Telefone inválido'
+      }
     }
 
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Telefone é obrigatório'
-    } else if (!/^[\d\s\-\(\)]+$/.test(formData.phone)) {
-      newErrors.phone = 'Telefone inválido'
+    if (step === 2) {
+      if (!formData.treatment) {
+        newErrors.treatment = 'Selecione um procedimento'
+      }
+      if (!formData.date) {
+        newErrors.date = 'Data é obrigatória'
+      }
     }
 
-    if (!formData.date) {
-      newErrors.date = 'Data é obrigatória'
-    }
-
-    if (!formData.treatment) {
-      newErrors.treatment = 'Selecione um procedimento'
-    }
-
-    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Email inválido'
+    if (step === 3) {
+      if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        newErrors.email = 'Email inválido'
+      }
     }
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
 
+  const handleNext = () => {
+    if (validateStep(currentStep)) {
+      setCurrentStep(currentStep + 1)
+    }
+  }
+
+  const handlePrev = () => {
+    setCurrentStep(currentStep - 1)
+    setErrors({})
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!validateForm()) {
+    if (!validateStep(currentStep)) {
       return
     }
 
@@ -75,6 +76,7 @@ export default function BookingForm({ isModal = false, onClose, siteType }) {
         onClose()
       }
       setSubmitted(false)
+      setCurrentStep(1)
       setFormData({
         name: '',
         email: '',
@@ -117,191 +119,232 @@ export default function BookingForm({ isModal = false, onClose, siteType }) {
           </p>
         </div>
       ) : (
-        <div className="booking-form__grid">
-          {/* Lado do Texto */}
-          <div className="booking-form__info">
-            <h2>{titleText}</h2>
-            <p>{descText}</p>
-
-            <div className="booking-form__contact-details">
-              <div className="booking-form__contact-item">
-                <span className="booking-form__contact-icon" aria-hidden="true">
-                  📞
-                </span>
-                <div>
-                  <h4>Telefone / WhatsApp</h4>
-                  <a href="tel:+5518999998888">(18) 99999-8888</a>
-                </div>
-              </div>
-              <div className="booking-form__contact-item">
-                <span className="booking-form__contact-icon" aria-hidden="true">
-                  📍
-                </span>
-                <div>
-                  <h4>Localização</h4>
-                  <p>Rua José Colnago, 03 - Vila Nova, Regente Feijó/SP</p>
-                </div>
-              </div>
+        <>
+          {/* Indicador de Progresso */}
+          <div className="booking-form__progress">
+            <div className="booking-form__progress-bar">
+              <div
+                className="booking-form__progress-fill"
+                style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+              ></div>
             </div>
+            <p className="booking-form__progress-text">
+              Passo <span className="booking-form__progress-current">{currentStep}</span> de{' '}
+              <span className="booking-form__progress-total">{totalSteps}</span>
+            </p>
           </div>
 
-          {/* Formulário */}
-          <form className="booking-form__fields" onSubmit={handleSubmit} id="schedule-form" noValidate>
-            {/* Nome Completo */}
-            <div className="form-group">
-              <label htmlFor="name">Nome Completo *</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Seu nome completo"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                aria-required="true"
-                aria-invalid={errors.name ? 'true' : 'false'}
-                aria-describedby={errors.name ? 'name-error' : undefined}
-              />
-              {errors.name && (
-                <span id="name-error" className="form-error" role="alert">
-                  {errors.name}
-                </span>
-              )}
-            </div>
+          {/* Formulário Multi-Etapas */}
+          <form className="booking-form__steps" onSubmit={handleSubmit} noValidate>
+            {/* PASSO 1: Identificação */}
+            {currentStep === 1 && (
+              <div className="booking-form__step booking-form__step--active" role="region" aria-label="Passo 1: Seus dados">
+                <div className="booking-form__step-header">
+                  <h2>Seus Dados</h2>
+                  <p>Comece informando seu nome e telefone</p>
+                </div>
 
-            {/* Telefone e Data */}
-            <div className="form-group-row">
-              <div className="form-group">
-                <label htmlFor="phone">Telefone / WhatsApp *</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="(18) 99999-8888"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  aria-required="true"
-                  aria-invalid={errors.phone ? 'true' : 'false'}
-                  aria-describedby={errors.phone ? 'phone-error' : undefined}
-                />
-                {errors.phone && (
-                  <span id="phone-error" className="form-error" role="alert">
-                    {errors.phone}
-                  </span>
-                )}
+                <div className="booking-form__step-content">
+                  {/* Nome */}
+                  <div className="form-group">
+                    <label htmlFor="name">Nome Completo *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Seu nome completo"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.name ? 'true' : 'false'}
+                      aria-describedby={errors.name ? 'name-error' : undefined}
+                    />
+                    {errors.name && (
+                      <span id="name-error" className="form-error" role="alert">
+                        {errors.name}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Telefone */}
+                  <div className="form-group">
+                    <label htmlFor="phone">Telefone / WhatsApp *</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="(18) 99999-8888"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.phone ? 'true' : 'false'}
+                      aria-describedby={errors.phone ? 'phone-error' : undefined}
+                    />
+                    {errors.phone && (
+                      <span id="phone-error" className="form-error" role="alert">
+                        {errors.phone}
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
+            )}
 
-              <div className="form-group">
-                <label htmlFor="date">Data Preferencial *</label>
-                <input
-                  type="date"
-                  id="date"
-                  name="date"
-                  value={formData.date}
-                  onChange={handleChange}
-                  required
-                  aria-required="true"
-                  aria-invalid={errors.date ? 'true' : 'false'}
-                  aria-describedby={errors.date ? 'date-error' : undefined}
-                />
-                {errors.date && (
-                  <span id="date-error" className="form-error" role="alert">
-                    {errors.date}
-                  </span>
-                )}
+            {/* PASSO 2: Preferências */}
+            {currentStep === 2 && (
+              <div className="booking-form__step booking-form__step--active" role="region" aria-label="Passo 2: Procedimento e data">
+                <div className="booking-form__step-header">
+                  <h2>{isEstetica ? 'Procedimento' : 'Consulta'}</h2>
+                  <p>Escolha o procedimento e a data preferencial</p>
+                </div>
+
+                <div className="booking-form__step-content">
+                  {/* Procedimento */}
+                  <div className="form-group">
+                    <label htmlFor="treatment">Procedimento de Interesse *</label>
+                    <select
+                      id="treatment"
+                      name="treatment"
+                      value={formData.treatment}
+                      onChange={handleChange}
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.treatment ? 'true' : 'false'}
+                      aria-describedby={errors.treatment ? 'treatment-error' : undefined}
+                    >
+                      <option value="">Selecione o procedimento</option>
+                      {isEstetica ? (
+                        <>
+                          <option value="harmonizacao">Harmonização Facial</option>
+                          <option value="botox">Aplicação de Botox</option>
+                          <option value="bioestimuladores">Bioestimuladores de Colágeno</option>
+                          <option value="tecnologias">Tecnologias & Peelings</option>
+                          <option value="outro">Outro Procedimento Estético</option>
+                        </>
+                      ) : (
+                        <>
+                          <option value="estetica">Estética Dental</option>
+                          <option value="implantes">Implantes Dentários</option>
+                          <option value="ortodontia">Ortodontia Invisível</option>
+                          <option value="preventiva">Odontologia Preventiva</option>
+                          <option value="outro">Outro Procedimento Odontológico</option>
+                        </>
+                      )}
+                    </select>
+                    {errors.treatment && (
+                      <span id="treatment-error" className="form-error" role="alert">
+                        {errors.treatment}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Data */}
+                  <div className="form-group">
+                    <label htmlFor="date">Data Preferencial *</label>
+                    <input
+                      type="date"
+                      id="date"
+                      name="date"
+                      value={formData.date}
+                      onChange={handleChange}
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.date ? 'true' : 'false'}
+                      aria-describedby={errors.date ? 'date-error' : undefined}
+                    />
+                    {errors.date && (
+                      <span id="date-error" className="form-error" role="alert">
+                        {errors.date}
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
 
-            {/* Email (opcional) */}
-            <div className="form-group">
-              <label htmlFor="email">Email (opcional)</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="seu.email@exemplo.com"
-                value={formData.email}
-                onChange={handleChange}
-                aria-invalid={errors.email ? 'true' : 'false'}
-                aria-describedby={errors.email ? 'email-error' : undefined}
-              />
-              {errors.email && (
-                <span id="email-error" className="form-error" role="alert">
-                  {errors.email}
-                </span>
+            {/* PASSO 3: Finalização */}
+            {currentStep === 3 && (
+              <div className="booking-form__step booking-form__step--active" role="region" aria-label="Passo 3: Finalizar agendamento">
+                <div className="booking-form__step-header">
+                  <h2>Finalizar</h2>
+                  <p>Adicione email e observações (opcional)</p>
+                </div>
+
+                <div className="booking-form__step-content">
+                  {/* Email */}
+                  <div className="form-group">
+                    <label htmlFor="email">Email (opcional)</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="seu.email@exemplo.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      aria-invalid={errors.email ? 'true' : 'false'}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
+                    />
+                    {errors.email && (
+                      <span id="email-error" className="form-error" role="alert">
+                        {errors.email}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Mensagem */}
+                  <div className="form-group">
+                    <label htmlFor="message">Observações (opcional)</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      placeholder="Deixe uma mensagem ou observação"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows="3"
+                      aria-describedby="message-hint"
+                    ></textarea>
+                    <small id="message-hint">Máximo 500 caracteres</small>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Botões de Navegação */}
+            <div className="booking-form__actions">
+              {currentStep > 1 && (
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  onClick={handlePrev}
+                  aria-label="Voltar para o passo anterior"
+                >
+                  ← Voltar
+                </button>
+              )}
+
+              {currentStep < totalSteps ? (
+                <button
+                  type="button"
+                  className="btn-primary"
+                  onClick={handleNext}
+                  aria-label={`Ir para o próximo passo (${currentStep + 1} de ${totalSteps})`}
+                >
+                  Próximo →
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="btn-primary"
+                  aria-label="Enviar solicitação de agendamento"
+                >
+                  Confirmar Agendamento
+                </button>
               )}
             </div>
-
-            {/* Procedimento */}
-            <div className="form-group">
-              <label htmlFor="treatment">Procedimento de Interesse *</label>
-              <select
-                id="treatment"
-                name="treatment"
-                value={formData.treatment}
-                onChange={handleChange}
-                required
-                aria-required="true"
-                aria-invalid={errors.treatment ? 'true' : 'false'}
-                aria-describedby={errors.treatment ? 'treatment-error' : undefined}
-              >
-                <option value="">Selecione o procedimento</option>
-                {isEstetica ? (
-                  <>
-                    <option value="harmonizacao">Harmonização Facial</option>
-                    <option value="botox">Aplicação de Botox</option>
-                    <option value="bioestimuladores">Bioestimuladores de Colágeno</option>
-                    <option value="tecnologias">Tecnologias & Peelings</option>
-                    <option value="outro">Outro Procedimento Estético</option>
-                  </>
-                ) : (
-                  <>
-                    <option value="estetica">Estética Dental</option>
-                    <option value="implantes">Implantes Dentários</option>
-                    <option value="ortodontia">Ortodontia Invisível</option>
-                    <option value="preventiva">Odontologia Preventiva</option>
-                    <option value="outro">Outro Procedimento Odontológico</option>
-                  </>
-                )}
-              </select>
-              {errors.treatment && (
-                <span id="treatment-error" className="form-error" role="alert">
-                  {errors.treatment}
-                </span>
-              )}
-            </div>
-
-            {/* Mensagem Adicional */}
-            <div className="form-group">
-              <label htmlFor="message">Mensagem Adicional (opcional)</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Deixe uma mensagem ou observação"
-                value={formData.message}
-                onChange={handleChange}
-                rows="3"
-                aria-describedby="message-hint"
-              ></textarea>
-              <small id="message-hint">Máximo 500 caracteres</small>
-            </div>
-
-            {/* Botão Submit */}
-            <button
-              type="submit"
-              className="btn-primary"
-              style={{ width: '100%', border: 'none' }}
-              id="submit-booking"
-              aria-label="Enviar solicitação de agendamento"
-            >
-              Solicitar Agendamento
-            </button>
-
-            {/* Indicador de campos obrigatórios */}
-            <small className="form-required-note">* Campos obrigatórios</small>
           </form>
-        </div>
+        </>
       )}
     </div>
   )

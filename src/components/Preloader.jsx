@@ -1,26 +1,20 @@
 import { useEffect, useState } from 'react'
 import './Preloader.css'
 
-export default function Preloader({ siteType, onDone }) {
-  const [loading, setLoading] = useState(true)
+export default function Preloader({ siteType, onDone, progress = 0, isLoaded = false }) {
   const [shouldRender, setShouldRender] = useState(true)
+  const [fadeOut, setFadeOut] = useState(false)
 
   useEffect(() => {
-    // Simula o carregamento inicial
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 2000) // Reduzido ligeiramente para melhor usabilidade entre trocas
-
-    const renderTimer = setTimeout(() => {
-      setShouldRender(false)
-      if (onDone) onDone()
-    }, 2700)
-
-    return () => {
-      clearTimeout(timer)
-      clearTimeout(renderTimer)
+    if (isLoaded) {
+      setFadeOut(true)
+      const timer = setTimeout(() => {
+        setShouldRender(false)
+        if (onDone) onDone()
+      }, 800)
+      return () => clearTimeout(timer)
     }
-  }, [onDone])
+  }, [isLoaded, onDone])
 
   if (!shouldRender) return null
 
@@ -31,7 +25,7 @@ export default function Preloader({ siteType, onDone }) {
   const logoSrc = isEstetica ? '/logos/logo-leiah.webp' : '/logos/logo-joaom.webp'
 
   return (
-    <div className={`preloader ${!loading ? 'preloader--hidden' : ''} ${themeClass}`}>
+    <div className={`preloader ${fadeOut ? 'preloader--hidden' : ''} ${themeClass}`}>
       <div className="preloader__content">
         <div className="preloader__logo">
           <img src={logoSrc} alt={title} className="preloader__logo-img" />
@@ -40,7 +34,10 @@ export default function Preloader({ siteType, onDone }) {
           <span className="preloader__sub">{subtitle}</span>
         </div>
         <div className="preloader__progress">
-          <div className="preloader__progress-bar"></div>
+          <div className="preloader__progress-bar-container">
+            <div className="preloader__progress-bar" style={{ width: `${progress}%` }}></div>
+          </div>
+          <span className="preloader__progress-text">{progress}%</span>
         </div>
       </div>
     </div>

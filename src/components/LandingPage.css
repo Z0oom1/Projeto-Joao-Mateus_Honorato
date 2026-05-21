@@ -12,6 +12,9 @@
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  /* Garante que o scroll seja natural */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .landing__container {
@@ -907,21 +910,22 @@
     height: auto;
     min-height: auto;
     margin-top: 0;
+    overflow: visible; /* Garante que o scroll não trave */
   }
 
   .landing__side {
     width: 100%;
-    height: 50vh; /* Exatamente metade da tela */
+    height: 50vh;
     min-height: 50vh;
     max-height: 50vh;
-    padding: 0 24px; /* Padding vertical será controlado pelo flex */
+    padding: 0 24px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* Permite que o conteúdo respire se necessário */
   }
 
   .landing__side--odonto {
@@ -1026,6 +1030,7 @@
   .landing__side-cta {
     padding: 10px 20px;
     font-size: 0.68rem;
+    margin-bottom: 10px; /* Espaço extra para o scroll indicator não colar */
   }
 
   .landing__side-tag {
@@ -1039,14 +1044,24 @@
     font-size: 0.7rem;
   }
 
-  /* ---- Scroll Indicator Mobile ---- */
+  /* ---- Scroll Indicator Mobile — Ajustado para não sobrepor ---- */
   .landing__scroll-indicator,
   .landing__scroll-indicator.reveal,
   .landing__scroll-indicator.reveal.visible {
     left: 50% !important;
     transform: translate(-50%, 0) !important;
-    bottom: 16px;
-    /* Posiciona no bottom do segundo lado (estetica) */
+    bottom: 8px;
+    z-index: 5; /* Atrás dos botões se necessário, mas vamos dar espaço */
+  }
+
+  .landing__scroll-text {
+    font-size: 0.52rem;
+    letter-spacing: 0.15em;
+    opacity: 0.6;
+  }
+
+  .landing__scroll-arrow {
+    transform: scale(0.8);
   }
   
   .landing__scroll-text {

@@ -1,50 +1,60 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 export default function MagneticButton({ children, className = '', ...props }) {
   const buttonRef = useRef(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const rafIdRef = useRef(null);
 
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    const { left, top, width, height } = buttonRef.current.getBoundingClientRect();
-    const x = clientX - (left + width / 2);
-    const y = clientY - (top + height / 2);
-    
-    // Reduce movement intensity
-    setPosition({ x: x * 0.3, y: y * 0.3 });
-  };
+  useEffect(() => {
+    const button = buttonRef.current;
+    if (!button) return;
 
-  const handleMouseLeave = () => {
-    setPosition({ x: 0, y: 0 });
-  };
+    // Inicializa CSS variables
+    button.style.setProperty('--magnetic-x', '0px');
+    button.style.setProperty('--magnetic-y', '0px');
+    button.style.setProperty('--magnetic-span-x', '0px');
+    button.style.setProperty('--magnetic-span-y', '0px');
 
-  const { x, y } = position;
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      const { left, top, width, height } = button.getBoundingClientRect();
+      const x = clientX - (left + width / 2);
+      const y = clientY - (top + height / 2);
+
+      // Usa CSS variables em vez de state para evitar re-renders
+      button.style.setProperty('--magnetic-x', `${x * 0.3}px`);
+      button.style.setProperty('--magnetic-y', `${y * 0.3}px`);
+      button.style.setProperty('--magnetic-span-x', `${x * 0.06}px`);
+      button.style.setProperty('--magnetic-span-y', `${y * 0.06}px`);
+      button.classList.add('magnetic-active');
+    };
+
+    const handleMouseLeave = () => {
+      button.style.setProperty('--magnetic-x', '0px');
+      button.style.setProperty('--magnetic-y', '0px');
+      button.style.setProperty('--magnetic-span-x', '0px');
+      button.style.setProperty('--magnetic-span-y', '0px');
+      button.classList.remove('magnetic-active');
+    };
+
+    button.addEventListener('mousemove', handleMouseMove);
+    button.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      button.removeEventListener('mousemove', handleMouseMove);
+      button.removeEventListener('mouseleave', handleMouseLeave);
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+    };
+  }, []);
 
   return (
     <button
       ref={buttonRef}
       className={`magnetic-button ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        transform: `translate3d(${x}px, ${y}px, 0)`,
-        transition: position.x === 0 ? 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)' : 'none'
-      }}
       {...props}
     >
-      <span 
-        style={{ 
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 'inherit',
-          transform: `translate3d(${x * 0.2}px, ${y * 0.2}px, 0)`,
-          transition: position.x === 0 ? 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)' : 'none'
-        }}
-      >
+      <span className="magnetic-button__inner">
         {children}
       </span>
-
     </button>
   );
 }

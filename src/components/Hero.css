@@ -189,8 +189,8 @@ body.theme-purple .hero__image-overlay {
   cursor: pointer !important;
   position: relative !important;
   overflow: hidden !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
   white-space: nowrap !important;
 }
 

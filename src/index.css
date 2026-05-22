@@ -147,10 +147,12 @@ body.theme-odonto {
 .glow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.4;
-  animation: floatOrb 25s infinite ease-in-out alternate;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: floatOrb 35s infinite ease-in-out alternate;
   will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .glow-orb-1 {
@@ -463,6 +465,31 @@ p {
   border: none;
   background: none;
   vertical-align: middle;
+  --magnetic-x: 0px;
+  --magnetic-y: 0px;
+  --magnetic-span-x: 0px;
+  --magnetic-span-y: 0px;
+  transform: translate3d(var(--magnetic-x), var(--magnetic-y), 0);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+.magnetic-button.magnetic-active {
+  transition: none;
+}
+
+.magnetic-button__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: inherit;
+  transform: translate3d(var(--magnetic-span-x), var(--magnetic-span-y), 0);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+.magnetic-button.magnetic-active .magnetic-button__inner {
+  transition: none;
 }
 
 

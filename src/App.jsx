@@ -85,9 +85,11 @@ export default function App() {
     return () => observer.disconnect()
   }, [])
 
-  /* Controle do background dinâmico via scroll otimizado com RAF */
+  /* Controle do background dinâmico via scroll otimizado com RAF e throttle */
   useEffect(() => {
     let ticking = false;
+    let lastScrollY = 0;
+    const minDelta = 20; // Atualiza a cada 20px de scroll
 
     const updateBg = () => {
       const scrolled = window.scrollY;
@@ -103,6 +105,14 @@ export default function App() {
     };
 
     const handleScroll = () => {
+      const scrolled = window.scrollY;
+      
+      // Throttle: só atualiza se scrollou pelo menos minDelta pixels
+      if (Math.abs(scrolled - lastScrollY) < minDelta) {
+        return;
+      }
+      lastScrollY = scrolled;
+      
       if (!ticking) {
         window.requestAnimationFrame(updateBg);
         ticking = true;

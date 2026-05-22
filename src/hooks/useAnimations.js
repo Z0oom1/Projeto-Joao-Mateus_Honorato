@@ -37,23 +37,33 @@ export function useScrollReveal(options = {}) {
 /**
  * Hook para parallax suave em elementos específicos.
  * Usa transform para performance (GPU accelerated).
+ * Otimizado com throttle para reduzir re-renders em MacBooks.
  */
 export function useParallax(ref, speed = 0.3) {
   const rafId = useRef(null)
+  const lastScrollY = useRef(0)
+  const minDelta = useRef(10) // Mínimo de pixels para atualizar
 
   const handleScroll = useCallback(() => {
     if (!ref.current) return
+
+    const scrollY = window.scrollY
+    
+    // Throttle: só atualiza se scrollou pelo menos minDelta pixels
+    if (Math.abs(scrollY - lastScrollY.current) < minDelta.current) {
+      return
+    }
 
     if (rafId.current) {
       cancelAnimationFrame(rafId.current)
     }
 
     rafId.current = requestAnimationFrame(() => {
-      const scrollY = window.scrollY
       const element = ref.current
       if (element) {
         const offset = scrollY * speed
         element.style.transform = `translate3d(0, ${offset}px, 0)`
+        lastScrollY.current = scrollY
       }
     })
   }, [ref, speed])

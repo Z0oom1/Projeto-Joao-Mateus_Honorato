@@ -52,8 +52,8 @@ export default function Navbar({ siteType, onOpenBooking, onGoBack }) {
             <span>Voltar</span>
           </button>
           
-          <a href="#" className="navbar__logo" aria-label="FaceSmile Clinic - Início">
-            <img src={logoSrc} alt="FaceSmile Clinic" className="navbar__logo-img" />
+          <a href="#" className="navbar__logo" aria-label="Clínica Honorato - Início">
+            <img src={logoSrc} alt="Clínica Honorato" className="navbar__logo-img" />
           </a>
         </div>
 

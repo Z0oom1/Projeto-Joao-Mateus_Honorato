@@ -7,8 +7,8 @@
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background: #0A0A0A;
-  color: #FFFFFF;
+  background: #FAF6EE;
+  color: #3E2F16;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -77,7 +77,7 @@
   letter-spacing: 0.4em;
   margin-right: -0.4em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(62, 47, 22, 0.7);
   margin-top: 6px;
 }
 
@@ -107,49 +107,49 @@
 
 /* Lado Odonto */
 .landing__side--odonto {
-  background: linear-gradient(135deg, #161007 0%, #291D09 100%);
-  border-right: 1px solid rgba(231, 199, 123, 0.05);
+  background: linear-gradient(135deg, #F9F5EC 0%, #F2EADC 100%);
+  border-right: 1px solid rgba(200, 155, 60, 0.15);
 }
 
 .landing__side--odonto .landing__side-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 25% 65%, rgba(200, 155, 60, 0.15) 0%, transparent 60%);
+  background: radial-gradient(circle at 25% 65%, rgba(200, 155, 60, 0.1) 0%, transparent 60%);
   opacity: 0.7;
   transition: opacity 600ms ease;
 }
 
 .landing__side--odonto:hover {
   flex: 1.15;
-  background: linear-gradient(135deg, #1E160A 0%, #35260C 100%);
+  background: linear-gradient(135deg, #F2EADC 0%, #EBE1CC 100%);
 }
 
 .landing__side--odonto:hover .landing__side-glow {
   opacity: 1;
-  background: radial-gradient(circle at 25% 65%, rgba(231, 199, 123, 0.28) 0%, transparent 65%);
+  background: radial-gradient(circle at 25% 65%, rgba(200, 155, 60, 0.22) 0%, transparent 65%);
 }
 
 /* Lado Estética */
 .landing__side--estetica {
-  background: linear-gradient(135deg, #0E031E 0%, #20073B 100%);
+  background: linear-gradient(135deg, #FAF6EE 0%, #F6EDFA 100%);
 }
 
 .landing__side--estetica .landing__side-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 75% 65%, rgba(106, 31, 191, 0.18) 0%, transparent 60%);
+  background: radial-gradient(circle at 75% 65%, rgba(106, 31, 191, 0.08) 0%, transparent 60%);
   opacity: 0.7;
   transition: opacity 600ms ease;
 }
 
 .landing__side--estetica:hover {
   flex: 1.15;
-  background: linear-gradient(135deg, #15052C 0%, #2A094F 100%);
+  background: linear-gradient(135deg, #F6EDFA 0%, #ECD8FA 100%);
 }
 
 .landing__side--estetica:hover .landing__side-glow {
   opacity: 1;
-  background: radial-gradient(circle at 75% 65%, rgba(155, 93, 229, 0.28) 0%, transparent 65%);
+  background: radial-gradient(circle at 75% 65%, rgba(155, 93, 229, 0.2) 0%, transparent 65%);
 }
 
 /* Lado - Conteúdo */
@@ -182,22 +182,22 @@
 }
 
 .landing__side--odonto .landing__side-tag {
-  background: rgba(231, 199, 123, 0.08);
-  color: #E7C77B;
-  border: 1px solid rgba(231, 199, 123, 0.15);
+  background: rgba(200, 155, 60, 0.08);
+  color: #8A6422;
+  border: 1px solid rgba(200, 155, 60, 0.2);
 }
 
 .landing__side--estetica .landing__side-tag {
-  background: rgba(214, 180, 255, 0.08);
-  color: #D6B4FF;
-  border: 1px solid rgba(214, 180, 255, 0.15);
+  background: rgba(106, 31, 191, 0.06);
+  color: #6A1FBF;
+  border: 1px solid rgba(106, 31, 191, 0.15);
 }
 
 .landing__side-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 300;
-  color: #ffffff;
+  color: #2A1D07;
   line-height: 1.1;
   margin-bottom: 4px;
   letter-spacing: -0.01em;
@@ -214,11 +214,11 @@
 }
 
 .landing__side--odonto .landing__side-category {
-  color: #C89B3C;
+  color: #8A6422;
 }
 
 .landing__side--estetica .landing__side-category {
-  color: #9B5DE5;
+  color: #6A1FBF;
 }
 
 .landing__side-desc {
@@ -226,14 +226,14 @@
   font-size: 0.85rem;
   font-weight: 300;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(62, 47, 22, 0.65);
   margin-bottom: 36px;
   max-width: 320px;
   transition: color 400ms ease;
 }
 
 .landing__side:hover .landing__side-desc {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(62, 47, 22, 0.9);
 }
 
 /* CTA Buttons */
@@ -249,31 +249,31 @@
   padding: 16px 32px;
   border-radius: 100px;
   transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(62, 47, 22, 0.02);
 }
 
 .landing__side--odonto .landing__side-cta {
-  color: #E7C77B;
-  border: 1px solid rgba(231, 199, 123, 0.2);
+  color: #8A6422;
+  border: 1px solid rgba(200, 155, 60, 0.3);
 }
 
 .landing__side--odonto:hover .landing__side-cta {
   background: #C89B3C;
   border-color: #C89B3C;
-  color: #161007;
-  box-shadow: 0 10px 30px rgba(200, 155, 60, 0.25);
+  color: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(200, 155, 60, 0.15);
 }
 
 .landing__side--estetica .landing__side-cta {
-  color: #D6B4FF;
-  border: 1px solid rgba(214, 180, 255, 0.2);
+  color: #6A1FBF;
+  border: 1px solid rgba(106, 31, 191, 0.2);
 }
 
 .landing__side--estetica:hover .landing__side-cta {
   background: #6A1FBF;
   border-color: #6A1FBF;
   color: #ffffff;
-  box-shadow: 0 10px 30px rgba(106, 31, 191, 0.35);
+  box-shadow: 0 10px 30px rgba(106, 31, 191, 0.2);
 }
 
 .landing__side-cta svg {
@@ -311,11 +311,11 @@
   letter-spacing: 0.25em;
   margin-right: -0.25em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(62, 47, 22, 0.5);
 }
 
 .landing__scroll-arrow {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(62, 47, 22, 0.6);
   animation: bounceIndicator 2s infinite ease-in-out;
 }
 
@@ -330,13 +330,13 @@
 
 .landing__about-section {
   padding: clamp(80px, 12vh, 160px) 0;
-  background-color: #0A0A0A;
+  background-color: #FAF6EE;
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(200, 155, 60, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(106, 31, 191, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 10% 20%, rgba(200, 155, 60, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(106, 31, 191, 0.04) 0%, transparent 50%);
   position: relative;
   z-index: 15;
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(200, 155, 60, 0.1);
 }
 
 .landing__about-content {
@@ -352,7 +352,7 @@
   letter-spacing: 0.25em;
   margin-right: -0.25em;
   text-transform: uppercase;
-  color: #C89B3C;
+  color: #8A6422;
   display: inline-block;
   margin-bottom: 16px;
 }
@@ -362,7 +362,7 @@
   font-size: clamp(2rem, 5vw, 3.8rem);
   font-weight: 300;
   line-height: 1.1;
-  color: #ffffff;
+  color: #2A1D07;
   margin-bottom: 24px;
 }
 
@@ -371,13 +371,13 @@
   font-size: clamp(0.95rem, 1.1vw, 1.05rem);
   font-weight: 300;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.6);
+  color: #614D32;
   max-width: none;
 }
 
 .landing__about-desc strong {
   font-weight: 500;
-  color: #ffffff;
+  color: #2A1D07;
 }
 
 /* Grid da Equipe */
@@ -391,13 +391,14 @@
 /* Card Especialista */
 .landing__team-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: #FFFFFF;
+  border: 1px solid rgba(200, 155, 60, 0.1);
   border-radius: 28px;
   padding: 48px;
   transition: all 600ms cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
+  box-shadow: 0 15px 45px rgba(62, 47, 22, 0.03);
 }
 
 .landing__team-badge {
@@ -415,30 +416,30 @@
 
 /* Card Odonto Hover & Estilo */
 .landing__team-card--odonto .landing__team-badge {
-  background: rgba(231, 199, 123, 0.08);
-  color: #E7C77B;
-  border: 1px solid rgba(231, 199, 123, 0.15);
+  background: rgba(200, 155, 60, 0.08);
+  color: #8A6422;
+  border: 1px solid rgba(200, 155, 60, 0.2);
 }
 
 .landing__team-card--odonto:hover {
-  background: rgba(231, 199, 123, 0.02);
-  border-color: rgba(231, 199, 123, 0.25);
+  background: #FFFFFF;
+  border-color: rgba(200, 155, 60, 0.35);
   transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(200, 155, 60, 0.06);
+  box-shadow: 0 20px 55px rgba(200, 155, 60, 0.08);
 }
 
 /* Card Estética Hover & Estilo */
 .landing__team-card--estetica .landing__team-badge {
-  background: rgba(214, 180, 255, 0.08);
-  color: #D6B4FF;
-  border: 1px solid rgba(214, 180, 255, 0.15);
+  background: rgba(106, 31, 191, 0.06);
+  color: #6A1FBF;
+  border: 1px solid rgba(106, 31, 191, 0.15);
 }
 
 .landing__team-card--estetica:hover {
-  background: rgba(106, 31, 191, 0.02);
-  border-color: rgba(214, 180, 255, 0.25);
+  background: #FFFFFF;
+  border-color: rgba(106, 31, 191, 0.25);
   transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(106, 31, 191, 0.08);
+  box-shadow: 0 20px 55px rgba(106, 31, 191, 0.08);
 }
 
 /* Profile (Photo + Identity) */
@@ -457,18 +458,18 @@
   height: 88px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  border: 2px solid rgba(200, 155, 60, 0.15);
+  box-shadow: 0 8px 24px rgba(62, 47, 22, 0.08);
 }
 
 .landing__team-photo-wrap--odonto {
-  border-color: rgba(231, 199, 123, 0.35);
-  box-shadow: 0 8px 28px rgba(200, 155, 60, 0.2);
+  border-color: rgba(200, 155, 60, 0.35);
+  box-shadow: 0 8px 28px rgba(200, 155, 60, 0.12);
 }
 
 .landing__team-photo-wrap--estetica {
-  border-color: rgba(155, 93, 229, 0.4);
-  box-shadow: 0 8px 28px rgba(106, 31, 191, 0.25);
+  border-color: rgba(155, 93, 229, 0.3);
+  box-shadow: 0 8px 28px rgba(106, 31, 191, 0.12);
 }
 
 .landing__team-photo {
@@ -492,17 +493,17 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.6rem, 2.5vw, 2rem);
   font-weight: 400;
-  color: #ffffff;
+  color: #2A1D07;
   margin-bottom: 4px;
   line-height: 1.1;
 }
 
 .landing__team-card--odonto .landing__team-header h3 {
-  color: #F5DFA0;
+  color: #2A1D07;
 }
 
 .landing__team-card--estetica .landing__team-header h3 {
-  color: #DFC1FF;
+  color: #2A1D07;
 }
 
 .landing__team-subtitle {
@@ -511,7 +512,7 @@
   font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
+  color: #8A6422;
   margin-bottom: 2px;
 }
 
@@ -520,14 +521,14 @@
   font-size: 0.72rem;
   font-weight: 300;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(62, 47, 22, 0.5);
   margin: 0;
 }
 
 .landing__team-divider {
   width: 100%;
   height: 1px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(200, 155, 60, 0.15);
   margin-bottom: 32px;
 }
 
@@ -546,11 +547,11 @@
 }
 
 .landing__team-card--odonto .landing__team-info h4 {
-  color: #E7C77B;
+  color: #8A6422;
 }
 
 .landing__team-card--estetica .landing__team-info h4 {
-  color: #C29AFF;
+  color: #6A1FBF;
 }
 
 /* Formações Listas */
@@ -567,7 +568,7 @@
   font-family: 'Outfit', sans-serif;
   font-size: 0.88rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.82);
+  color: #3E2F16;
   line-height: 1.5;
   position: relative;
   padding-left: 18px;
@@ -582,11 +583,11 @@
 }
 
 .landing__team-card--odonto .landing__team-list li::before {
-  color: #C89B3C;
+  color: #8A6422;
 }
 
 .landing__team-card--estetica .landing__team-list li::before {
-  color: #9B5DE5;
+  color: #6A1FBF;
 }
 
 .landing__team-desc {
@@ -594,7 +595,7 @@
   font-size: 0.88rem;
   font-weight: 300;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.72);
+  color: #614D32;
   margin-bottom: 40px;
   max-width: none; /* Sobrescreve o max-width do p global */
 }
@@ -657,7 +658,7 @@
 
 .landing__diferenciais {
   margin-top: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(200, 155, 60, 0.15);
   padding-top: 80px;
 }
 
@@ -667,7 +668,7 @@
   font-weight: 300;
   text-align: center;
   margin-bottom: 60px;
-  color: #ffffff;
+  color: #2A1D07;
 }
 
 .landing__diferenciais-grid {
@@ -685,7 +686,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.8rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.15);
+  color: rgba(200, 155, 60, 0.25);
   margin-bottom: 12px;
   line-height: 1;
 }
@@ -695,14 +696,14 @@
   font-size: 0.95rem;
   font-weight: 500;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: #2A1D07;
 }
 
 .landing__diferencial-item p {
   font-family: 'Outfit', sans-serif;
   font-size: 0.88rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.5);
+  color: #614D32;
   line-height: 1.6;
   margin: 0;
   max-width: none;
@@ -713,9 +714,9 @@
    ======================================================= */
 
 .landing__footer-main {
-  background-color: #050505;
+  background-color: #F5EFEB;
   padding: 60px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(200, 155, 60, 0.15);
 }
 
 .landing__footer-content {
@@ -737,7 +738,7 @@
 .landing__footer-desc {
   font-family: 'Outfit', sans-serif;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(62, 47, 22, 0.6);
   margin: 0;
   max-width: none;
 }
@@ -745,13 +746,13 @@
 .landing__footer-contact {
   font-family: 'Outfit', sans-serif;
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: #614D32;
   margin: 0 0 16px;
   max-width: none;
 }
 
 .landing__footer-contact a {
-  color: #E7C77B;
+  color: #8A6422;
   text-decoration: none;
   font-weight: 400;
 }
@@ -763,7 +764,7 @@
 .landing__footer-copy {
   font-family: 'Outfit', sans-serif;
   font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(62, 47, 22, 0.5);
   margin: 0;
   letter-spacing: 0.05em;
 }
@@ -775,11 +776,11 @@
 
 .landing__location-section {
   padding: clamp(60px, 10vh, 140px) 0;
-  background-color: #0A0A0A;
+  background-color: #FAF6EE;
   background-image: 
-    radial-gradient(circle at 80% 20%, rgba(106, 31, 191, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 20% 80%, rgba(200, 155, 60, 0.04) 0%, transparent 50%);
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
+    radial-gradient(circle at 80% 20%, rgba(106, 31, 191, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(200, 155, 60, 0.05) 0%, transparent 50%);
+  border-top: 1px solid rgba(200, 155, 60, 0.1);
 }
 
 .landing__location-grid {
@@ -798,7 +799,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.8rem, 4vw, 3.4rem);
   font-weight: 300;
-  color: #ffffff;
+  color: #2A1D07;
   margin-bottom: 20px;
   line-height: 1.1;
 }
@@ -807,7 +808,7 @@
   font-family: 'Outfit', sans-serif;
   font-size: 0.95rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.6);
+  color: #614D32;
   line-height: 1.8;
   margin-bottom: 36px;
   max-width: none;
@@ -825,21 +826,21 @@
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #C89B3C;
+  color: #8A6422;
   margin-bottom: 8px;
   position: relative;
 }
 
 /* Diferenciação de acentos por coluna */
 .landing__location-details .landing__detail-box:nth-child(2) h4 {
-  color: #9B5DE5;
+  color: #6A1FBF;
 }
 
 .landing__detail-box p {
   font-family: 'Outfit', sans-serif;
   font-size: 0.9rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.5);
+  color: #614D32;
   margin: 0 0 6px 0;
   line-height: 1.5;
   max-width: none;
@@ -852,7 +853,7 @@
 }
 
 .landing__detail-box p a:hover {
-  color: #ffffff;
+  color: #8A6422;
 }
 
 /* Frame do Mapa */
@@ -866,17 +867,17 @@
   height: 100%;
   border-radius: 24px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: #111111;
+  border: 1px solid rgba(200, 155, 60, 0.15);
+  background: #FAF6EE;
   position: relative;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 45px rgba(62, 47, 22, 0.05);
 }
 
 .landing__map-iframe {
   width: 100%;
   height: 100%;
   border: 0;
-  filter: grayscale(1) invert(0.9) contrast(1.2) brightness(0.85);
+  filter: grayscale(0.2) contrast(1.1) brightness(0.95);
 }
 
 /* =======================================================
@@ -930,23 +931,23 @@
 
   .landing__side--odonto {
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(200, 155, 60, 0.12);
     /* Gradiente ajustado para mobile */
-    background: linear-gradient(180deg, #161007 0%, #291D09 100%);
+    background: linear-gradient(180deg, #F9F5EC 0%, #F2EADC 100%);
     padding-top: 40px; /* Espaço reduzido para o logo fixo no topo */
   }
 
   .landing__side--estetica {
-    background: linear-gradient(180deg, #0E031E 0%, #20073B 100%);
+    background: linear-gradient(180deg, #FAF6EE 0%, #F6EDFA 100%);
   }
 
   /* Glow ajustado para mobile */
   .landing__side--odonto .landing__side-glow {
-    background: radial-gradient(circle at 50% 80%, rgba(200, 155, 60, 0.2) 0%, transparent 60%);
+    background: radial-gradient(circle at 50% 80%, rgba(200, 155, 60, 0.12) 0%, transparent 60%);
   }
 
   .landing__side--estetica .landing__side-glow {
-    background: radial-gradient(circle at 50% 80%, rgba(106, 31, 191, 0.22) 0%, transparent 60%);
+    background: radial-gradient(circle at 50% 80%, rgba(106, 31, 191, 0.1) 0%, transparent 60%);
   }
 
   /* Desabilita hover effects no mobile (touch) */
@@ -968,7 +969,7 @@
     max-width: 100%;
     padding: 10px 16px 8px;
     z-index: 40;
-    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.7), transparent);
+    background: linear-gradient(to bottom, rgba(250, 246, 238, 0.98), rgba(250, 246, 238, 0.8), transparent);
     pointer-events: none; /* Permite clicar nos botões atrás se necessário, mas o logo é pequeno */
   }
 
@@ -1019,7 +1020,7 @@
     margin-bottom: 12px;
     font-size: 0.75rem;
     max-width: 280px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(62, 47, 22, 0.7);
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;

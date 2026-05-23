@@ -83,7 +83,7 @@ export default function Footer({ siteType }) {
                 <a href="tel:+5518999998888">(18) 99999-8888</a>
               </p>
               <p className="footer__email-link">
-                <a href="mailto:contato@facesmileclinic.com.br">contato@facesmileclinic.com.br</a>
+                <a href="mailto:contato@clinicahonorato.com.br">contato@clinicahonorato.com.br</a>
               </p>
             </address>
           </div>
@@ -92,7 +92,7 @@ export default function Footer({ siteType }) {
         {/* Mapa Estilizado Integrado no Rodapé */}
         <div className="footer__map-wrap">
           <iframe
-            title="Mapa de Localização FaceSmile Clinic"
+            title="Mapa de Localização Clínica Honorato"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3696.0898516084803!2d-51.30604169999999!3d-22.2177306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94943f6087532dfb%3A0x7d02521c7d422a55!2sR.%20Jos%C3%A9%20Colnago%2C%203%20-%20Vila%20Nova%2C%20Regente%20Feij%C3%B3%20-%20SP%2C%2019570-000!5e0!3m2!1spt-BR!2sbr!4v1716262400000!5e0"
             width="100%"
             height="100%"
@@ -107,12 +107,12 @@ export default function Footer({ siteType }) {
         {/* Rodapé inferior */}
         <div className="footer__bottom">
           <p className="footer__copyright">
-            © {new Date().getFullYear()} FaceSmile Clinic. Todos os direitos reservados.
+            © {new Date().getFullYear()} Clínica Honorato. Todos os direitos reservados.
           </p>
           <div className="footer__parent-branding">
             <span>Uma clínica integrada</span>
-            <img src="/logos/facesmile-icone.webp" alt="FaceSmile Icon" className="footer__parent-icon" />
-            <span className="footer__parent-name">FaceSmile Clinic</span>
+            <img src="/logos/logo-Honorato.png" alt="Clínica Honorato Icon" className="footer__parent-icon" />
+            <span className="footer__parent-name">Clínica Honorato</span>
           </div>
         </div>
       </div>

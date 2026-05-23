@@ -10,16 +10,16 @@ export default function LandingPage({ onSelectClinic }) {
   }, [])
 
   return (
-    <section className="landing" id="landing" aria-label="FaceSmile Clinic — Escolha sua Clínica">
-      {/* Header com o Logo Completo FaceSmile - Em Destaque Dinâmico */}
+    <section className="landing" id="landing" aria-label="Clínica Honorato — Escolha sua Clínica">
+      {/* Header com o Logo Completo Clínica Honorato - Em Destaque Dinâmico */}
       <header className={`landing__header ${
         hoveredSide === 'odonto' ? 'landing__header--odonto' : 
         hoveredSide === 'estetica' ? 'landing__header--estetica' : ''
       }`}>
         <div className="landing__logo-wrap">
           <img
-            src="/logos/facesmile.webp"
-            alt="FaceSmile Clinic — Odontologia & Estética"
+            src="/logos/logo-Honorato.png"
+            alt="Clínica Honorato — Odontologia & Estética"
             className="landing__logo-full"
           />
         </div>
@@ -109,7 +109,7 @@ export default function LandingPage({ onSelectClinic }) {
             <span className="landing__section-label">A Experiência Integrada</span>
             <h2 className="landing__about-title">Onde a saúde do sorriso e a harmonia facial se encontram</h2>
             <p className="landing__about-desc">
-              A <strong>FaceSmile Clinic</strong> nasceu da visão de unir duas especialidades fundamentais em um único ecossistema de alto padrão. Acreditamos que a beleza autêntica reside no equilíbrio perfeito entre a saúde bucal e os contornos faciais, cuidando de cada paciente de forma holística e personalizada.
+              A <strong>Clínica Honorato</strong> nasceu da visão de unir duas especialidades fundamentais em um único ecossistema de alto padrão. Acreditamos que a beleza autêntica reside no equilíbrio perfeito entre a saúde bucal e os contornos faciais, cuidando de cada paciente de forma holística e personalizada.
             </p>
           </div>
 
@@ -216,7 +216,7 @@ export default function LandingPage({ onSelectClinic }) {
 
           {/* Diferenciais */}
           <div className="landing__diferenciais reveal">
-            <h3 className="landing__diferenciais-title">Diferenciais FaceSmile</h3>
+            <h3 className="landing__diferenciais-title">Diferenciais Clínica Honorato</h3>
             <div className="landing__diferenciais-grid">
               <div className="landing__diferencial-item">
                 <span className="landing__diferencial-num">01</span>
@@ -260,7 +260,7 @@ export default function LandingPage({ onSelectClinic }) {
                 <div className="landing__detail-box">
                   <h4>Contatos Diretos</h4>
                   <p>WhatsApp/Tel: <a href="tel:+5518999998888">(18) 99999-8888</a></p>
-                  <p>E-mail: <a href="mailto:contato@facesmileclinic.com.br">contato@facesmileclinic.com.br</a></p>
+                  <p>E-mail: <a href="mailto:contato@clinicahonorato.com.br">contato@clinicahonorato.com.br</a></p>
                 </div>
 
                 <div className="landing__detail-box">
@@ -274,7 +274,7 @@ export default function LandingPage({ onSelectClinic }) {
             <div className="landing__location-map-wrap">
               <div className="landing__map-frame">
                 <iframe
-                  title="Mapa de Localização FaceSmile Clinic"
+                  title="Mapa de Localização Clínica Honorato"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3696.0898516084803!2d-51.30604169999999!3d-22.2177306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94943f6087532dfb%3A0x7d02521c7d422a55!2sR.%20Jos%C3%A9%20Colnago%2C%203%20-%20Vila%20Nova%2C%20Regente%20Feij%C3%B3%20-%20SP%2C%2019570-000!5e0!3m2!1spt-BR!2sbr!4v1716262400000!5e0"
                   width="100%"
                   height="100%"
@@ -290,17 +290,17 @@ export default function LandingPage({ onSelectClinic }) {
         </div>
       </div>
 
-      {/* Footer da Seleção FaceSmile */}
+      {/* Footer da Seleção Clínica Honorato */}
       <footer className="landing__footer-main reveal">
         <div className="landing__container">
           <div className="landing__footer-content">
-            <img src="/logos/facesmile.webp" alt="FaceSmile Logo" className="landing__footer-logo" />
+            <img src="/logos/logo-Honorato.png" alt="Clínica Honorato Logo" className="landing__footer-logo" />
             <p className="landing__footer-desc">Responsabilidade Técnica: Dr. João Mateus (CRO-SP) & Leia Honorato (CRBM-SP)</p>
             <p className="landing__footer-contact">
               Rua José Colnago, 03, Vila Nova — Regente Feijó/SP | Contato: <a href="tel:+5518999998888">(18) 99999-8888</a>
             </p>
             <p className="landing__footer-copy">
-              © {new Date().getFullYear()} FaceSmile Clinic. Todos os direitos reservados.
+              © {new Date().getFullYear()} Clínica Honorato. Todos os direitos reservados.
             </p>
           </div>
         </div>

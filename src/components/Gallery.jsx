@@ -22,7 +22,7 @@ const odontoImages = [
   {
     id: 4,
     src: 'https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?w=700&q=80&auto=format&fit=crop',
-    alt: 'Sala de espera FaceSmile Odontologia',
+    alt: 'Sala de espera Clínica Honorato Odontologia',
     span: 'gallery__item--wide',
   },
   {

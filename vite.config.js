@@ -8,20 +8,18 @@ export default defineConfig({
     allowedHosts: true,
   },
   build: {
-    // Otimizações para reduzir tamanho do bundle
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
     // Chunking estratégico
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor': ['react', 'react-dom'],
-          'lenis': ['lenis'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'vendor';
+            }
+            if (id.includes('lenis')) {
+              return 'lenis';
+            }
+          }
         },
       },
     },

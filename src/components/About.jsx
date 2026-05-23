@@ -20,12 +20,12 @@ export default function About({ siteType }) {
     : '/team/dr-joao-real.webp'
 
   const imageAlt = isEstetica 
-    ? 'Leia Honorato, especialista em Estética Avançada na FaceSmile'
-    : 'Dr. João Mateus, cirurgião-dentista e fundador da FaceSmile'
+    ? 'Leia Honorato, especialista em Estética Avançada na Clínica Honorato'
+    : 'Dr. João Mateus, cirurgião-dentista e fundador da Clínica Honorato'
 
   const text1 = isEstetica
     ? 'A clínica de estética Leia Honorato nasceu com a missão de oferecer tratamentos faciais e corporais personalizados de alta performance. Acreditamos que a verdadeira beleza se manifesta quando cuidamos da saúde da pele de dentro para fora, respeitando as características naturais e a harmonia de cada rosto.'
-    : 'A FaceSmile Odontologia foi fundada pelo Dr. João Mateus com o propósito de transformar a ida ao dentista em uma experiência relaxante e acolhedora. Nosso espaço premium foi projetado com a sofisticação e o cuidado de um spa, aliando tecnologia digital de ponta a uma abordagem profundamente humana.'
+    : 'A Clínica Honorato Odontologia foi fundada pelo Dr. João Mateus com o propósito de transformar a ida ao dentista em uma experiência relaxante e acolhedora. Nosso espaço premium foi projetado com a sofisticação e o cuidado de um spa, aliando tecnologia digital de ponta a uma abordagem profundamente humana.'
 
   const text2 = isEstetica
     ? 'Especialista em rejuvenescimento facial, harmonização de traços e terapias corporais avançadas, Leia Honorato adota técnicas modernas e seguras para entregar resultados refinados e naturais que fortalecem a autoestima e o bem-estar diário.'
